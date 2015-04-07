@@ -24,7 +24,7 @@ if( $session ) {
 <head> 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>phpBitAdmin - Bitcoin Mobile Wallet</title>
+<title>Bitcoin Node</title>
 <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
 <link rel="stylesheet" href="css/m_phpbitadmin.css" />
 <script src="js/jquery-1.11.1.min.js"></script>
@@ -54,7 +54,7 @@ $(document).bind("pagecreate", function () {
 	<div data-role="content" class="content">
 		<div style="margin-top:15px;margin-left:5px;">
 			<img id="image_WalletImage" src="images/BitCoin_L.png" height="50" width="50" alt="Bitcoind" />
-			<span id="span_WalletHeaderText">Bitcoin <span style="font-style: italic;font-size:.7em;">m</span>Wallet</span>
+			<span id="span_WalletHeaderText">Bitcoin Node Status</span>
 			<hr class="hr_wallet">
 		</div>
 		
