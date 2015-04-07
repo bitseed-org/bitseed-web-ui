@@ -60,12 +60,12 @@ $(document).bind("pagecreate", function () {
 		
 		<div class="div_WalletOverview">
 			<span class="primary">Device at Block:</span>
-			<span class="secondary"><?php print $check_login['blocks']; ?>&nbsp;BTC</span>
+			<span class="secondary"><?php print $check_login['blocks']; ?>&nbsp;</span>
 		</div>
 		
 		<div class="div_WalletOverview">
 			<span class="primary">Network Block:</span>
-			<span class="secondary"><?php print (string)$check_login['concensusblock']; ?></span>
+			<span class="secondary"><?php print_r ($concensusblock); ?></span>
 		</div>
 		
 		<div class="div_WalletOverview">
