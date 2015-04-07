@@ -18,19 +18,19 @@ On the target Bitcoin Server add a 'rpcallowip" directive to bitcoin.conf
 that points to the network ip address of the webserver running 
 phpBitAdmin - Bitcoin Wallet.
 
-#[ex.]
-rpcallowip=10.0.0.15
+For Bitseed, the control panel will run on the node, add localhost 127.0.0.1
 
-Where 10.0.0.15 is the address of the webserver. You may enter as many 
-rpcallowip directives as necessary. Other important bitcoin.conf 
+rpcallowip=127.0.0.1
+
+You may enter as many rpcallowip directives as necessary. Other important bitcoin.conf 
 directives are as follows. Uncomment as desired.
 
 # server=1 tells Bitcoin to accept JSON-RPC commands.
 server=1
 
 # Listen for RPC connection on this TCP port:
-# Standard port:
-#rpcport=1832 
+# Standard port (default)
+#rpcport=1832
 # Testnet port:
 #rpcport=18332
 
