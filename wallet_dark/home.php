@@ -1,6 +1,7 @@
 <?php 
 require_once('config.inc.php'); 
 require('php/phpbitadmin.class.php');
+$concensusblock = file_get_contents('https://blockchain.info/q/getblockcount');
 $wallet = new PhpBitAdmin_Wallet();
 if ( (empty($_SESSION['PHPBITADMIN'])) || ($_SESSION['PHPBITADMIN'] === null) ) { // check if $_SESSION is set.
 	$session = $wallet->setSession($scheme, $server_ip, $server_port, $rpc_user, $rpc_pass, $btc_addr, $p_phrase);
@@ -57,13 +58,13 @@ $(document).bind("pagecreate", function () {
 		</div>
 		
 		<div class="div_WalletOverview">
-			<span class="primary">Total Balance:</span>
-			<span class="secondary"><?php print $check_login['balance']; ?>&nbsp;BTC</span>
+			<span class="primary">Current Block:</span>
+			<span class="secondary"><?php print $check_login['blocks']; ?>&nbsp;BTC</span>
 		</div>
 		
 		<div class="div_WalletOverview">
-			<span class="primary">Fee per transaction:</span>
-			<span class="secondary"><?php print (string)$check_login['paytxfee']; ?></span>
+			<span class="primary">Concesus Block:</span>
+			<span class="secondary"><?php print (string)$check_login['concensusblock']; ?></span>
 		</div>
 		
 		<div class="div_WalletOverview">
