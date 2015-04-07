@@ -40,12 +40,13 @@ $(document).bind("pagecreate", function () {
 
 	<div data-role="header" data-add-back-btn="true" data-icon="arrow-l">	
 		<h1><img src="images/bitcoin2.png" height="16" width="16" alt=""/>&nbsp;phpBitAdmin</h1>
-		<a href="scan.php" class="ui-btn ui-btn-right ui-corner-all ui-shadow ui-btn-inline ui-icon-camera ui-btn-icon-left ui-btn-b" data-theme="b">Scan</a>		
+	<!--	<a href="scan.php" class="ui-btn ui-btn-right ui-corner-all ui-shadow ui-btn-inline ui-icon-camera ui-btn-icon-left ui-btn-b" data-theme="b">Scan</a> -->		
 		<div data-role="navbar" data-iconpos="top">
 			<ul>
 				<li><a href="#" class="ui-btn-active ui-state-persist" data-ajax="false"  data-transition="fade" data-icon="home">Home</a>
-				<li><a href="pay.php" data-icon="arrow-u" data-ajax="false"  data-transition="fade">Pay</a>
+			<!--	<li><a href="pay.php" data-icon="arrow-u" data-ajax="false"  data-transition="fade">Pay</a>
 				<li><a href="getpaid.php" data-icon="arrow-d" data-ajax="false"  data-transition="fade">Get Paid</a> 
+			-->
 			</ul>
 		</div>
 	</div><!-- /header -->
@@ -91,8 +92,8 @@ $(document).bind("pagecreate", function () {
 	<div data-role="footer" data-id="main" data-position="fixed" data-tap-toggle="false">
 		<div data-role="navbar">
 			<ul>
-				<li><a href="transactions.php" data-ajax="false" data-icon="bullets">Transactions</a></li>
-				<li><a href="settings.php" data-ajax="false" data-icon="gear">Settings</a></li>
+			<!--	<li><a href="transactions.php" data-ajax="false" data-icon="bullets">Transactions</a></li>
+				<li><a href="settings.php" data-ajax="false" data-icon="gear">Settings</a></li>  -->
 				<li><a href="index.php" data-ajax="false" data-icon="delete">Log Out</a></li>
 			</ul>
 		</div>
