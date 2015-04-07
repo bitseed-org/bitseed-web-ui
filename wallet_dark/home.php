@@ -39,7 +39,7 @@ $(document).bind("pagecreate", function () {
 <div data-role="page" id="home" data-theme="b">
 
 	<div data-role="header" data-add-back-btn="true" data-icon="arrow-l">	
-		<h1><img src="images/bitcoin2.png" height="16" width="16" alt=""/>&nbsp;phpBitAdmin</h1>
+		<h1><img src="images/bitcoin2.png" height="16" width="16" alt=""/>&nbsp;Bitseed Bitcoin Node</h1>
 	<!--	<a href="scan.php" class="ui-btn ui-btn-right ui-corner-all ui-shadow ui-btn-inline ui-icon-camera ui-btn-icon-left ui-btn-b" data-theme="b">Scan</a> -->		
 		<div data-role="navbar" data-iconpos="top">
 			<ul>
@@ -59,18 +59,18 @@ $(document).bind("pagecreate", function () {
 		</div>
 		
 		<div class="div_WalletOverview">
-			<span class="primary">Current Block:</span>
+			<span class="primary">Device at Block:</span>
 			<span class="secondary"><?php print $check_login['blocks']; ?>&nbsp;BTC</span>
 		</div>
 		
 		<div class="div_WalletOverview">
-			<span class="primary">Concesus Block:</span>
+			<span class="primary">Network Block:</span>
 			<span class="secondary"><?php print (string)$check_login['concensusblock']; ?></span>
 		</div>
 		
 		<div class="div_WalletOverview">
-			<span class="primary">Wallet Version:</span>
-			<span class="secondary"><?php print (string)$check_login['walletversion']; ?></span>
+			<span class="primary">Peer Connections:</span>
+			<span class="secondary"><?php print $check_login['connections']; ?></span>
 		</div>
 		
 		<div class="div_WalletOverview">
@@ -82,11 +82,19 @@ $(document).bind("pagecreate", function () {
 			<span class="primary">Bitcoind Protocol:</span>
 			<span class="secondary"><?php print $check_login['protocolversion']; ?></span>
 		</div>
-	
+		
 		<div class="div_WalletOverview">
-			<span class="primary">Current Connections:</span>
-			<span class="secondary"><?php print $check_login['connections']; ?></span>
+			<span class="primary">Wallet Version:</span>
+			<span class="secondary"><?php print (string)$check_login['walletversion']; ?></span>
 		</div>
+		
+		<div class="div_WalletOverview">
+                        <span class="primary">BTC Balance:</span>
+                        <span class="secondary"><?php print $check_login['balance']; ?>&nbsp;BTC</span>
+                </div>
+
+	
+		
 	</div><!-- /content  -->
 		
 	<div data-role="footer" data-id="main" data-position="fixed" data-tap-toggle="false">
