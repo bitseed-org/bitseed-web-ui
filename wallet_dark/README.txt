@@ -1,3 +1,10 @@
+Web UI Status Panel for monitoring a Bitcoin Core (bitcoind) Node running on a remote server
+
+     This is a fork of mpatterson99/phpBitAdmin-Bitcoin-HTML5-Wallet
+
+The Bitseed Bitcoin Node is intended to be run purely as a full node and not as a wallet.  The status panel does not provide adequate security for managing a wallet, so wallet transaction features are disabled
+
+----------------------------------------------------------------------------
 Welcome to phpBitAdmin - Bitcoind HTML5 Wallet
 
 This web application will run on any PHP enabled webserver. Only cURL
