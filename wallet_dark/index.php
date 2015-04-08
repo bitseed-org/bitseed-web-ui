@@ -91,8 +91,8 @@ $(document).bind("pagecreate", function () {
 		</div>	
 	
 		<div class="div_WalletOverview">
-			<span class="primary">Bitcoind Protocol:</span>
-			<span class="secondary"><?php print $check_login['protocolversion']; ?></span>
+			<span class="primary">Bitcoind Version:</span>
+			<span class="secondary"><?php print $check_login['version']; ?></span>
 		</div>
 		
 		<div class="div_WalletOverview">
