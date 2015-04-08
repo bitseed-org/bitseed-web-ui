@@ -21,7 +21,7 @@ if( $session ) {
 	}
 	$check_login =  $wallet->rpc($scheme,$server_ip,$server_port,$rpc_user,$rpc_pass,'getinfo') ;
 	if ( !is_array($check_login) ) {
-		die (' There was an error with your Log In parameters. Is your RPC Username and Password correct?');
+		die (' At startup, Bitcoin requires 10-15 minutes to check its database and the web UI can be active.  Please wait 10-15 minutes. If the web UI never responds, check your RPC Username and Password correct?');
 	}
 }
 ?>
