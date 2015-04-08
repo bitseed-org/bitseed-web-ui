@@ -3,6 +3,10 @@ require_once('config.inc.php');
 require('php/phpbitadmin.class.php');
 $extip = file_get_contents('http://ipecho.net/plain');
 $concensusblock = file_get_contents('https://blockchain.info/q/getblockcount');
+$address = file_get_contents('/home/linaro/reward-addr');
+$jsnaddr = "https://getaddr.bitnodes.io/api/v1/nodes/{$extip}-8333";
+$bitnodejson = file_get_contents($jsnaddr);
+$bitnode = json_decode($bitnodejson, TRUE);
 $wallet = new PhpBitAdmin_Wallet();
 if ( (empty($_SESSION['PHPBITADMIN'])) || ($_SESSION['PHPBITADMIN'] === null) ) { // check if $_SESSION is set.
 	$session = $wallet->setSession($scheme, $server_ip, $server_port, $rpc_user, $rpc_pass, $btc_addr, $p_phrase);
@@ -58,12 +62,14 @@ $(document).bind("pagecreate", function () {
 			<span id="span_WalletHeaderText">Bitcoin Node Status</span>
 			<hr class="hr_wallet">
 		</div>
-		
+	
+
 		<div class="div_WalletOverview">
                         <span class="primary">Node IP Address:</span>
                         <span class="secondary"><?php print $extip; ?>&nbsp;</span>
-                </div>   
-		
+                </div>		
+
+
 		<div class="div_WalletOverview">
 			<span class="primary">Device at Block:</span>
 			<span class="secondary"><?php print $check_login['blocks']; ?>&nbsp;</span>
@@ -98,6 +104,23 @@ $(document).bind("pagecreate", function () {
                         <span class="primary">BTC Balance:</span>
                         <span class="secondary"><?php print $check_login['balance']; ?>&nbsp;</span>
                 </div>
+
+                <div class="div_WalletOverview">
+                        <span class="primary">Donatate:</span>
+                        <span class="secondary"><?php print $address; ?>&nbsp;</span>
+                </div>
+
+                <div class="div_WalletOverview">
+                        <span class="primary">Bitnode Status:</span>
+                        <span class="secondary"><?php print $bitnode['status']; ?>&nbsp;</span>
+                </div>
+
+                <div class="div_WalletOverview">
+                        <span class="primary">Bitnode Verified:</span>
+                        <span class="secondary"><?php print $bitnode['verified']; ?>&nbsp;</span>
+                </div>
+
+
 
 	
 		
