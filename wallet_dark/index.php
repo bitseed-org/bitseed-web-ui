@@ -7,6 +7,7 @@ $address = file_get_contents('/home/linaro/reward-addr');
 $jsnaddr = "https://getaddr.bitnodes.io/api/v1/nodes/{$extip}-8333";
 $bitnodejson = file_get_contents($jsnaddr);
 $bitnode = json_decode($bitnodejson, TRUE);
+$serial = file_get_contents('/var/www/html/serial');
 $wallet = new PhpBitAdmin_Wallet();
 if ( (empty($_SESSION['PHPBITADMIN'])) || ($_SESSION['PHPBITADMIN'] === null) ) { // check if $_SESSION is set.
 	$session = $wallet->setSession($scheme, $server_ip, $server_port, $rpc_user, $rpc_pass, $btc_addr, $p_phrase);
@@ -98,6 +99,11 @@ $(document).bind("pagecreate", function () {
 		<div class="div_WalletOverview">
 			<span class="primary">Wallet Version:</span>
 			<span class="secondary"><?php print (string)$check_login['walletversion']; ?></span>
+		</div>
+		
+		<div class="div_WalletOverview">
+			<span class="primary">Device ID:</span>
+			<span class="secondary"><?php print $serial; ?></span>
 		</div>
 		
 		<div class="div_WalletOverview">
