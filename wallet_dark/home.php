@@ -1,6 +1,7 @@
 <?php 
 require_once('config.inc.php'); 
 require('php/phpbitadmin.class.php');
+$extip = file_get_contents('http://ipecho.net/plain');
 $concensusblock = file_get_contents('https://blockchain.info/q/getblockcount');
 $wallet = new PhpBitAdmin_Wallet();
 if ( (empty($_SESSION['PHPBITADMIN'])) || ($_SESSION['PHPBITADMIN'] === null) ) { // check if $_SESSION is set.
@@ -59,6 +60,11 @@ $(document).bind("pagecreate", function () {
 		</div>
 		
 		<div class="div_WalletOverview">
+                        <span class="primary">Node IP Address:</span>
+                        <span class="secondary"><?php print $extip; ?>&nbsp;</span>
+                </div>   
+		
+		<div class="div_WalletOverview">
 			<span class="primary">Device at Block:</span>
 			<span class="secondary"><?php print $check_login['blocks']; ?>&nbsp;</span>
 		</div>
@@ -90,7 +96,7 @@ $(document).bind("pagecreate", function () {
 		
 		<div class="div_WalletOverview">
                         <span class="primary">BTC Balance:</span>
-                        <span class="secondary"><?php print $check_login['balance']; ?>&nbsp;BTC</span>
+                        <span class="secondary"><?php print $check_login['balance']; ?>&nbsp;</span>
                 </div>
 
 	
