@@ -112,7 +112,7 @@ $(document).bind("pagecreate", function () {
                 </div>
 
                 <div class="div_WalletOverview">
-                        <span class="primary">Donatate:</span>
+                        <span class="primary">Donate:</span>
                         <span class="secondary"><?php print $address; ?>&nbsp;</span>
                 </div>
 
