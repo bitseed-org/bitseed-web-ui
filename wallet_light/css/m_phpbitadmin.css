@@ -1,7 +1,9 @@
 html,body {height:100%;}
 
 #image_WalletImage {vertical-align:middle;margin-top:5px;height:50px;width:50px;margin-left:3px;}
-#span_WalletHeaderText {font-family:arial;color:#FFD249;font-size:26px;font-weight:bold;text-shadow: 1px 1px 1px #333;}
+/* #span_WalletHeaderText {font-family:arial;color:#0FD249;font-size:26px;font-weight:bold;text-shadow: 1px 1px 1px #333;} */
+#span_WalletHeaderText {font-family:arial;color:#000000;font-size:22px;font-weight:bold;}
+#span_TitleHeader {font-family:arial;color:#000000;font-size:24px;font-weight:bold; text-align: right;}
 .hr_wallet {width:96%;border:0;height:0;border-top:1px solid rgba(0,0,0,0.1);border-bottom:1px solid rgba(255,255,255,0.3);}
 .primary {color:#808080;font-weight:bold;}
 .secondary {color:#efefef;font-weight:bold;}
@@ -10,6 +12,22 @@ html,body {height:100%;}
 .ui-priority-secondary {color:#FFD249;}
 .blackBG {background-color:#000;
 }
+
+/* Do not allow bullets or underlines for the list items or links in the menu */ 
+#menu ul li a {
+	list-style-type: none;
+    color: #ddd;
+    font-size: 18px;
+	text-decoration: none;
+    }
+
+#menu ul li {
+	list-style-type: none;
+    }
+.panel.left {background-color: #235;}
+
+.secondary_light_donate {color:#000;font-weight:bold; font-size: 12px;}
+
 .content {
 	display: inline-block; vertical-align: middle;
  	padding: 0;

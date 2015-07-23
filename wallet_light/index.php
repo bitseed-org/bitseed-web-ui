@@ -1,6 +1,26 @@
 <?php 
 require_once('config.inc.php'); 
 require('php/phpbitadmin.class.php');
+
+// Internal IP, MAC address
+// $inet_mac_values = shell_exec('/home/linaro/internal-ip-mac.py 2>&1');
+$inet_mac_values = shell_exec('python/internal-ip-mac.py 2>&1');
+$inet_mac_addr = json_decode($inet_mac_values, TRUE);
+
+// Disk Usage, RAM Usage, CPU Load and Uptime status
+// $device_values = shell_exec('/home/linaro/disk-info.py 2>&1');
+$device_values = shell_exec('python/disk-info.py 2>&1');
+$device_stats = json_decode($device_values, TRUE);
+
+$extip = file_get_contents('http://ipecho.net/plain');
+$concensusblock = file_get_contents('https://blockchain.info/q/getblockcount');
+$address = file_get_contents('/home/linaro/reward-addr');
+
+$jsnaddr = "https://getaddr.bitnodes.io/api/v1/nodes/{$extip}-8333";
+$bitnodejson = file_get_contents($jsnaddr);
+$bitnode = json_decode($bitnodejson, TRUE);
+
+$serial = file_get_contents('/var/www/html/serial');
 $wallet = new PhpBitAdmin_Wallet();
 if ( (empty($_SESSION['PHPBITADMIN'])) || ($_SESSION['PHPBITADMIN'] === null) ) { // check if $_SESSION is set.
 	$session = $wallet->setSession($scheme, $server_ip, $server_port, $rpc_user, $rpc_pass, $btc_addr, $p_phrase);
@@ -14,7 +34,7 @@ if( $session ) {
 	}
 	$check_login =  $wallet->rpc($scheme,$server_ip,$server_port,$rpc_user,$rpc_pass,'getinfo') ;
 	if ( !is_array($check_login) ) {
-		die (' There was an error with your Log In parameters. Is your RPC Username and Password correct?');
+		die (' At startup, Bitcoin requires 10-15 minutes to check its database and the web UI can be active.  Please wait 10-15 minutes. If the web UI never responds, check that the RPC Username and Password are tha same in ~.bitcoin/bitcoin.conf and /var/www/html/config.inc.php are the same');
 	}
 }
 ?>
@@ -23,70 +43,390 @@ if( $session ) {
 <head> 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>phpBitAdmin - Bitcoin Wallet</title>
+<title>Bitcoin Node</title>
 <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
 <link rel="stylesheet" href="css/m_phpbitadmin.css" />
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/jquery.mobile-1.4.5.min.js"></script>
 <script type="text/javascript">
-$(document).on("pagecreate", function () {
+
+// KD - This needs to change to AJAX True    
+$(document).bind("pagecreate", function () {
     $.mobile.ajaxEnabled = false;
 });
 </script>
-<style>
-#inputPin .ui-input-text { width: 60px !important }
-</style>
+
+<!-- AJAX calls for system control at the server -->
+<script>
+
+    function myCall(e) {
+		var domvalue = $(e).attr('id'); 
+        var request = $.ajax({
+            url: "php/jquery-ajax.php",
+            type: "GET",
+            dataType: "html",
+			data: { 
+                id: domvalue
+			},
+        });
+
+        request.done(function(msg) {
+            $("#bitcoin-status").html(msg);          
+        });
+
+        request.fail(function(jqXHR, textStatus) {
+            alert( "Request failed: " + textStatus );
+        });
+    }
+</script>
+
 </head>
 <body>
-<div data-role="page" id="login" data-theme="a">
-	<div data-role="header">	
-		<h2><img src="images/bitcoin2.png" height="16" width="16" alt=""/>&nbsp;phpBitAdmin</h2>
-		<button class="ui-btn-right ui-btn ui-btn-a ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-camera ui-disabled">Scan
-</button>		
-		<div data-role="navbar" data-iconpos="top">
-			<ul>
-				<li><a href="home.php" data-icon="home" class="ui-disabled">Home</a>
-				<li><a href="pay.php" data-icon="arrow-u" class="ui-disabled">Send</a>
-				<li><a href="getpaid.php" data-icon="arrow-d" class="ui-disabled">Get Paid</a> 
-			</ul>
-		</div>		
+
+<div data-role="page" id="home" data-theme="a">
+
+    <div class="panel left" data-role="panel" data-position="left" data-display="push" id="mypanel">
+        <div id = "menu">
+	            <ul>
+   		            <li><a href="#home" title="title">Home</a></li><br />
+		            <li><a href="#device-status" title="Device Status">Device Status</a></li><br /> 
+		            <li><a href="#bitnodes">Bitnodes</a></li><br />
+		            <li><a href="#controls">Controls</a></li>
+		       </ul>
+	    </div>
+	 </div>
+
+     <div data-role="header"> 
+		<span class="open left"><a href="#mypanel" data-role="navbar"><img src="images/nav-icon-blue.png" height="20" width="20" alt=""/></a></span>
+		<span id="span_TitleHeader">&nbsp; &nbsp; <img src="images/bitcoind.png" height="32" width="32" alt=""/>&nbsp;Bitseed Bitcoin Node</span>
 	</div><!-- /header -->
-	
-	<div data-role="content" class="content">		
-		
-		<a href="#popupLogin" data-rel="popup" data-position-to="window" data-transition="pop" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-action ui-btn-icon-left ui-btn-a">Sign In</a>
-		<div data-role="popup" id="popupLogin" data-overlay-theme="a" data-theme="a" data-dismissible="false" style="max-width:400px;">
-		    <div data-role="header" data-theme="b" style="text-align:center;padding-right:10px;padding-left:10px;">
-		    	<img id="image_WalletImage" src="images/BitCoin_L.png" height="50" width="50" alt="Bitcoind" />
-				<span id="span_WalletHeaderText">Bitcoind Wallet</span>				
-		    </div>
-		    <div data-role="main" class="ui-content" style="text-align:center;">
-		        <form>		    	
-		    	<label for="inputPin" style="font-weight:bold;text-align:center;">PIN Number:</label>
-	     		<input name="inputPin" id="inputPin" value="1234" type="password" pattern="[0-9]*" data-role="none" style="width:62px;background:#b2b2b2b;border:1px solid #666;text-align:center"> 	     				
-		    	</form><p>
-		    	<hr>		    	
-		        <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">Cancel</a>
-		        <a href="home.php" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-transition="flow">Submit</a>
-		    </div>
+
+	<div data-role="content" class="content">
+
+		<div style="margin-top:15px;margin-left:5px;">
+			<span id="span_WalletHeaderText">Bitcoin Node Status</span>
+			<hr class="hr_wallet">
 		</div>
-		            
-	</div><!-- /content one -->
 	
+
+		<div class="div_WalletOverview">
+		   <div class="ui-grid-a">
+               <div class="ui-block-a"><span class="primary">Node IP Address:</span></div>
+               <div class="ui-block-b"><span class="secondary_light"><?php print $extip; ?>&nbsp;</span></div>
+		   </div>
+        </div>		
+
+
+		<div class="div_WalletOverview">
+		   <div class="ui-grid-a">
+		       <div class="ui-block-a"><span class="primary">Device at Block:</span></div>
+			   <div class="ui-block-b"><span class="secondary_light"><?php print $check_login['blocks']; ?>&nbsp;</span></div>
+		   </div>
+		</div>
+		
+		 <div class="div_WalletOverview">
+		   <div class="ui-grid-a">
+			<div class="ui-block-a"><span class="primary">Network Block:</span></div>
+			<div class="ui-block-b"><span class="secondary_light"><?php print_r ($concensusblock); ?></span></div>
+		   </div>
+		</div>
+		
+		<div class="div_WalletOverview">
+		   <div class="ui-grid-a">
+			<div class="ui-block-a"><span class="primary">Peer Connections:</span></div>
+			<div class="ui-block-b"><span class="secondary_light"><?php print $check_login['connections']; ?></span></div>
+		   </div>
+		</div>
+		
+		<div class="div_WalletOverview">
+		   <div class="ui-grid-a">
+			<div class="ui-block-a"><span class="primary">Network:</span></div>
+			<div class="ui-block-b"><span class="secondary_light"><?php if ($check_login['testnet']) { print 'Testnet'; } else { print 'Main'; }?></span></div>
+		   </div>
+		</div>	
+	
+		<div class="div_WalletOverview">
+		   <div class="ui-grid-a">
+			<div class="ui-block-a"><span class="primary">Bitcoind Version:</span></div>
+			<div class="ui-block-b"><span class="secondary_light"><?php print $check_login['version']; ?></span></div>
+		   </div>
+		</div>
+		
+		<div class="div_WalletOverview">
+		   <div class="ui-grid-a">
+			<div class="ui-block-a"><span class="primary">Wallet Version:</span></div>
+			<div class="ui-block-b"><span class="secondary_light"><?php print (string)$check_login['walletversion']; ?></span></div>
+		   </div>
+		</div>
+		
+		<div class="div_WalletOverview">
+		   <div class="ui-grid-a">
+			<div class="ui-block-a"><span class="primary">Device ID:</span></div>
+			<div class="ui-block-b"><span class="secondary_light"><?php print $serial; ?></span></div>
+		   </div>
+		</div>
+		
+		<div class="div_WalletOverview">
+		   <div class="ui-grid-a">
+            <div class="ui-block-a"><span class="primary">BTC Balance:</span></div>
+            <div class="ui-block-b"><span class="secondary_light"><?php print $check_login['balance']; ?>&nbsp;</span></div>
+		   </div>
+        </div>
+
+        <!-- <div class="div_WalletOverview">
+		   <div class="ui-grid-a">
+            <div class="ui-block-a"><span class="primary">Donate:</span></div>
+            <div class="ui-block-a"><span class="secondary_light"><?php // print $address; ?>&nbsp;</span></div>
+		   </div>
+        </div> -->
+
+        <div class="div_WalletOverview">
+		    <div class="ui-grid-a"> 
+            <span class="primary">Donate:</span>
+            <span class="secondary_light_donate"><?php print $address; ?>&nbsp;</span>
+		   </div>
+        </div>
+
+        <div class="div_WalletOverview">
+		   <div class="ui-grid-a">
+            <div class="ui-block-a"><span class="primary">Bitnode Status:</span></div>
+            <div class="ui-block-b"><span class="secondary_light"><?php print $bitnode['status']; ?>&nbsp;</span></div>
+		   </div>
+        </div>
+
+        <div class="div_WalletOverview">
+		   <div class="ui-grid-a">
+             <div class="ui-block-a"><span class="primary">Bitnode Verified:</span></div>
+             <div class="ui-block-b"><span class="secondary_light"><?php print $bitnode['verified']; ?>&nbsp;</span></div>
+		   </div>
+        </div>
+
+        <div class="div_WalletOverview">
+		   <div class="ui-grid-a">
+             <div class="ui-block-a"><span class="primary">Internal IP Address:</span></div>
+             <div class="ui-block-b"><span class="secondary_light"><?php print $inet_mac_addr['inet_address']; ?>&nbsp;</span></div>
+		   </div>
+        </div>
+
+        <div class="div_WalletOverview">
+		   <div class="ui-grid-a">
+              <div class="ui-block-a"><span class="primary">Mac Address:</span></div>
+              <div class="ui-block-b"><span class="secondary_light"><?php print $inet_mac_addr['mac_address']; ?>&nbsp;</span></div>
+		   </div>
+        </div>
+
+        <div class="div_WalletOverview">
+		   <div class="ui-grid-a">
+              <div class="ui-block-a"><span class="primary">Last blockchain Backup:</span></div>
+              <div class="ui-block-b"><span class="secondary_light"><?php print $inet_mac_addr['db_date']; ?>&nbsp;</span></div>
+		   </div>
+        </div>
+    </div><!-- content -->
+
+</div>  <!-- page -->
+
+<div data-role="page" id="device-status" data-theme="a">
+    <div class="panel left" data-role="panel" data-position="left" data-display="push" id="mypanel">
+        <div id = "menu">
+	            <ul>
+   		            <li><a href="#home" title="title">Home</a></li><br />
+		            <li><a href="#device-status" title="Device Status">Device Status</a></li><br />
+		            <li><a href="#bitnodes">Bitnodes</a></li><br />
+		            <li><a href="#controls">Controls</a></li>
+		       </ul>
+	    </div>
+	 </div>
+
+     <div data-role="header"> 
+		<span class="open left"><a href="#mypanel" data-role="navbar"><img src="images/nav-icon-blue.png" height="20" width="20" alt=""/></a></span>
+		<span id="span_TitleHeader">&nbsp; &nbsp; <img src="images/bitcoind.png" height="32" width="32" alt=""/>&nbsp;Bitseed Bitcoin Node</span>
+	</div>
+
+	<div data-role="content" class="content">
+	   
+		<div style="margin-top:15px;margin-left:5px;">
+			<span id="span_WalletHeaderText">Device Status</span>
+			<hr class="hr_wallet">
+		</div>
+
+        <div class="div_WalletOverview">
+		   <div class="ui-grid-a">
+               <div class="ui-block-a"><span class="primary">Disk Size</span></div>
+               <div class="ui-block-b"><span class="secondary_light"><?php print $device_stats['disk_size']; ?>&nbsp;</span></div>
+        </div>
+        </div>
+        <div class="div_WalletOverview">
+		   <div class="ui-grid-a">
+             <div class="ui-block-a"><span class="primary">Disk Space Used:</span></div>
+             <div class="ui-block-b"><span class="secondary_light"><?php print $device_stats['disk_used']; ?>&nbsp;</span></div>
+        </div>
+        </div>
+
+        <div class="div_WalletOverview">
+		   <div class="ui-grid-a">
+             <div class="ui-block-a"><span class="primary">Disk Space Available:</span></div>
+             <div class="ui-block-b"><span class="secondary_light"><?php print $device_stats['disk_avail']; ?>&nbsp;</span></div>
+        </div>
+        </div>
+
+        <div class="div_WalletOverview">
+		   <div class="ui-grid-a">
+             <div class="ui-block-a"><span class="primary">RAM Used:</span></div>
+              <div class="ui-block-b"><span class="secondary_light"><?php print $device_stats['ram_used']; ?>&nbsp;</span></div>
+        </div>
+        </div>
+
+        <div class="div_WalletOverview">
+		   <div class="ui-grid-a">
+             <div class="ui-block-a"><span class="primary">RAM Free:</span></div>
+             <div class="ui-block-b"><span class="secondary_light"><?php print $device_stats['ram_free']; ?>&nbsp;</span></div>
+        </div>
+        </div>
+
+        <div class="div_WalletOverview">
+		   <div class="ui-grid-a">
+              <div class="ui-block-a"><span class="primary">CPU Load:</span></div>
+              <div class="ui-block-b"><span class="secondary_light"><?php print $device_stats['load']; ?>&nbsp;</span></div>
+        </div>
+        </div>
+
+        <div class="div_WalletOverview">
+		   <div class="ui-grid-a">
+              <div class="ui-block-a"><span class="primary">Uptime:</span></div>
+              <div class="ui-block-b"><span class="secondary_light"><?php print $device_stats['uptime']; ?>&nbsp;</span></div>
+        </div>
+        </div>
+
+		
+	 </div><!-- /content  -->
+</div> <!-- Page -->
+
+<div data-role="page" id="bitnodes" data-theme="a">
+
+    <div class="panel left" data-role="panel" data-position="left" data-display="push" id="mypanel">
+        <div id = "menu">
+	            <ul>
+   		            <li><a href="#home" title="title">Home</a></li><br />
+		            <li><a href="#device-status" title="Device Status">Device Status</a></li><br />
+		            <li><a href="#bitnodes">Bitnodes</a></li><br />
+		            <li><a href="#controls">Controls</a></li>
+		       </ul>
+	    </div>
+	 </div>
+
+     <div data-role="header"> 
+		<span class="open left"><a href="#mypanel" data-role="navbar"><img src="images/nav-icon-blue.png" height="20" width="20" alt=""/></a></span>
+		<span id="span_TitleHeader">&nbsp; &nbsp; <img src="images/bitcoind.png" height="32" width="32" alt=""/>&nbsp;Bitseed Bitcoin Node</span>
+	</div>
+
+	<div data-role="content" class="content">
+		<div style="margin-top:15px;margin-left:5px;">
+			<span id="span_WalletHeaderText">Bitnodes</span>
+			<hr class="hr_wallet">
+		</div>
+	</div>
+</div>
+		
+<div data-role="page" id="controls" data-theme="a">
+
+    <div class="panel left" data-role="panel" data-position="left" data-display="push" id="mypanel">
+        <div id = "menu">
+	            <ul>
+   		            <li><a href="#home" title="title">Home</a></li><br />
+		            <li><a href="#device-status" title="Device Status">Device Status</a></li><br />
+		            <li><a href="#bitnodes">Bitnodes</a></li><br />
+		            <li><a href="#controls">Controls</a></li>
+		       </ul>
+	    </div>
+	 </div>
+
+     <div data-role="header"> 
+		<span class="open left"><a href="#mypanel" data-role="navbar"><img src="images/nav-icon-blue.png" height="20" width="20" alt=""/></a></span>
+		<span id="span_TitleHeader">&nbsp; &nbsp; <img src="images/bitcoind.png" height="32" width="32" alt=""/>&nbsp;Bitseed Bitcoin Node</span>
+	</div>
+	<div data-role="content" class="content">
+	   
+		<div style="margin-top:15px;margin-left:5px;">
+			<span id="span_WalletHeaderText">Controls</span>
+			<hr class="hr_wallet">
+		</div>
+        <!-- <div class="ui-content">
+            <form method="get" action="">
+		        <fieldset class="ui-field-contain">
+                    <label for="age"><h3>Set Max Peer Connections:</h3></label>
+                    <input type="number" name="age" id="age" value="" placeholder="125"/>
+			    </fieldset>
+		</div> -->
+        <div class="ui-content">
+            <form method="get" action="">
+		        <fieldset class="ui-field-contain">
+                    <label for="max-peers"><h3>Set Max Peer Connections:</h3></label>
+                    <input type="number" name="max-peers" id="max-peers" value="" placeholder="125"/>
+			    </fieldset>
+		</div>
+        <div data-role="controlgroup" data-type="horizontal">
+		    <h3>Bitcoin Controls</h3>
+			<!-- <button class="ui-btn" id="bitcoin-enable" data-role="button">Enable</button> -->
+			<!-- <button class="ui-btn" id="bitcoin-disable">Disable</button> -->
+			<!-- <button class="ui-btn">Restart</button> -->
+			<!-- <input type="button" value = "Enable" onclick="button_enable_clicked()" /> -->
+			<!-- <input type="button" value = "Disable" onclick="button_disable_clicked()" /> -->
+			<!-- <input type="button" value = "Restart" onclick="button_restart_clicked()" /> -->
+            <input type="button" value="Enable" id="bitcoin_enable" onClick="myCall(this);" />
+            <input type="button" value="Disable" id="bitcoin_disable" onClick="myCall(this);" />
+            <input type="button" value="Restart" id="bitcoin_restart" onClick="myCall(this);" />
+
+		</div>
+		<h3>Device Controls</h3>
+        <div data-role="controlgroup" data-type="horizontal">
+			<!-- <input type="button" value = "Restart" onclick="button_device_restart_clicked()" /> -->
+			<!-- <input type="button" value = "Shutdown" onclick="button_device_shutdown_clicked()" /> -->
+			<input type="button" value="Shutdown" id="device_shutdown" onClick="myCall();" />
+            <input type="button" value="Restart" id="device_restart" onClick="myCall();" />
+
+	    </div>
+	</div>
+</div>
+
+<div data-role="footer" data-id="main" data-position="fixed" data-tap-toggle="false">
+	<div data-role="navbar">
+		<ul>
+		    <!--	<li><a href="transactions.php" data-ajax="false" data-icon="bullets">Transactions</a></li> -->
+		    <!--		<li><a href="settings.php" data-ajax="false" data-icon="gear">Settings</a></li>  -->
+			<li><a href="index.php" data-ajax="false" data-icon="delete">Log Out</a></li>
+		</ul>
+	</div>
+</div><!-- /footer -->
+
+<!-- </div><!-- /page home -->
+</body>
+</html>
+<?php ob_flush(); ?>
+
+                <div class="div_WalletOverview">
+                        <span class="primary">CPU Load:</span>
+                        <span class="secondary_light"><?php print $bitnode['verified']; ?>&nbsp;</span>
+                </div>
+
+                <div class="div_WalletOverview">
+                        <span class="primary">Uptime:</span>
+                        <span class="secondary_light"><?php print $bitnode['verified']; ?>&nbsp;</span>
+                </div>
+
+		
+	</div><!-- /content  -->
+		
 	<div data-role="footer" data-id="main" data-position="fixed" data-tap-toggle="false">
 		<div data-role="navbar">
 			<ul>
-				<li><a href="transactions.php" data-icon="bullets" class="ui-disabled">Transactions</a></li>
-				<li><a href="settings.php" data-icon="gear" class="ui-disabled">Settings</a></li>
-				<li><a href="index.php" data-icon="delete" class="ui-disabled">Log Out</a></li>
+			<!--	<li><a href="transactions.php" data-ajax="false" data-icon="bullets">Transactions</a></li>
+				<li><a href="settings.php" data-ajax="false" data-icon="gear">Settings</a></li>  -->
+				<li><a href="index.php" data-ajax="false" data-icon="delete">Log Out</a></li>
 			</ul>
 		</div>
-	</div><!-- /footer one -->
-</div><!-- /page one -->
-<script type="text/javascript">
-    //$('#popupLogin').popup();
-    //$('#popupLogin').popup('open');
-
-</script>
+	</div><!-- /footer -->
+		
+<!-- </div> /page home -->
 </body>
 </html>
+<?php ob_flush(); ?>
