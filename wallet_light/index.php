@@ -154,13 +154,6 @@ $(document).bind("pagecreate", function () {
 		
 		<div class="div_WalletOverview">
 		   <div class="ui-grid-a">
-			<div class="ui-block-a"><span class="primary">Wallet Version:</span></div>
-			<div class="ui-block-b"><span class="secondary_light"><?php print (string)$check_login['walletversion']; ?></span></div>
-		   </div>
-		</div>
-		
-		<div class="div_WalletOverview">
-		   <div class="ui-grid-a">
 			<div class="ui-block-a"><span class="primary">Device ID:</span></div>
 			<div class="ui-block-b"><span class="secondary_light"><?php print $serial; ?></span></div>
 		   </div>
