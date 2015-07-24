@@ -120,6 +120,13 @@ $(document).bind("pagecreate", function () {
                 </div>
 
 		<div class="div_WalletOverview">
+                   <div class="ui-grid-a">
+                        <div class="ui-block-a"><span class="primary">Node Type:</span></div>
+                        <div class="ui-block-b"><span class="secondary_light"><?php if ($chaininfo['pruned'] === false) {print "Full Node";} else {print "Pruned";} ?></$
+                   </div>
+                </div>
+
+		<div class="div_WalletOverview">
 		   <div class="ui-grid-a">
 		       <div class="ui-block-a"><span class="primary">Device at Block:</span></div>
 			   <div class="ui-block-b"><span class="secondary_light"><?php print $check_login['blocks']; ?>&nbsp;</span></div>
@@ -153,13 +160,6 @@ $(document).bind("pagecreate", function () {
                         <div class="ui-block-b"><span class="secondary_light"><?php printf ('%.08lf', $check_login['relayfee']); ?></span></div>
                    </div>
                 </div>
-
-                <div class="div_WalletOverview">
-                   <div class="ui-grid-a">
-                        <div class="ui-block-a"><span class="primary">Node Type:</span></div>
-                        <div class="ui-block-b"><span class="secondary_light"><?php if ($chaininfo['pruned'] === false) {print "Full Node";} else {print "Pruned";} ?></$
-                   </div>
-                </div>
                 
 		<div class="div_WalletOverview">
 		   <div class="ui-grid-a">
@@ -189,19 +189,9 @@ $(document).bind("pagecreate", function () {
 		   </div>
         </div>
 
-        <div class="div_WalletOverview">
-		   <div class="ui-grid-a">
-              <div class="ui-block-a"><span class="primary">Mac Address:</span></div>
-              <div class="ui-block-b"><span class="secondary_light"><?php print $inet_mac_addr['mac_address']; ?>&nbsp;</span></div>
-		   </div>
-        </div>
+        
 
-        <div class="div_WalletOverview">
-		   <div class="ui-grid-a">
-              <div class="ui-block-a"><span class="primary">Last blockchain Backup:</span></div>
-              <div class="ui-block-b"><span class="secondary_light"><?php print $inet_mac_addr['db_date']; ?>&nbsp;</span></div>
-		   </div>
-        </div>
+        
         
         <div class="div_WalletOverview">
 		    <div class="ui-grid-a"> 
@@ -286,6 +276,19 @@ $(document).bind("pagecreate", function () {
         </div>
         </div>
 
+	<div class="div_WalletOverview">
+		   <div class="ui-grid-a">
+              <div class="ui-block-a"><span class="primary">Mac Address:</span></div>
+              <div class="ui-block-b"><span class="secondary_light"><?php print $inet_mac_addr['mac_address']; ?>&nbsp;</span></div>
+		   </div>
+        </div>
+
+	<div class="div_WalletOverview">
+		   <div class="ui-grid-a">
+              <div class="ui-block-a"><span class="primary">Last blockchain Backup:</span></div>
+              <div class="ui-block-b"><span class="secondary_light"><?php print $inet_mac_addr['db_date']; ?>&nbsp;</span></div>
+		   </div>
+        </div>
 		
 	 </div><!-- /content  -->
 </div> <!-- Page -->
