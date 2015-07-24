@@ -172,20 +172,6 @@ $(document).bind("pagecreate", function () {
             <div class="ui-block-a"><span class="secondary_light"><?php // print $address; ?>&nbsp;</span></div>
 		   </div>
         </div> -->
-        
-        <div class="div_WalletOverview">
-		   <div class="ui-grid-a">
-            <div class="ui-block-a"><span class="primary">Bitnode Status:</span></div>
-            <div class="ui-block-b"><span class="secondary_light"><?php print $bitnode['status']; ?>&nbsp;</span></div>
-		   </div>
-        </div>
-
-        <div class="div_WalletOverview">
-		   <div class="ui-grid-a">
-             <div class="ui-block-a"><span class="primary">Bitnode Verified:</span></div>
-             <div class="ui-block-b"><span class="secondary_light"><?php print $bitnode['verified']; ?>&nbsp;</span></div>
-		   </div>
-        </div>
 
         <div class="div_WalletOverview">
 		   <div class="ui-grid-a">
@@ -318,6 +304,21 @@ $(document).bind("pagecreate", function () {
 			<span id="span_WalletHeaderText">Bitnodes</span>
 			<hr class="hr_wallet">
 		</div>
+	
+	<div class="div_WalletOverview">
+		   <div class="ui-grid-a">
+            <div class="ui-block-a"><span class="primary">Bitnodes Status:</span></div>
+            <div class="ui-block-b"><span class="secondary_light"><?php print $bitnode['status']; ?>&nbsp;</span></div>
+	</div>
+        </div>
+
+        <div class="div_WalletOverview">
+		   <div class="ui-grid-a">
+             <div class="ui-block-a"><span class="primary">Bitnodes Verified:</span></div>
+             <div class="ui-block-b"><span class="secondary_light"><?php print $bitnode['verified']; ?>&nbsp;</span></div>
+	</div>
+        </div>
+        
 	</div>
 </div>
 		
