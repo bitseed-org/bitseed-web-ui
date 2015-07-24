@@ -156,11 +156,11 @@ $(document).bind("pagecreate", function () {
 
                 <div class="div_WalletOverview">
                    <div class="ui-grid-a">
-                        <div class="ui-block-a"><span class="primary">Pruned:</span></div>
-                        <div class="ui-block-b"><span class="secondary_light"><?php print (int)$chaininfo['pruned']; ?></span></div>
+                        <div class="ui-block-a"><span class="primary">Node Type:</span></div>
+                        <div class="ui-block-b"><span class="secondary_light"><?php if ($chaininfo['pruned'] === false) {print "Full Node";} else {print "Pruned";} ?></$
                    </div>
                 </div>
- 		
+                
 		<div class="div_WalletOverview">
 		   <div class="ui-grid-a">
 			<div class="ui-block-a"><span class="primary">Device ID:</span></div>
