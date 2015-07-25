@@ -21,11 +21,10 @@ $bitnodejson = file_get_contents($jsnaddr);
 $bitnode = json_decode($bitnodejson, TRUE);
 
 $serial = file_get_contents('/var/www/html/serial');
+$wallet = new PhpBitAdmin_Wallet();
 $chaininfo = $wallet->rpc($scheme,$server_ip,$server_port,$rpc_user,$rpc_pass,'getblockchaininfo') ;
 $meminfo = $wallet->rpc($scheme,$server_ip,$server_port,$rpc_user,$rpc_pass,'getmempoolinfo') ;
 $netinfo = $wallet->rpc($scheme,$server_ip,$server_port,$rpc_user,$rpc_pass,'getnetworkinfo') ;
-
-$wallet = new PhpBitAdmin_Wallet();
 if ( (empty($_SESSION['PHPBITADMIN'])) || ($_SESSION['PHPBITADMIN'] === null) ) { // check if $_SESSION is set.
 	$session = $wallet->setSession($scheme, $server_ip, $server_port, $rpc_user, $rpc_pass, $btc_addr, $p_phrase);
 } else {
@@ -112,24 +111,24 @@ $(document).bind("pagecreate", function () {
 			<hr class="hr_wallet">
 		</div>
 	
- 		<div class="div_WalletOverview">
+		<div class="div_WalletOverview">
                    <div class="ui-grid-a">
                         <div class="ui-block-a"><span class="primary">Bitcoin Core Version:</span></div>
                         <div class="ui-block-b"><span class="secondary_light"><?php print $netinfo['subversion']; ?></span></div>
                    </div>
                 </div>
 
-		<div class="div_WalletOverview">
+		 <div class="div_WalletOverview">
                    <div class="ui-grid-a">
                         <div class="ui-block-a"><span class="primary">Node Type:</span></div>
                         <div class="ui-block-b"><span class="secondary_light"><?php if ($chaininfo['pruned'] === false) {print "Full Node";} else {print "Pruned";} ?></span></div>
                    </div>
-                </div>
+                </div>		
 
 		<div class="div_WalletOverview">
 		   <div class="ui-grid-a">
-		       <div class="ui-block-a"><span class="primary">Device at Block:</span></div>
-			   <div class="ui-block-b"><span class="secondary_light"><?php print $check_login['blocks']; ?>&nbsp;</span></div>
+		       	<div class="ui-block-a"><span class="primary">Device at Block:</span></div>
+			<div class="ui-block-b"><span class="secondary_light"><?php print $check_login['blocks']; ?>&nbsp;</span></div>
 		   </div>
 		</div>
 		
@@ -146,60 +145,49 @@ $(document).bind("pagecreate", function () {
 			<div class="ui-block-b"><span class="secondary_light"><?php print $check_login['connections']; ?></span></div>
 		   </div>
 		</div>
-		
+
 		 <div class="div_WalletOverview">
                    <div class="ui-grid-a">
-                        <div class="ui-block-a"><span class="primary">Transactions in Mempool:</span></div>
+                        <div class="ui-block-a"><span class="primary">Tx in Mempool:</span></div>
                         <div class="ui-block-b"><span class="secondary_light"><?php print $meminfo['size']; ?></span></div>
                    </div>
                 </div>
 
- 		<div class="div_WalletOverview">
+		 <div class="div_WalletOverview">
                    <div class="ui-grid-a">
                         <div class="ui-block-a"><span class="primary">Minimum Relay Fee:</span></div>
                         <div class="ui-block-b"><span class="secondary_light"><?php printf ('%.08lf', $check_login['relayfee']); ?></span></div>
                    </div>
-                </div>
-                
-		<div class="div_WalletOverview">
-		   <div class="ui-grid-a">
-			<div class="ui-block-a"><span class="primary">Device ID:</span></div>
-			<div class="ui-block-b"><span class="secondary_light"><?php print $serial; ?></span></div>
-		   </div>
-		</div>
-		
-		<div class="div_WalletOverview">
-		   <div class="ui-grid-a">
-            <div class="ui-block-a"><span class="primary">BTC Balance:</span></div>
-            <div class="ui-block-b"><span class="secondary_light"><?php print $check_login['balance']; ?>&nbsp;</span></div>
-		   </div>
-        </div>
-        
-        <div class="div_WalletOverview">
-		   <div class="ui-grid-a">
-               <div class="ui-block-a"><span class="primary">Node Public IP Address:</span></div>
-               <div class="ui-block-b"><span class="secondary_light"><?php print $extip; ?>&nbsp;</span></div>
-		   </div>
-        </div>		
+                </div>	
 
-        <div class="div_WalletOverview">
+		<div class="div_WalletOverview">
+                   <div class="ui-grid-a">
+               		<div class="ui-block-a"><span class="primary">Node Public IP Address:</span></div>
+               		<div class="ui-block-b"><span class="secondary_light"><?php print $extip; ?>&nbsp;</span></div>
+                   </div>
+        	</div>
+        
+		<div class="div_WalletOverview">
 		   <div class="ui-grid-a">
              <div class="ui-block-a"><span class="primary">Internal IP Address:</span></div>
              <div class="ui-block-b"><span class="secondary_light"><?php print $inet_mac_addr['inet_address']; ?>&nbsp;</span></div>
 		   </div>
-        </div>
+	        </div>
 
-        
+		<div class="div_WalletOverview">
+                   <div class="ui-grid-a">
+                        <div class="ui-block-a"><span class="primary">Device ID:</span></div>
+                        <div class="ui-block-b"><span class="secondary_light"><?php print $serial; ?></span></div>
+                   </div>
+                </div>
 
-        
-        
-        <div class="div_WalletOverview">
-		    <div class="ui-grid-a"> 
+        	<div class="div_WalletOverview">
+                    <div class="ui-grid-a">
             <span class="primary">Donate Bitcoin:</span>
             <span class="secondary_light_donate"><?php print $address; ?>&nbsp;</span>
-		   </div>
-        </div>
-        
+                   </div>
+        	</div>
+
     </div><!-- content -->
 
 </div>  <!-- page -->
@@ -276,19 +264,21 @@ $(document).bind("pagecreate", function () {
         </div>
         </div>
 
-	<div class="div_WalletOverview">
-		   <div class="ui-grid-a">
+ 	<div class="div_WalletOverview">
+                   <div class="ui-grid-a">
               <div class="ui-block-a"><span class="primary">Mac Address:</span></div>
               <div class="ui-block-b"><span class="secondary_light"><?php print $inet_mac_addr['mac_address']; ?>&nbsp;</span></div>
-		   </div>
+                   </div>
         </div>
 
-	<div class="div_WalletOverview">
-		   <div class="ui-grid-a">
+        <div class="div_WalletOverview">
+                   <div class="ui-grid-a">
               <div class="ui-block-a"><span class="primary">Last blockchain Backup:</span></div>
               <div class="ui-block-b"><span class="secondary_light"><?php print $inet_mac_addr['db_date']; ?>&nbsp;</span></div>
-		   </div>
+                   </div>
+
         </div>
+
 		
 	 </div><!-- /content  -->
 </div> <!-- Page -->
@@ -315,22 +305,24 @@ $(document).bind("pagecreate", function () {
 		<div style="margin-top:15px;margin-left:5px;">
 			<span id="span_WalletHeaderText">Bitnodes</span>
 			<hr class="hr_wallet">
-		</div>
-	
-	<div class="div_WalletOverview">
-		   <div class="ui-grid-a">
-            <div class="ui-block-a"><span class="primary">Bitnodes Status:</span></div>
-            <div class="ui-block-b"><span class="secondary_light"><?php print $bitnode['status']; ?>&nbsp;</span></div>
 	</div>
-        </div>
 
         <div class="div_WalletOverview">
 		   <div class="ui-grid-a">
+             <div class="ui-block-a"><span class="primary">Bitnodes Status:</span></div>
+             <div class="ui-block-b"><span class="secondary_light"><?php print $bitnode['status']; ?>&nbsp;</span></div>
+	</div>
+	</div>
+
+        <div class="div_WalletOverview">
+                   <div class="ui-grid-a">
              <div class="ui-block-a"><span class="primary">Bitnodes Verified:</span></div>
              <div class="ui-block-b"><span class="secondary_light"><?php print $bitnode['verified']; ?>&nbsp;</span></div>
-	</div>
         </div>
-        
+        </div>
+
+        </div>
+
 	</div>
 </div>
 		
