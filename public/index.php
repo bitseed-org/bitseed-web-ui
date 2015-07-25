@@ -273,3 +273,6 @@ $(document).bind("pagecreate", function () {
 		
 	 </div><!-- /content  -->
 </div> <!-- Page -->
+</body>
+</html>
+<?php ob_flush(); ?>
