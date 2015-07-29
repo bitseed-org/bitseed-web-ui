@@ -323,15 +323,15 @@ $(document).bind("pagecreate", function () {
 
 	<div class="div_WalletOverview">
                    <div class="ui-grid-a">
-             <div class="ui-block-a"><span class="primary">Node Statistics:</span></div>
-             <div class="ui-block-b"><span class="secondary_light"><?php echo '<a href="https://getaddr.bitnodes.io/nodes/leaderboard/?q='.$extip.'">Stats for '.$extip.' </a>'; ?>&nbsp;</span></div>
+             <div class="ui-block-a"><span class="primary">Performance Index:</span></div>
+             <div class="ui-block-b"><span class="secondary_light"><?php echo '<a href="https://getaddr.bitnodes.io/nodes/leaderboard/?q='.$extip.'">Ratings for '.$extip.' </a>'; ?>&nbsp;</span></div>
         </div>
         </div>
         
         <div class="div_WalletOverview">
                    <div class="ui-grid-a">
              <div class="ui-block-a"><span class="primary">Bitnodes Stats:</span></div>
-             <div class="ui-block-b"><span class="secondary_light"><?php echo '<a href="https://getaddr.bitnodes.io/nodes/'.$extipport.'">Stats for '.$extipport.'</a>'; ?>&nbsp;</span></div>
+             <div class="ui-block-b"><span class="secondary_light"><?php echo '<a href="https://getaddr.bitnodes.io/nodes/'.$extipport.'">Stats for '.$extip.'</a>'; ?>&nbsp;</span></div>
 	</div>
         </div>
 
