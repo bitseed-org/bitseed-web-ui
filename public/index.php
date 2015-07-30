@@ -157,13 +157,6 @@ $(document).bind("pagecreate", function () {
                		<div class="ui-block-b"><span class="secondary_light"><?php print $extip; ?>&nbsp;</span></div>
                    </div>
         	</div>
-        
-		<div class="div_WalletOverview">
-		   <div class="ui-grid-a">
-             <div class="ui-block-a"><span class="primary">Internal IP Address:</span></div>
-             <div class="ui-block-b"><span class="secondary_light"><?php print $inet_mac_addr['inet_address']; ?>&nbsp;</span></div>
-		   </div>
-	        </div>
 
 		<div class="div_WalletOverview">
                    <div class="ui-grid-a">
