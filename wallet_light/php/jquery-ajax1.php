@@ -7,8 +7,8 @@ $domvalue = $_GET['id'];
 // Bitcoin controls
 switch ($domvalue) {
     case "bitcoin_restart":
-		 shell_exec ('echo "1" > btflags.txt');
-	     echo "Bitcoin is running";		
+		 shell_exec ('echo "1" > /home/linaro/restartflag');
+	     echo "Bitcoin is restarting";		
 	     break;
     case "bitcoin_shutdown":
 		 shell_exec ('echo "2" > btflags.txt');
@@ -23,7 +23,7 @@ switch ($domvalue) {
 
     case "device_shutdown":
 	     echo "Device is being shut down";
-		 shell_exec ('echo "2" > devflags.txt');
+		 shell_exec ('echo "2" > /home/linaro/restartflag');
 }
 
 ?>
