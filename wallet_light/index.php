@@ -13,6 +13,7 @@ $device_values = shell_exec('python/disk-info.py 2>&1');
 $device_stats = json_decode($device_values, TRUE);
 
 $extip = file_get_contents('http://ipecho.net/plain');
+$extipport = $extip . "-8333";
 $concensusblock = file_get_contents('https://blockchain.info/q/getblockcount');
 $address = file_get_contents('/home/linaro/reward-addr');
 
@@ -381,7 +382,7 @@ $(document).bind("pagecreate", function () {
         <div class="div_WalletOverview">
                    <div class="ui-grid-a">
              <div class="ui-block-a"><span class="primary">Bitnodes Stats:</span></div>
-             <div class="ui-block-b"><span class="secondary_light"><?php echo '<a href="https://getaddr.bitnodes.io/nodes/'.$extipport.'">Stats for '.$extip.'</a>'; ?>&nbsp;</span></div>
+             <div class="ui-block-b"><span class="secondary_light"><?php echo '<a href="https://getaddr.bitnodes.io/nodes/'.$extipport.'">Stats for '.$extipport.'</a>'; ?>&nbsp;</span></div>
 	</div>
         </div>
 
