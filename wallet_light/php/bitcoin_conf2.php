@@ -55,7 +55,7 @@ echo "limitfreerelay=$limitfreerelay]\n";
 
 $finalStr = ob_get_contents();
 ob_end_clean();
-file_put_contents("test.txt", $finalStr);
+file_put_contents("/home/linaro/.bitcoin/bitcoin.conf", $finalStr);
 
 echo "bitcoin.conf has been updated";
 
