@@ -49,9 +49,9 @@ for ($i=0; $i<count($valid_lines);$i++) {
 		echo $valid_lines[$i];
 }
 
-echo "max-peers=$max_peers\n";
+echo "maxconnections=$max_peers\n";
 echo "minrelaytxfee=$minrelaytxfee\n";
-echo "limitfreerelay=$limitfreerelay]\n";
+echo "limitfreerelay=$limitfreerelay\n";
 
 $finalStr = ob_get_contents();
 ob_end_clean();
