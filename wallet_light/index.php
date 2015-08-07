@@ -54,7 +54,7 @@ die (' At startup, Bitcoin requires 10-15 minutes to check its database and the 
         while (($line = fgets($fh_2)) !== false) {
             $param = explode("=", $line);				 
 			switch ($param[0]) {
-                case "max-peers":
+                case "maxconnections":
 				    $max_peers=$param[1];
 					break;
                 case "minrelaytxfee":
