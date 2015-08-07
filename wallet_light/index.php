@@ -535,7 +535,7 @@ input.normal {
                 <input type="button" value=" Restart Bitcoin " id="bitcoin_restart" onClick="bitcoinControl(this);" />
 		    </div>
             <div data-role="controlgroup" data-type="horizontal" style="text-align: center;">
-			    <input type="button" value="Shutdown Coinbox" id="device_shutdown" onClick="deviceControl(this);" />
+			    <input type="button" value="Shutdown Bitseed" id="device_shutdown" onClick="deviceControl(this);" />
 		    </div>
 		    <!-- <hr class="hr_secondary_wallet"> -->
 		    <!-- <hr class="hr_secondary_wallet"> -->
