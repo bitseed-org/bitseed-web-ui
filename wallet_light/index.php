@@ -505,7 +505,18 @@ input.normal {
 			   </fieldset>
 		    </form>  -->
             <hr class="hr_secondary_wallet">
-		    <h3>Software updates are available</h3>
+            <?php 
+                // Open Updateflag to see if there is a '1'.  If there is, then write a message to the
+                // user that new software is available.    
+                $fh=fopen("php/updateflag", "r") or die ("Unable to open file");
+                $line = fgets($fh);
+                if (preg_match("/^1/", $line)) {
+                    print "<h3>Software updates are available</h3>";
+                }
+                fclose($fh);
+            ?>
+            <!-- <h3>Software updates are available</h3> -->
+         
             <div data-role="controlgroup" data-type="horizontal" style="text-align: center;">
                 <input type="button" value="Update software" id="update-software" onClick="bitcoinControl(this);" />
 	        </div>
