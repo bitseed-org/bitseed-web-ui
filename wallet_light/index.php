@@ -27,6 +27,7 @@ $bitnodejson = file_get_contents($jsnaddr);
 $bitnode = json_decode($bitnodejson, TRUE);
 
 $serial = file_get_contents('/var/www/html/serial');
+$bitseedvers = file_get_contents('/home/linaro/version');
 $wallet = new PhpBitAdmin_Wallet();
 $chaininfo = $wallet->rpc($scheme,$server_ip,$server_port,$rpc_user,$rpc_pass,'getblockchaininfo') ;
 $meminfo = $wallet->rpc($scheme,$server_ip,$server_port,$rpc_user,$rpc_pass,'getmempoolinfo') ;
@@ -300,6 +301,14 @@ input.normal {
                         <div class="ui-block-b"><span class="secondary_light"><?php print $serial; ?></span></div>
                    </div>
                 </div>
+
+		<div class="div_WalletOverview">
+                   <div class="ui-grid-a">
+                        <div class="ui-block-a"><span class="primary">Device Version:</span></div>
+                        <div class="ui-block-b"><span class="secondary_light"><?php print $bitseedvers; ?></span></div>
+                   </div>
+                </div>
+
 
         	<div class="div_WalletOverview">
                     <div class="ui-grid-a">
