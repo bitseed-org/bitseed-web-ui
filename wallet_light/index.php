@@ -508,7 +508,7 @@ input.normal {
             <?php 
                 // Open Updateflag to see if there is a '1'.  If there is, then write a message to the
                 // user that new software is available.    
-                $fh=fopen("php/updateflag", "r") or die ("Unable to open file");
+                $fh=fopen("/home/linaro/updateflag", "r") or die ("Unable to open updateflag file");
                 $line = fgets($fh);
                 if (preg_match("/^1/", $line)) {
                     print "<h3>Software updates are available</h3>";
