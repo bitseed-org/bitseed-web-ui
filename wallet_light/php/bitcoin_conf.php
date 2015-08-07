@@ -12,7 +12,7 @@ $limitfreerelay=$_POST['limitfreerelay'];
 // Open bitcoin.conf and read all values into an array (ordered map)
 // $testFile = fopen ("/home/linaro/php-dev/testFile.txt", "w") or die ("Unable to open file!");
 // Read in the bitcoin.conf file 
-$fh = fopen ("bitcoin.conf", "r") or die ("Unable to open file!");
+$fh = fopen ("/home/linaro/.bitcoin/bitcoin.conf", "r") or die ("Unable to open file!");
 // fwrite ($fh, "test");
 $lines = array();
 while (!feof($fh)) {
@@ -49,7 +49,7 @@ for ($i=0; $i<count($valid_lines);$i++) {
 		echo $valid_lines[$i];
 }
 
-echo "max-peers=$max_peers\n";
+echo "maxconnections=$max_peers\n";
 echo "minrelaytxfee=$minrelaytxfee\n";
 echo "limitfreerelay=$limitfreerelay\n";
 
@@ -60,7 +60,7 @@ file_put_contents("test.txt", $finalStr);
 echo "bitcoin.conf has been updated";
 
 $file = fopen("test2.txt", "w");
-echo fwrite ($file, "max-peers=$max_peers\n");
+echo fwrite ($file, "maxconnections=$max_peers\n");
 echo fwrite ($file, "minrelaytxfee=$minrelaytxfee\n");
 echo fwrite ($file, "limitfreerelay=$limitfreerelay\n");
 fclose($file);
