@@ -477,7 +477,7 @@ input.normal {
         <div class="ui-content">
 		 <h3><span id="bitcoin_status">Bitcoin Controls</span></h3>
             <!-- <form name="bitcoinconf_form" id="bitcoinconf_form" method="POST" action="php/bitcoin_conf.php"> -->
-            <form name="bitcoinconf_form" id="bitcoinconf_form" action="php/bitcoin_conf.php">
+        <!--    <form name="bitcoinconf_form" id="bitcoinconf_form" action="php/bitcoin_conf.php">
 		        <fieldset class="ui-field-contain">
 
                     
@@ -503,7 +503,7 @@ input.normal {
                         <input type="submit" name="submit" value="Update bitcoin.conf" id="update-bitcoin-config" />
 	                </div>	
 			   </fieldset>
-		    </form>
+		    </form>  -->
             <hr class="hr_secondary_wallet">
 		    <h3>Software updates are available</h3>
             <div data-role="controlgroup" data-type="horizontal" style="text-align: center;">
