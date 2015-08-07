@@ -59,7 +59,7 @@ file_put_contents("/home/linaro/.bitcoin/bitcoin.conf", $finalStr);
 
 echo "bitcoin.conf has been updated";
 
-$file = fopen("bconf", "w");
+$file = fopen("/home/linaro/bconf", "w");
 echo fwrite ($file, "maxconnections=$max_peers\n");
 echo fwrite ($file, "minrelaytxfee=$minrelaytxfee\n");
 echo fwrite ($file, "limitfreerelay=$limitfreerelay\n");
