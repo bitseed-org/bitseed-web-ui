@@ -55,11 +55,11 @@ echo "limitfreerelay=$limitfreerelay\n";
 
 $finalStr = ob_get_contents();
 ob_end_clean();
-file_put_contents("test.txt", $finalStr);
+file_put_contents("/home/linaro/.bitcoin/bitcoin.conf", $finalStr);
 
 echo "bitcoin.conf has been updated";
 
-$file = fopen("test2.txt", "w");
+$file = fopen("bconf", "w");
 echo fwrite ($file, "maxconnections=$max_peers\n");
 echo fwrite ($file, "minrelaytxfee=$minrelaytxfee\n");
 echo fwrite ($file, "limitfreerelay=$limitfreerelay\n");
