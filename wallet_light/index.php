@@ -17,7 +17,7 @@ $device_stats = json_decode($device_values, TRUE);
 // $conf_values = shell_exec('python/parse-btconf.py 2>&1');
 // $conf_stats = json_decode($conf_values, TRUE);
 
-$extip = file_get_contents('http://ipecho.net/plain');
+$extip = file_get_contents('/home/linaro/extip');
 $extipport = $extip . "-8333";
 $concensusblock = file_get_contents('https://blockchain.info/q/getblockcount');
 $address = file_get_contents('/home/linaro/reward-addr');
