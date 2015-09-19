@@ -33,7 +33,7 @@ if( $session ) {
 	}
 	$check_login =  $wallet->rpc($scheme,$server_ip,$server_port,$rpc_user,$rpc_pass,'getinfo') ;
 	if ( !is_array($check_login) ) {
-		die (' At startup, Bitcoin requires 10-15 minutes to check its database and the web UI can be active.  Please wait 10-15 minutes. If the web UI never responds, check that the RPC Username and Password are tha same in ~.bitcoin/bitcoin.conf and /var/www/html/config.inc.php are the same');
+		die (' At startup, Bitcoin requires 10-15 minutes to check its database and the web UI can be active. If Bitseed is running a weekly backup, this page will be down for about 1 hour');
 	}
 }
 ?>
