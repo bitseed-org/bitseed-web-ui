@@ -18,6 +18,7 @@ $device_stats = json_decode($device_values, TRUE);
 // $conf_stats = json_decode($conf_values, TRUE);
 
 $extip = file_get_contents('/home/linaro/extip');
+$extip = trim($extip);
 $extipport = $extip . "-8333";
 $concensusblock = file_get_contents('https://blockchain.info/q/getblockcount');
 $address = file_get_contents('/home/linaro/reward-addr');
