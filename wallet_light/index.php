@@ -268,10 +268,17 @@ input.normal {
 		   </div>
 		</div>
 
-		 <div class="div_WalletOverview">
+		<div class="div_WalletOverview">
                    <div class="ui-grid-a">
                         <div class="ui-block-a"><span class="primary">Tx in Mempool:</span></div>
                         <div class="ui-block-b"><span class="secondary_light"><?php print $meminfo['size']; ?></span></div>
+                   </div>
+                </div>
+
+		<div class="div_WalletOverview">
+                   <div class="ui-grid-a">
+                        <div class="ui-block-a"><span class="primary">Mempool Bytes:</span></div>
+                        <div class="ui-block-b"><span class="secondary_light"><?php print $meminfo['bytes']; ?></span></div>
                    </div>
                 </div>
 
