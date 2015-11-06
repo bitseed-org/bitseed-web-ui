@@ -8,17 +8,17 @@ $domvalue = $_GET['id'];
 switch ($domvalue) {
     case "bitcoin_restart":
 	     echo "Bitcoin has been restarted";
-		 shell_exec ('echo "1" > /home/linaro/restartflag');
+		 shell_exec ('echo "1" > btflags.txt');
 	     break;
     case "update-software":
 	     echo "System Software is being updated";
-		 shell_exec ('echo "2" > /home/linaro/updateflag');
+		 shell_exec ('echo "2" > /updateflag');
 	     break;
 
 // Device Controls
     case "device_shutdown":
 	     echo "Device is being shut down";
-		 shell_exec ('echo "2" > /home/linaro/restartflag');
+		 shell_exec ('echo "2" > devflags.txt');
 		 break;
 }
 

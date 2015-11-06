@@ -27,7 +27,20 @@ html,body {height:100%;}
 #menu ul li {
 	list-style-type: none;
     }
+
 .panel.left {background-color: #235;}
+
+.status_title {
+       font-size: 1.3em;
+        font-weight: bold;
+        color: #808080;
+}
+
+.status_text {
+        font-size: 1.1em;
+        color: #000000;
+}
+
 
 .secondary_light_donate {color:#000;font-weight:bold; font-size: 12px;}
 

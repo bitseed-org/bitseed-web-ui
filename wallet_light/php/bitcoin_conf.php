@@ -1,70 +1,130 @@
 <?php
-// if (isset($_POST['max_peers'], $_POST['minrelaytxfee'], $_POST['limitfreerelay'])) {
-// echo "values are set"; 		
-//}
 
+$HOME = "/home/linaro";
+$BTC_DIR = "$HOME/.bitcoin";
+
+// Values submitted from client-side form
 $max_peers=$_POST['max_peers'];
 $minrelaytxfee=$_POST['minrelaytxfee'];
 $limitfreerelay=$_POST['limitfreerelay'];
 
+// $params_default = array();
+// $params_new = array();
 
+// Create an initial array of default parameters
+$params_default = array(
+                "max_peers" => 125,
+                "minrelaytxfee" => .00001,
+                "limitfreerelay" => 15
+                );
 
-// Open bitcoin.conf and read all values into an array (ordered map)
-// $testFile = fopen ("/home/linaro/php-dev/testFile.txt", "w") or die ("Unable to open file!");
-// Read in the bitcoin.conf file 
-$fh = fopen ("/home/linaro/.bitcoin/bitcoin.conf", "r") or die ("Unable to open file!");
-// fwrite ($fh, "test");
+$params_new = array (
+    'max_peers' => $max_peers,
+        'minrelaytxfee' => $minrelaytxfee,
+        'limitfreerelay' => $limitfreerelay
+        );
+
+// ----------------------------------------------------------------
+// Read in the bitcoin.conf file into the lines a normal array.
+// Remove left and right whitespace as well as blank lines.
+// ----------------------------------------------------------------
+$fh = fopen ("bitcoin.conf", "r") or die ("Unable to open file!");
 $lines = array();
 while (!feof($fh)) {
-		$lines[] = fgets($fh);
+                $temp_string = trim(fgets($fh));
+                if ($temp_string != "") {
+            $lines[] = $temp_string; 
+            }
 }
 fclose($fh);
 
-// for ($i=0; $i<count($lines);$i++) {
-// 		echo nl2br($lines[$i]);
-// }
-
-// Read in one line at a time.  If the line starts with '#' or if the line is empty, then 
-// allow it to pass untouched. 
-
+// ------------------------------------------------------
+// Split into commented_lines[] and $valid_lines[] 
+// respectively.
+// ------------------------------------------------------
 $commented_lines = array();
 $valid_lines = array();
 for ($i=0; $i<count($lines);$i++) {
-    $line = $lines[$i];
+    // $line = trim($lines[$i]); 
+    $line = $lines[$i]; 
     if (preg_match("/^#/", $line)) {
-//	    echo nl2br($lines[$i]);
         $commented_lines[] = $line; 
-	}
-	else {
-	       $valid_lines[] = $line;
+        }
+        else { 
+       list($key, $val) = explode("=", $line);
+           $valid_lines[$key] = $val;
     }
 }
-for ($i=0; $i<count($commented_lines);$i++) {
-		// echo nl2br($commented_lines[$i]);
-		echo $commented_lines[$i];
+
+// ------------------------------------------------------
+//  For the parameters passed by the client,  take into 
+//  account that the client may pass no value for any of
+//  of the passed-in parameters.  In this case, assign 
+//  them to default values.
+// ------------------------------------------------------
+foreach ($params_new as $key => $val) {
+        if ($params_new[$key] !== "") {
+            $valid_lines[$key] = $val;
+        } else {
+            $valid_lines[$key] = $params_default[$key];
+    }
+}
+// ------------------------------------------------------
+// Create output lines from the value_lines associatve 
+// array.
+// ------------------------------------------------------
+// Note: PHP was putting the minrelaytxfee in exponential 
+// format which was not compatable with the bitcoin software. 
+// have explicitly converted the number to a float before 
+// storing.
+// ------------------------------------------------------
+foreach ($valid_lines as $key => $val) {
+        if ($key == 'minrelaytxfee') {
+                $floatval = number_format ($val, 8);
+                echo "$key"."="."$floatval\n";
+        } else {
+    echo "$key"."="."$val"."\n";
+        }
+}
+// ------------------------------------------------------
+//  Commented lines are preserved and print to the output 
+//  buffer directly at the end.
+// ------------------------------------------------------
+for ($i=0; $i<count($commented_lines); $i++) {
+                echo "$commented_lines[$i]"."\n";
 }
 
-for ($i=0; $i<count($valid_lines);$i++) {
-		// echo nl2br($valid_lines[$i]);
-		echo $valid_lines[$i];
+// ------------------------------------------------------
+// Before creating the new bitcoin.conf file, copy the 
+// original to bitcoin.conf.bak.  Delay display of copy
+// message to #bitcoin_status DOM element until after
+// the output buffer is flushed.
+// ------------------------------------------------------
+if (!copy("$BTC_DIR/bitcoin.conf", "$BTC_DIR/bitcoin.conf.bak")) {
+    $cp_msg = "Failed to create bitcoin.conf.bak backup file!";
+} else {
+    $cp_msg = "$BTC_DIR/bitcoin.conf has been updated.  Original file is in $BTC_DIR/bitcoin.conf.bak";
 }
-
-echo "maxconnections=$max_peers\n";
-echo "minrelaytxfee=$minrelaytxfee\n";
-echo "limitfreerelay=$limitfreerelay\n";
-
+                
+// Returns content of the output buffer
 $finalStr = ob_get_contents();
 ob_end_clean();
-file_put_contents("/home/linaro/.bitcoin/bitcoin.conf", $finalStr);
+file_put_contents("$BTC_DIR/bitcoin.conf", $finalStr);
 
-echo "bitcoin.conf has been updated";
+echo "$cp_msg";
 
-$file = fopen("/home/linaro/bconf", "w");
-echo fwrite ($file, "maxconnections=$max_peers\n");
-echo fwrite ($file, "minrelaytxfee=$minrelaytxfee\n");
-echo fwrite ($file, "limitfreerelay=$limitfreerelay\n");
+// --------------------------------------------------------------------
+// Create a separate file that contains just the parameters of interest 
+// of the items that the user will interact with.
+// --------------------------------------------------------------------
+$file = fopen("$HOME/bconf", "w") or die ("Unable to open $HOME/bconf");
+foreach ($params_new as $key => $val) {
+        if ($key == 'minrelaytxfee') {
+            $valid_lines[$key] = number_format ($val, 8);
+        } 
+    fwrite ($file, "$key=$valid_lines[$key]\n"); 
+}
 fclose($file);
-
 
 return;
 ?>
