@@ -23,6 +23,9 @@ $urlnodes = $extip . "-8333";
 // Read in the bitcoin.conf file into the lines a normal array.
 // Remove left and right whitespace as well as blank lines.
 // ----------------------------------------------------------------
+//  If there is no bitnodes_reg.conf file, then choose one with default 
+//  values.  The only one that should be necessary will be the variable 
+//  $extwebport.   
 $fh = fopen ("$HOME/bitnodes_reg.conf", "r") or die ("Unable to open file!");
 $lines = array();
 while (!feof($fh)) {

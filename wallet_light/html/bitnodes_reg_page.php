@@ -6,7 +6,7 @@
 	    </div>
 
         <div class="ui-content">
-		     <h3><span id="bitnodes_status">Operation Status:</span></h3>
+		     <!-- <h3><span id="bitnodes_status">Operation Status:</span></h3> -->
            <form name="bitnodes_reg_form" id="bitnodes_reg_form" action="php/bitnodes_reg.php">
 		        <fieldset class="ui-field-contain">
 			        <div class="ui-input-text" style="width: 150px !important; border-width: 0px; display: inline-block;"> 
@@ -32,7 +32,7 @@
 					</div>
 					<br />
                     <div data-role="controlgroup" data-type="horizontal" style="text-align: center;">
-                        <input type="submit" name="submit" value="Bitnodes Registration" id="bitnodes_reg" />
+                        <input type="submit" name="submit" value="Register for Bitnodes" id="bitnodes_reg" />
 	                </div>	
 			   </fieldset>
 		    </form>
