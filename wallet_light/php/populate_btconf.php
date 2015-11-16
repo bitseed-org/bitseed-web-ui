@@ -4,7 +4,9 @@
     // on the Controls page with these values.
     // ----------------------------------------------------------------------------
 	global $param, $max_peers, $minrelaytxfee, $limitfreerelay;
-    $fh_2 = fopen ("/home/linaro/bconf", "r") or die ("Unable to open bconf file");
+    // $fh_2 = fopen ("/home/linaro/bconf", "r") or die ("Unable to open bconf file");
+    // $fh_2 = fopen ("/home/linaro/bitcoin.conf", "r") or die ("Unable to open bconf file");
+    $fh_2 = fopen ("/home/linaro/bitcoin.conf", "r") or die ("Unable to open bconf file");
 	if ($fh_2) {
         while (($line = fgets($fh_2)) !== false) {
             $param = explode("=", $line);				 

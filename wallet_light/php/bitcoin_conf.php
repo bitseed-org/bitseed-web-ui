@@ -28,7 +28,8 @@ $params_new = array (
 // Read in the bitcoin.conf file into the lines a normal array.
 // Remove left and right whitespace as well as blank lines.
 // ----------------------------------------------------------------
-$fh = fopen ("bitcoin.conf", "r") or die ("Unable to open file!");
+// $fh = fopen ("bitcoin.conf", "r") or die ("Unable to open file!");
+$fh = fopen ("$HOME/bitcoin.conf", "r") or die ("Unable to open file!");
 $lines = array();
 while (!feof($fh)) {
                 $temp_string = trim(fgets($fh));
@@ -45,7 +46,6 @@ fclose($fh);
 $commented_lines = array();
 $valid_lines = array();
 for ($i=0; $i<count($lines);$i++) {
-    // $line = trim($lines[$i]); 
     $line = $lines[$i]; 
     if (preg_match("/^#/", $line)) {
         $commented_lines[] = $line; 
@@ -100,10 +100,10 @@ for ($i=0; $i<count($commented_lines); $i++) {
 // message to #bitcoin_status DOM element until after
 // the output buffer is flushed.
 // ------------------------------------------------------
-if (!copy("$BTC_DIR/bitcoin.conf", "$BTC_DIR/bitcoin.conf.bak")) {
-    $cp_msg = "Failed to create bitcoin.conf.bak backup file!";
+if (!copy("$HOME/bitcoin.conf", "$HOME/bitcoin.conf.bak")) {
+    $cp_msg = "Failed to create $HOME/bitcoin.conf.bak backup file!";
 } else {
-    $cp_msg = "$BTC_DIR/bitcoin.conf has been updated.  Original file is in $BTC_DIR/bitcoin.conf.bak";
+    $cp_msg = "$HOME/bitcoin.conf has been updated.  Original file is in $HOME/bitcoin.conf.bak";
 }
                 
 // Returns content of the output buffer

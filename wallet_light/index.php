@@ -118,7 +118,6 @@ $("#bitcoinconf_form").submit(function( e ) {
 $("#bitnodes_reg_form").submit(function( e ) {
      e.preventDefault();
      var postData = $("#bitnodes_reg_form").serialize();
-     alert (postData);
      var formURL = $(this).attr("action");
      var request = $.ajax({
          url: formURL,

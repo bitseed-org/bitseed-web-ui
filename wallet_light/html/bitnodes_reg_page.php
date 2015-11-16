@@ -7,6 +7,10 @@
 
         <div class="ui-content">
 		     <!-- <h3><span id="bitnodes_status">Operation Status:</span></h3> -->
+	       <span class="status_title">Status:</span><br />
+		   <span class="status_text" id="bitnodes_status"></span>
+		   <hr class="hr_secondary_wallet">
+
            <form name="bitnodes_reg_form" id="bitnodes_reg_form" action="php/bitnodes_reg.php">
 		        <fieldset class="ui-field-contain">
 			        <div class="ui-input-text" style="width: 150px !important; border-width: 0px; display: inline-block;"> 
