@@ -12,7 +12,8 @@ switch ($domvalue) {
 	     break;
     case "update-software":
 	     echo "System Software is being updated";
-		 shell_exec ('echo "2" > /updateflag');
+		 // shell_exec ('echo "2" > /updateflag');
+		 shell_exec ('echo "2" > updateflag');
 	     break;
 
 // Device Controls

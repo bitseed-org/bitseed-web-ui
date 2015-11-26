@@ -38,6 +38,7 @@
             <?php 
                 // Open Updateflag to see if there is a '1'.  If there is, then write a message to the
                 // user that new software is available.    
+			    // We should figure out a more graceful way of recoveriing from a failed open.
                 $fh=fopen("/home/linaro/updateflag", "r") or die ("Unable to open updateflag file");
                 $line = fgets($fh);
                 if (preg_match("/^1/", $line)) {
