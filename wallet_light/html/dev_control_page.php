@@ -9,7 +9,8 @@
 		 <span class="status_title">Status</span><br />
 		 <span class="status_text" id="bitcoin_status"></span>
             <hr class="hr_secondary_wallet">
-             <form name="bitcoinconf_form" id="bitcoinconf_form" action="php/bitcoin_conf.php">
+             <!-- <form name="bitcoinconf_form" id="bitcoinconf_form" action="php/bitcoin_conf.php"> -->
+             <form name="bitcoinconf_form" id="bitcoinconf_form" action="php/www_wr_bconf_mbox.php" method="post">
 		        <fieldset class="ui-field-contain">
 					<div class="ui-input-text" style="width: 200px !important; border-width: 0px; display: inline-block;">
                         <label for="max_peers" style="display: inline-block"><h3>Max Connections:</h3></label>
@@ -61,8 +62,8 @@
 		    </div>
 		    <!-- <hr class="hr_secondary_wallet"> -->
 		    <!-- <hr class="hr_secondary_wallet"> -->
-            </fieldset>
-	    </form>
+            <!-- </fieldset> -->
+	    <!-- </form> -->
 	</div>
-  </div>
+<!--  </div> -->
 
