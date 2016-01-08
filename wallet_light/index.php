@@ -3,7 +3,7 @@ require_once('config.inc.php');
 require('php/phpbitadmin.class.php');
 include('php/init_ui_vars.php'); 
 include('php/www_rd_bconf_request.php'); 
-include "php/populate_btconf.php";
+// include "php/populate_btconf.php";
 include "php/populate_bitnodes_reg.php";
 ?>
 
@@ -76,17 +76,31 @@ BITNODES Registration Page
 </div> 
 
 <!-------------------------------------------------
+Bitcoin Configuration Page
+---------------------------------------------------->
+<!-- <div data-role="page" id="bitcoin_conf" data-theme="a">
+
+    <?php // include "html/menu.html"; ?>
+    <?php // include "html/header.html"; ?>
+    <?php // include "php/www_rd_bconf_request.php"; ?> 
+    <?php // include "html/dev_control_page.php"; ?>
+    <?php // include "php/www_wr_bconf_mbox.php"; ?> 
+
+</div> -->
+
+<!-------------------------------------------------
 CONTROLS Page
 ---------------------------------------------------->
 <div data-role="page" id="controls" data-theme="a">
 
     <?php include "html/menu.html"; ?>
     <?php include "html/header.html"; ?>
-    <?php include "php/www_rd_bconf_request.php"; ?> 
+    <?php // include "php/www_rd_bconf_request.php"; ?> 
     <?php include "html/dev_control_page.php"; ?>
-    <?php include "php/www_wr_bconf_mbox.php"; ?> 
+    <?php // include "php/www_wr_bconf_mbox.php"; ?> 
 
 </div>
+
 
 <script>
 // -----------------------------------------------------------------

@@ -41,6 +41,7 @@
     // A '2' has been detected.  Read the read mailbox and place a '0' in 
     // rd_bconf_flag.
     rewind($fh_flag);
+	$kh = fopen ("/home/linaro/temp_log", "w");
     $jsondata = file_get_contents('/home/linaro/rd_bconf_mbox');
     $array_from_json = json_decode($jsondata, true);
 
@@ -51,16 +52,20 @@
 	if ($max_peers_conf) {
         $max_peers = $max_peers_conf;
 	}
+	fputs($kh, $max_peers);
+	fputs($kh, $max_peers_conf);
     $minrelaytxfee_conf=$array_from_json['minrelaytxfee']; 
 	// echo "minrelaytxfee_conf  $minrelaytxfee_conf";
 	if ($minrelaytxfee_conf) {
         $minrelaytxfee = $minrelaytxfee_conf;
 	}  
+	fputs($kh, $minrelaytxfee);
     $limitfreerelay_conf=$array_from_json['limitfreerelay']; 
 	// echo "limitfreerelay_conf $limitfreerelay_conf";
 	if (($limitfreerelay_conf)) {
         $limitfreerelay = $limitfreerelay_conf;
 	}
+	fputs($kh, $limitfreerelay);
 
    // Write a '0' to rd_bconf_flag
    rewind ($fh_flag);

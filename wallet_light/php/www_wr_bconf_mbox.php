@@ -1,12 +1,12 @@
 <?php
-echo "HELLO";
+// echo "HELLO";
 $HOME = "/home/linaro";
 $max_peers=$_POST["max_peers"];
 $minrelaytxfee=$_POST["minrelaytxfee"];
 $limitfreerelay=$_POST["limitfreerelay"];
-echo "$max_peers";
-echo "$minrelaytxfee";
-echo "$limitfreerelay";
+// echo "$max_peers";
+// echo "$minrelaytxfee";
+// echo "$limitfreerelay";
 
 // Create an initial array of default parameters
 $params_default = array(
@@ -76,4 +76,10 @@ $fh = fopen ("/home/linaro/wr_bconf_flag", "w+");
                 shell_exec ('echo "1" > /home/linaro/wr_bconf_flag');
    }
 fclose ($fh);
+
+echo "Updating bitcoin configuration file\n";
+sleep(5);
+echo "Restarting bitcoind...";
+
+
 ?>
