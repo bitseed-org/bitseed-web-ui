@@ -22,13 +22,13 @@
                         <label for="minrelaytxfee"><h3>Min Relay Tx Fee:</h3></label>
 					</div>
 					<div class="ui-input-text" style="width: 100px !important; border-width: 0px; display: inline-block;">
-                        <input type="number" step="any" name="minrelaytxfee" id="minrelaytxfee" min=".000001" max=".0001" value=<?php echo $minrelaytxfee ?> placeholder=".00001000"/>
+                        <input type="number" step="any" name="minrelaytxfee" id="minrelaytxfee" min=".000001" max=".1" value=<?php echo $minrelaytxfee ?> placeholder=".00001000"/>
 					</div>
 					<div class="ui-input-text" style="width: 200px !important; border-width: 0px; display: inline-block;">
                         <label for="limitfreerelay"><h3>Limit Free Relay:</h3></label>
 					</div>
 					<div class="ui-input-text" style="width: 100px !important; border-width: 0px; margin: 0px; display: inline-block;">
-                        <input type="number" name="limitfreerelay" id="limitfreerelay" min="10" max="25" value=<?php echo $limitfreerelay ?> placeholder="15"/>
+                        <input type="number" name="limitfreerelay" id="limitfreerelay" min="1" max="25" value=<?php echo $limitfreerelay ?> placeholder="15"/>
 					</div>
                     <div data-role="controlgroup" data-type="horizontal" style="text-align: center;">
                         <input type="submit" name="submit" value="Update bitcoin.conf" id="update-bitcoin-config" />
