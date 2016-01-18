@@ -3,7 +3,6 @@ require_once('config.inc.php');
 require('php/phpbitadmin.class.php');
 include('php/init_ui_vars.php'); 
 include('php/www_rd_bconf_request.php'); 
-// include "php/populate_btconf.php";
 include "php/populate_bitnodes_reg.php";
 ?>
 
@@ -17,7 +16,7 @@ include "php/populate_bitnodes_reg.php";
 <link rel="stylesheet" href="css/m_phpbitadmin.css" />
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/jquery.mobile-1.4.5.min.js"></script>
-<script src="js/button_controls.js"</script>
+<!-- <script src="js/button_controls.js"</script> -->
 <script src="js/ui_functions.js"</script>
 
 <script type="text/javascript">
@@ -78,29 +77,20 @@ BITNODES Registration Page
 <!-------------------------------------------------
 Bitcoin Configuration Page
 ---------------------------------------------------->
-<!-- <div data-role="page" id="bitcoin_conf" data-theme="a">
-
-    <?php // include "html/menu.html"; ?>
-    <?php // include "html/header.html"; ?>
-    <?php // include "php/www_rd_bconf_request.php"; ?> 
-    <?php // include "html/dev_control_page.php"; ?>
-    <?php // include "php/www_wr_bconf_mbox.php"; ?> 
-
-</div> -->
+<div data-role="page" id="bitcoin_conf" data-theme="a">
+    <?php include "html/menu.html"; ?>
+    <?php include "html/header.html"; ?>
+    <?php include "html/dev_bcupdate_page.php"; ?>
+</div>
 
 <!-------------------------------------------------
 CONTROLS Page
 ---------------------------------------------------->
 <div data-role="page" id="controls" data-theme="a">
-
     <?php include "html/menu.html"; ?>
     <?php include "html/header.html"; ?>
-    <?php // include "php/www_rd_bconf_request.php"; ?> 
     <?php include "html/dev_control_page.php"; ?>
-    <?php // include "php/www_wr_bconf_mbox.php"; ?> 
-
 </div>
-
 
 <script>
 // -----------------------------------------------------------------

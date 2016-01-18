@@ -2,9 +2,10 @@
         var domvalue = $(e).attr('id');
         var r=false;
 
-        switch (domvalue) {
+		// alert ("made it here" );
+          switch (domvalue) {
             case "bitcoin_restart":
-                r = confirm("Are you sure you want to restart the device?");
+                r = confirm("Are you sure you want to restart bitcoin?");
                 break;
            case "update-software":
                 r = confirm("Are you sure you want to update the bitcoin software?");
@@ -29,8 +30,8 @@
            $("#bitcoin_status").html(msg);
        });
 
-       request.fail(function(jqXHR, textStatus) {
-           alert( "Request failed: " + textStatus );
-       });
+   request.fail(function(jqXHR, textStatus) {
+         alert( "Request failed: " + textStatus );
+     });
 }
 
