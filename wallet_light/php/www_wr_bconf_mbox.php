@@ -63,7 +63,7 @@ fclose ($fh);
 
 // ----------------------------------------------------------------
 // Next, write to the wr_bconf_flag.  In order to prevent multiple
-// write transactions // not be lost, make sure that a '0' is read 
+// write transactions // not be lost, make sure that a '0' is read
 // before a '1' is written
 // NOTE:  If a '1' is written while a '1' is still in queue, then the
 // second write request will be missed.  Instead, if a user attempts
@@ -77,9 +77,5 @@ $fh = fopen ("/home/linaro/wr_bconf_flag", "w+");
    }
 fclose ($fh);
 
-echo "Updating bitcoin configuration file\n";
-sleep(5);
-echo "Restarting bitcoind...";
-
-
-?>
+echo "Updating bitcoin configuration parameters Restarting bitcoind...Please wait  15 minutes to resume normal operation. ";
+shell_exec 'echo "1" /home/linaro/restartflag');

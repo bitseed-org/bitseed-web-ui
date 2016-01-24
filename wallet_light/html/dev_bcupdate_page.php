@@ -49,13 +49,13 @@
             ?>
             <!-- <h3>Software updates are available</h3> -->
          
-            <!--- <div data-role="controlgroup" data-type="horizontal" style="text-align: center;">
+            <!-- <div data-role="controlgroup" data-type="horizontal" style="text-align: center;">
                 <input type="button" value="Update software" id="update-software" onClick="bitcoinControl(this);" />
 	        </div>
             <hr class="hr_secondary_wallet">
             <div data-role="controlgroup" data-type="horizontal" style="text-align: center;">
                 <input type="button" value=" Restart Bitcoin " id="bitcoin_restart" onClick="bitcoinControl(this);" />
-		    </div> --> 
+		    </div> -->  
             <!--- <div data-role="controlgroup" data-type="horizontal" style="text-align: center;"> -->
 			    <!-- <input type="button" value="Shutdown Bitseed" id="device_shutdown" onClick="deviceControl(this);" /> -->
 			    <!--- <input type="button" value="Shutdown Bitseed" id="device_shutdown" onClick="bitcoinControl(this);" />

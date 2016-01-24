@@ -13,13 +13,13 @@ switch ($domvalue) {
 	     break;
 
     case "bitcoin_restart":
-	     echo "Bitcoin has been restarted";
+	     echo "Bitcoin is being restarted. Please wait 15 minutes before resuming operations";
 		 shell_exec ('echo "1" > /home/linaro/restartflag');
 	     break;
 
 // Device Controls
     case "device_shutdown":
-	     echo "Device is being shut down";
+	     echo "Device is performing a safe shutdown";
 		 shell_exec ('echo "2" > /home/linaro/restartflag');
 		 break;
 }

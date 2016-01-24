@@ -16,8 +16,7 @@ include "php/populate_bitnodes_reg.php";
 <link rel="stylesheet" href="css/m_phpbitadmin.css" />
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/jquery.mobile-1.4.5.min.js"></script>
-<!-- <script src="js/button_controls.js"</script> -->
-<script src="js/ui_functions.js"</script>
+<script src="js/ui_functions.js"></script>
 
 <script type="text/javascript">
     $(document).bind("pagecreate", function () {
@@ -110,6 +109,21 @@ $("#bitcoinconf_form").submit(function( e ) {
      });
      request.done(function(msg) {
         $("#bitcoin_status").html(msg);          
+        // var milliseconds = 3000;
+		// var start  = new Date().getTime();
+        // for (var i = 0; i < 1e7; i++) {
+        //     if ((new Date().getTime() - start) > milliseconds) {
+        //     break;
+        // }
+        // $("#bitcoin_status").html("hello");
+
+		// sleep (3000);
+
+		// sleep(3000);
+        // $("#bitcoin_status").html("o");
+        // $("#bitcoin_status").empty();          
+		// .sleep(3000);
+        // $("#bitcoin_status").html(msg);          
      });
      request.fail(function(jqXHR, textStatus) {
         alert( "Request failed: " + textStatus );
