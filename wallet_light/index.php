@@ -57,21 +57,21 @@ DEVICE STATUS Page
 <!-------------------------------------------------
 BITNODES Page
 ---------------------------------------------------->
-<div data-role="page" id="bitnodes" data-theme="a">
-    <?php include "html/menu.html"; ?>
-    <?php include "html/header.html"; ?>
-    <?php include "html/bitnodes_page.php"; ?>
-</div>
+<!-- <div data-role="page" id="bitnodes" data-theme="a"> -->
+    <?php // include "html/menu.html"; ?>
+    <?php // include "html/header.html"; ?>
+    <?php // include "html/bitnodes_page.php"; ?>
+<!-- </div> -->
 
 
 <!-------------------------------------------------
 BITNODES Registration Page
 ---------------------------------------------------->
-<div data-role="page" id="bitnodesreg" data-theme="a">
-    <?php include "html/menu.html"; ?>
-    <?php include "html/header.html"; ?>
-   <?php include "html/bitnodes_reg_page.php"; ?>
-</div> 
+<!-- <div data-role="page" id="bitnodesreg" data-theme="a"> -->
+    <?php // include "html/menu.html"; ?>
+    <?php // include "html/header.html"; ?>
+   <?php // include "html/bitnodes_reg_page.php"; ?>
+<!-- </div> --> 
 
 <!-------------------------------------------------
 Bitcoin Configuration Page
