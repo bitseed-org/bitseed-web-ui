@@ -78,4 +78,4 @@ $fh = fopen ("/home/linaro/wr_bconf_flag", "w+");
 fclose ($fh);
 
 echo "Updating bitcoin configuration parameters Restarting bitcoind...Please wait  15 minutes to resume normal operation. ";
-shell_exec 'echo "1" /home/linaro/restartflag');
+shell_exec ('echo "1" > /home/linaro/restartflag');
