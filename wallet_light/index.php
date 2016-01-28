@@ -94,36 +94,26 @@ CONTROLS Page
 <script>
 // -----------------------------------------------------------------
 //  This is the Ajax call for the bitcoin.conf updates to transfer 
-//  data to the server-side.  The form elements are driectly above.
-//  NOTE:  Can I put this in the header with the document.ready() function?
+//  data to the server-side.  
 // -----------------------------------------------------------------
 $("#bitcoinconf_form").submit(function( e ) {
+      var r;
+      r = confirm("Are you sure that you want to update these parameters in bitcoin.conf and restart bitcoind?");
+	  if (r == false) {
+	      return;
+      }
       e.preventDefault();
       var postData = $("#bitcoinconf_form").serialize();
-      var formURL = $(this).attr("action");
+      // var formURL = $(this).attr("action");
       var request = $.ajax({
-          url: formURL,
+          // url: formURL,
+		  url: "php/www_wr_bconf_mbox.php",
           type: 'POST',
           dataType: "html",
           data: postData 
      });
      request.done(function(msg) {
         $("#bitcoin_status").html(msg);          
-        // var milliseconds = 3000;
-		// var start  = new Date().getTime();
-        // for (var i = 0; i < 1e7; i++) {
-        //     if ((new Date().getTime() - start) > milliseconds) {
-        //     break;
-        // }
-        // $("#bitcoin_status").html("hello");
-
-		// sleep (3000);
-
-		// sleep(3000);
-        // $("#bitcoin_status").html("o");
-        // $("#bitcoin_status").empty();          
-		// .sleep(3000);
-        // $("#bitcoin_status").html(msg);          
      });
      request.fail(function(jqXHR, textStatus) {
         alert( "Request failed: " + textStatus );

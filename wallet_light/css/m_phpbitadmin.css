@@ -1,5 +1,30 @@
 html,body {height:100%;}
 
+/* Turn off spinners on input number boxes for webkit and moz desktop browsers */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+/* Fix alignment issue for inline-block on moz browsers */
+.block {
+    height: 100%;
+    text-align: center;
+}
+.block: after, .centered {
+    display: inline-block;
+    vertical-align: middle;
+}
+.block:after {
+    content: '';
+    height: 100%;
+}
+
+
 #image_WalletImage {
 		vertical-align:middle;
 		margin-top:5px;
