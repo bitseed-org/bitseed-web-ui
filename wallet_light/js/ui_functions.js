@@ -33,20 +33,3 @@ function bitcoinControl(e) {
        });
 };
 
-// function sleep(milliseconds) {
-// 	alert("Made It");
-  //   var start = new Date().getTime();    		
-	// $("#bitcoin_status").html("Made it");
-// 	for (var i = 0; i < 1e7; i++) {
-//        if ((new Date().getTime() - start) > milliseconds) {
-//              break;
-//        }
-//     }
-//  }	
-
-// $.fn.sleep = function(time, func) {
-//      this.each(function() {
- //        setTimeout(func, time);	
-//      });
-//      return this;
-// };

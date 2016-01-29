@@ -1,5 +1,4 @@
 <?php
-// echo "HELLO";
 $HOME = "/home/linaro";
 $max_peers=$_POST["max_peers"];
 $minrelaytxfee=$_POST["minrelaytxfee"];
@@ -11,7 +10,7 @@ $limitfreerelay=$_POST["limitfreerelay"];
 // Create an initial array of default parameters
 $params_default = array(
                 "max_peers" => 125,
-                "minrelaytxfee" => .00001,
+                "minrelaytxfee" => 0.000010000,
                 "limitfreerelay" => 15
                 );
 
@@ -51,7 +50,7 @@ foreach ($params_new as $key => $val) {
 // needs to be handled special.
 foreach ($params_new as $key => $val) {
     if ($key == 'minrelaytxfee') {
-        $valid_lines[$key] = number_format ($val, 8);
+        $valid_lines[$key] = number_format ($val, 10);
     }	
 }
 $json_object = json_encode($valid_lines);
@@ -61,21 +60,12 @@ $fh = fopen ("$HOME/wr_bconf_mbox", "w");
 fwrite ($fh, $json_object); 
 fclose ($fh);
 
-// ----------------------------------------------------------------
-// Next, write to the wr_bconf_flag.  In order to prevent multiple
-// write transactions // not be lost, make sure that a '0' is read
-// before a '1' is written
-// NOTE:  If a '1' is written while a '1' is still in queue, then the
-// second write request will be missed.  Instead, if a user attempts
-// to submit again before the last write operation is complete, then 
-// print a status message to let them know that they need to wait 
-// until the current operation is complete before submitting again.
-// ----------------------------------------------------------------
 $fh = fopen ("/home/linaro/wr_bconf_flag", "w+");
    if ($fh) {
                 shell_exec ('echo "1" > /home/linaro/wr_bconf_flag');
    }
 fclose ($fh);
 
-echo "Updating bitcoin configuration parameters Restarting bitcoind...Please wait  15 minutes to resume normal operation. ";
-shell_exec ('echo "1" > /home/linaro/restartflag');
+echo "Bitcoin configuration parameters have been updated.  Restarting bitcoind...Please wait 15 minutes to resume normal operation. ";
+// shell_exec ('echo "1" > /home/linaro/restartflag');
+?>

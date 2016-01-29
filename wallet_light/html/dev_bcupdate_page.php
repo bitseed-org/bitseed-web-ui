@@ -25,7 +25,7 @@
 					</div>
 					<br />
 					<div class="ui-input-text" style="width: 130px !important; border-width: 0px; display: inline-block;">
-                        <input type="number" step="any" name="minrelaytxfee" id="minrelaytxfee" min=".000001" max=".1" value=<?php echo $minrelaytxfee ?> placeholder=".00001000"/>
+                        <input type="number" step="0.0000000001" name="minrelaytxfee" id="minrelaytxfee" min=".000001" max=".1" value=<?php echo $minrelaytxfee ?> placeholder=".0000100000"/>
 					</div>
 					<br />
 					<div class="ui-input-text" style="width: 200px !important; border-width: 0px; display: inline-block;">
