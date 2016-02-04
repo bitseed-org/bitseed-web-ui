@@ -19,6 +19,7 @@ $jsnaddr = "https://getaddr.bitnodes.io/api/v1/nodes/{$extip}-8333";
 $bitnodejson = file_get_contents($jsnaddr);
 $bitnode = json_decode($bitnodejson, TRUE);
 $serial = file_get_contents('/var/www/html/serial');
+$bitseedvers = file_get_contents('/home/linaro/version');
 $wallet = new PhpBitAdmin_Wallet();
 $chaininfo = $wallet->rpc($scheme,$server_ip,$server_port,$rpc_user,$rpc_pass,'getblockchaininfo') ;
 $meminfo = $wallet->rpc($scheme,$server_ip,$server_port,$rpc_user,$rpc_pass,'getmempoolinfo') ;
