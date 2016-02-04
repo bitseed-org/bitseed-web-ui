@@ -23,6 +23,13 @@ $wallet = new PhpBitAdmin_Wallet();
 $chaininfo = $wallet->rpc($scheme,$server_ip,$server_port,$rpc_user,$rpc_pass,'getblockchaininfo') ;
 $meminfo = $wallet->rpc($scheme,$server_ip,$server_port,$rpc_user,$rpc_pass,'getmempoolinfo') ;
 $netinfo = $wallet->rpc($scheme,$server_ip,$server_port,$rpc_user,$rpc_pass,'getnetworkinfo') ;
+$intip = $inet_mac_addr['inet_address'];
+$sn = (int)$serial;
+$status = array ( "sn" => $sn, "ip" => $intip );
+$statusjson = json_encode($status);
+$stat = 'status.json' ;
+file_put_contents($stat, $statusjson) ;
+
 if ( (empty($_SESSION['PHPBITADMIN'])) || ($_SESSION['PHPBITADMIN'] === null) ) { // check if $_SESSION is set.
 	$session = $wallet->setSession($scheme, $server_ip, $server_port, $rpc_user, $rpc_pass, $btc_addr, $p_phrase);
 } else {
