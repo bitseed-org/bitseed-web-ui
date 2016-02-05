@@ -3,7 +3,7 @@ require_once('config.inc.php');
 require('php/phpbitadmin.class.php');
 include('php/init_ui_vars.php'); 
 include('php/www_rd_bconf_request.php'); 
-include "php/populate_bitnodes_reg.php";
+// include "php/populate_bitnodes_reg.php";
 ?>
 
 <!DOCTYPE html>
@@ -24,9 +24,6 @@ include "php/populate_bitnodes_reg.php";
 						});
 </script>
 
-<!-- Not sure what the style below is for.  This should 
-     probably be removed.
--->
 <style>
 input.normal {
      width: 45px !important;

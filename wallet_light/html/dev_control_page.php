@@ -23,14 +23,17 @@
                 fclose($fh);
             ?>
          
-            <div data-role="controlgroup" data-type="horizontal" style="text-align: center;">
+			<br />
+            <div data-role="controlgroup" data-type="horizontal" style="text-align: left;">
                 <input type="button" value="Update software" id="update-software" onClick="bitcoinControl(this);" />
 	        </div>
-            <hr class="hr_secondary_wallet">
-            <div data-role="controlgroup" data-type="horizontal" style="text-align: center;">
+            <!-- <hr class="hr_secondary_wallet"> -->
+			<br />
+            <div data-role="controlgroup" data-type="horizontal" style="text-align: left;">
                 <input type="button" value=" Restart Bitcoin " id="bitcoin_restart" onClick="bitcoinControl(this);" />
 		    </div>
-            <div data-role="controlgroup" data-type="horizontal" style="text-align: center;">
+			<br />
+            <div data-role="controlgroup" data-type="horizontal" style="text-align: left;">
 			    <input type="button" value="Shutdown Bitseed" id="device_shutdown" onClick="bitcoinControl(this);" />
 		    </div>
 	    </div>

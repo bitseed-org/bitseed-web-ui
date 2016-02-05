@@ -25,7 +25,7 @@
 					</div>
 					<br />
 					<div class="ui-input-text" style="width: 130px !important; border-width: 0px; display: inline-block;">
-                        <input type="number" step="0.0000000001" name="minrelaytxfee" id="minrelaytxfee" min=".000001" max=".1" value=<?php echo $minrelaytxfee ?> placeholder=".0000100000"/>
+                        <input type="number" step="any" name="minrelaytxfee" id="minrelaytxfee" min=".000001" max=".1" value=<?php echo $minrelaytxfee ?> placeholder=".0000100000"/>
 					</div>
 					<br />
 					<div class="ui-input-text" style="width: 200px !important; border-width: 0px; display: inline-block;">
@@ -35,8 +35,18 @@
 					<div class="ui-input-text" style="width: 100px !important; border-width: 0px; margin: 0px; display: inline-block;">
                         <input type="number" name="limitfreerelay" id="limitfreerelay" min="1" max="25" value=<?php echo $limitfreerelay ?> placeholder="15"/>
 					</div>
+					<br /><br />
+					<div>
+					    <input type="checkbox" name="bitcoin_conf_chkbox[]" id="disableWallet_id" value="disablewallet" <?php echo $disablewallet_checked ?> />
+					    <label for="disableWallet_id">Disable Wallet</label>
+					    <input type="checkbox" name="bitcoin_conf_chkbox[]" id="txindex_id" value="txindex" <?php echo $txindex_checked ?>/>
+					    <label for="txindex_id">Tx Index</label>
+					    <input type="checkbox" name="bitcoin_conf_chkbox[]" id="konn_id" value="konn" <?php echo $konn_checked ?> />
+					    <label for="konn_id">Konn Enable</label>
+				    </div>
 					<br />
 					<br />
+
                     <div data-role="controlgroup" data-type="horizontal" style="text-align: center;">
                         <input type="submit" name="submit" value="Update bitcoin.conf" id="update-bitcoin-config" />
 	                </div>	
