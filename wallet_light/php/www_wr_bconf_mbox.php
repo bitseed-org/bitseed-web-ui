@@ -22,6 +22,7 @@ $limitfreerelay=$_POST["limitfreerelay"];
 // ----------------------------------------------------------
 //  Checkbox array
 $bitcoin_conf_chkbox = count($_POST['bitcoin_conf_chkbox']) ? $_POST['bitcoin_conf_chkbox'] : array();
+$slider_val = $_POST['slider-1'];
 // echo $bitcoin_conf_chkbox;
 // echo count($bitcoin_conf_chkbox) ? implode(', ', $bitcoin_conf_chkbox) : 'Nothing ';
 // $bitcoin_conf_list = array_values($bitcoin_conf_chkbox);
@@ -51,7 +52,8 @@ $params_default = array(
                 'limitfreerelay' => 15,
                 'disablewallet' => 1,
 				'txindex' => 1,
-			    'konn' => 0	
+			    'konn' => 0,
+                'slider-1' => 45
 				);
 
 // ----------------------------------------------------------
@@ -67,8 +69,15 @@ $params_new = [
         'minrelaytxfee' => $minrelaytxfee,
         'limitfreerelay' => $limitfreerelay
         ];
-// Add checkbox settings as elements in $params_new
+// Add checkboxes to $params_new
 $params_new = array_merge($params_new, $chkbox_values);
+
+// Add sliders to $params_new
+$slider_array = array(
+				'slider-1' => $slider_val 
+				);
+$params_new = array_merge($params_new, $slider_array);
+
 // echo var_dump($params_new);
 
 // ------------------------------------------------------

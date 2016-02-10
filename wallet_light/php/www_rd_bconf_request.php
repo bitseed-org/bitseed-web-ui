@@ -2,7 +2,7 @@
    $max_peers = 125;
    $minrelaytxfee = .00001;
    $limitfreerelay = 10;
-
+   $slider_val = 35; 
    // ------------------------------------------------------------------
    // This function issues a load request for loading bitcoin.conf
    // values. It will only issue a request if a rd_bconf_flag
@@ -64,6 +64,13 @@
         $limitfreerelay = $limitfreerelay_conf;
 	}
 
+    // Populate slider value from value in bitcoin.conf.  If no value is 
+    // is set in bitcoin.conf, then populate with the default. 
+    $slider_val_conf=$array_from_json['slider-1'];
+	if (($slider_val_conf)) {
+        $slider_val = $slider_val_conf;
+	}
+   
    // Next, populate the checkboxes with the values from bitcoin.conf.
    $disablewallet_checked = "";
    $disablewallet_conf=$array_from_json['disablewallet']; 
