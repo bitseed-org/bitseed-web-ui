@@ -14,6 +14,7 @@ include('php/www_rd_bconf_request.php');
 <title>Bitcoin Node</title>
 <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
 <link rel="stylesheet" href="css/m_phpbitadmin.css" />
+<link rel="stylesheet" href="css/tooltip.css" />
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/jquery.mobile-1.4.5.min.js"></script>
 <script src="js/ui_functions.js"></script>

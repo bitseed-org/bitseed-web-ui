@@ -14,14 +14,14 @@
 		        <fieldset class="ui-field-contain">
 					<div>
 					    <input type="checkbox" name="bitcoin_conf_chkbox[]" id="disableWallet_id" value="disablewallet" <?php echo $disablewallet_checked ?> />
-					    <label for="disableWallet_id">Disable Wallet</label>
+					    <label rel="tootip" title = "disableWallet help" for="disableWallet_id">Disable Wallet</label>
 					    <input type="checkbox" name="bitcoin_conf_chkbox[]" id="txindex_id" value="txindex" <?php echo $txindex_checked ?>/>
 					    <label for="txindex_id">Tx Index</label>
 					    <input type="checkbox" name="bitcoin_conf_chkbox[]" id="konn_id" value="konn" <?php echo $konn_checked ?> />
 					    <label for="konn_id">Konn Enable</label>
 				    </div>
 					<div class="ui-input-text" style="width: 160px !important; border-width: 0px; display: inline-block;">
-                        <label for="max_peers" style="display: inline-block"><h4>Max Connections:</h4></label>
+                        <label rel="tootip" title = "test2" for="max_peers" style="display: inline-block"><h4>Max Connections:</h4></label>
 					</div>
 					<div class="ui-input-text" style="width: 100px !important; border-width: 0px; display: inline-block;">
                         <input type="number" name="max_peers" id="max_peers" min="1" max="125" value=<?php echo $max_peers ?> placeholder="125"/>
@@ -43,7 +43,7 @@
 					<br />
                     <!--<div class="ui-field-contain" style="width: 400px !important; display: inline-block"> -->
                     <div class="ui-field-contain">
-                            <label for="slider-1" style="width: 140px !important; border-width: 0px; display: inline-block;"><strong>Input slider:</strong></label>
+                            <label rel="tootip" title="slider help" for="slider-1" style="width: 140px !important; border-width: 0px; display: inline-block;"><strong>Input slider:</strong></label>
                             <input type="range" name="slider-1" id="slider-1" value=<?php echo $slider_val ?> min="0" max="100" data-highlight = "true" style="border-width: 0px; display: inline-block;">
                     </div>
 					<br /><br />
