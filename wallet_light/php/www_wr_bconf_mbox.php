@@ -1,7 +1,8 @@
 <?php
 $HOME = "/home/linaro";
 
-$full_chkbox_array = ['disablewallet', 'txindex', 'konn'];
+$full_chkbox_array = ['disablewallet', 'updateflag', 'listenonion', 
+		              'onlynet', 'upnp', 'backupflag'];
 
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 // EXTRACT VALUES FROM UI BCUPDATE FORM SUBMIT
@@ -13,16 +14,22 @@ $full_chkbox_array = ['disablewallet', 'txindex', 'konn'];
 // Investigate unified methods for all input 
 // forms here.
 // ----------------------------------------------------------
-$max_peers=$_POST["max_peers"];
-$minrelaytxfee=$_POST["minrelaytxfee"];
-$limitfreerelay=$_POST["limitfreerelay"];
+// $max_peers=$_POST["max_peers"];
+// $limitfreerelay=$_POST["limitfreerelay"];
 
 // ----------------------------------------------------------
 // Process checkboxes
 // ----------------------------------------------------------
 //  Checkbox array
 $bitcoin_conf_chkbox = count($_POST['bitcoin_conf_chkbox']) ? $_POST['bitcoin_conf_chkbox'] : array();
-$slider_val = $_POST['slider-1'];
+//  Grab current slider values
+$minrelaytxfee=$_POST['minrelaytxfee'];
+$maxuploadtarget=$_POST['maxuploadtarget'];
+$maxmempool=$_POST['maxmempool'];
+// echo " - $minrelaytxfee ";
+// echo " - $maxuploadtarget ";
+// echo " - $maxmempool ** ";
+// $slider_val = $_POST['slider-1'];
 // echo $bitcoin_conf_chkbox;
 // echo count($bitcoin_conf_chkbox) ? implode(', ', $bitcoin_conf_chkbox) : 'Nothing ';
 // $bitcoin_conf_list = array_values($bitcoin_conf_chkbox);
@@ -46,14 +53,25 @@ for ($i = 0; $i < count($full_chkbox_array); $i++) {
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 // CREATE AN INITIAL ARRAY OF DEFAULT PARAMETERS
 // ----------------------------------------------------------
+//  Defaults reall only apply to writes to the bitcoin 
+//  configuration file when a user has not specified a 
+//  value in the ui.  In this case, the default value 
+//  would be written to the config file.  HOWEVER, this is 
+//  really only useful for numeric or text boxes.  We are 
+//  only using checkboces and sliders.  initial (default) values 
+//  should be specified in the configuration file.  
+//  TAG THIS BLOCK FOR LATER REMOVAL
+// ----------------------------------------------------------
 $params_default = array( 
-                'max_peers' => 125,
-                'minrelaytxfee' => 0.000010000,
-                'limitfreerelay' => 15,
+                'minrelaytxfee' => 0.00001000,
+				'maxuploadtarget' => 100000,
+				'maxmempool' => 300,
                 'disablewallet' => 1,
-				'txindex' => 1,
-			    'konn' => 0,
-                'slider-1' => 45
+				'updateflag' => 1,
+                'listenonion' => 1,
+				'onlynet' => "onion",
+				'upnp' => 1,
+				'backupflag' => 0
 				);
 
 // ----------------------------------------------------------
@@ -64,20 +82,24 @@ $params_default = array(
 // the parameter to th
 // ----------------------------------------------------------
 // Numeric Boxes
-$params_new = [
-        'max_peers' => $max_peers,
-        'minrelaytxfee' => $minrelaytxfee,
-        'limitfreerelay' => $limitfreerelay
-        ];
+// $params_new = [
+//         'max_peers' => $max_peers,
+//         'minrelaytxfee' => $minrelaytxfee,
+//         'limitfreerelay' => $limitfreerelay
+//         ];
 // Add checkboxes to $params_new
-$params_new = array_merge($params_new, $chkbox_values);
+// $params_new = array_merge($params_new, $chkbox_values);
 
 // Add sliders to $params_new
 $slider_array = array(
-				'slider-1' => $slider_val 
+				'minrelaytxfee' => $minrelaytxfee,
+				'maxuploadtarget' => $maxuploadtarget,
+				'maxmempool' => $maxmempool
 				);
-$params_new = array_merge($params_new, $slider_array);
 
+$params_new = array_merge($chkbox_values, $slider_array);
+
+// echo var_dump($slider_array);
 // echo var_dump($params_new);
 
 // ------------------------------------------------------
@@ -103,6 +125,9 @@ foreach ($params_new as $key => $val) {
     if ($key == 'minrelaytxfee') {
         $valid_lines[$key] = number_format ($val, 8);
     }	
+	if ($key == 'onlynet') {
+        $valid_lines[$key] = 'onion';
+	}
 }
 $json_object = json_encode($valid_lines);
 // echo var_dump($json_object);

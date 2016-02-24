@@ -13,14 +13,33 @@
              <form name="bitcoinconf_form" id="bitcoinconf_form" method="post">
 		        <fieldset class="ui-field-contain">
 					<div>
+                        <?php $disablewallet__tt_content = "A lengthier string"; ?>
+					    <!-- Disable Wallet checkbox -->
 					    <input type="checkbox" name="bitcoin_conf_chkbox[]" id="disableWallet_id" value="disablewallet" <?php echo $disablewallet_checked ?> />
-					    <label rel="tootip" title = "disableWallet help" for="disableWallet_id">Disable Wallet</label>
-					    <input type="checkbox" name="bitcoin_conf_chkbox[]" id="txindex_id" value="txindex" <?php echo $txindex_checked ?>/>
-					    <label for="txindex_id">Tx Index</label>
-					    <input type="checkbox" name="bitcoin_conf_chkbox[]" id="konn_id" value="konn" <?php echo $konn_checked ?> />
-					    <label for="konn_id">Konn Enable</label>
+					    <label rel="tootip" title=<?php echo $disablewallet_tt_content; ?> for="disableWallet_id">Disable Wallet</label>
+
+					    <!-- Auto Updates checkbox -->
+					    <input type="checkbox" name="bitcoin_conf_chkbox[]" id="updateflag_id" value="updateflag" <?php echo $updateflag_checked; ?>/>
+					    <label rel="tootip" title=<?php echo $updateflag_tt_content; ?> for="updateflag_id">Auto Update</label>
+
+					    <!-- Tor On/Off checkbox -->
+					    <input type="checkbox" name="bitcoin_conf_chkbox[]" id="listenonion_id" value="listenonion" <?php echo $listenonion_checked; ?> />
+					    <label rel="tootip" title=<?php echo $listenonion_tt_content; ?> for="listenonion_id">Tor Enabled</label>
+						
+					    <!-- Tor Only checkbox -->
+					    <input type="checkbox" name="bitcoin_conf_chkbox[]" id="onlynet_id" value="onlynet" <?php echo $onlynet_checked; ?> />
+					    <label rel="tootip" title=<?php echo $onlynet_tt_content; ?> for="onlynet_id">Tor Only</label>
+						
+					    <!-- Universal Plug and Play checkbox -->
+					    <input type="checkbox" name="bitcoin_conf_chkbox[]" id="upnp_id" value="upnp" <?php echo $upnp_checked; ?> />
+					    <label rel="tootip" title=<?php echo $upnp_tt_content; ?> for="upnp_id">UPnP Enabled</label>
+
+					    <!-- Disable Blockchain Backups checkbox -->
+					    <input type="checkbox" name="bitcoin_conf_chkbox[]" id="backupflag_id" value="backupflag" <?php echo $backupflag_checked; ?> />
+					    <label rel="tootip" title=<?php echo $backupflag_tt_content; ?> for="backupflag_id">Disable Blockchain Backups</label>
+
 				    </div>
-					<div class="ui-input-text" style="width: 160px !important; border-width: 0px; display: inline-block;">
+					<!-- <div class="ui-input-text" style="width: 160px !important; border-width: 0px; display: inline-block;">
                         <label rel="tootip" title = "test2" for="max_peers" style="display: inline-block"><h4>Max Connections:</h4></label>
 					</div>
 					<div class="ui-input-text" style="width: 100px !important; border-width: 0px; display: inline-block;">
@@ -31,7 +50,7 @@
                         <label for="minrelaytxfee"><h4>Min Relay Tx Fee:</h4></label>
 					</div>
 					<div class="ui-input-text" style="width: 130px !important; border-width: 0px; display: inline-block;">
-                        <input type="number" step="any" name="minrelaytxfee" id="minrelaytxfee" min=".000001" max=".1" value=<?php echo $minrelaytxfee ?> placeholder=".0000100000"/>
+                        <input type="number" step="any" name="minrelaytxfee" id="minrelaytxfee" min=".000001" max=".1" value=<?php // echo $minrelaytxfee ?> placeholder=".0000100000"/>
 					</div>
 					<br />
 					<div class="ui-input-text" style="width: 160px !important; border-width: 0px; display: inline-block;">
@@ -39,12 +58,24 @@
 					</div>
 					<div class="ui-input-text" style="width: 100px !important; border-width: 0px; margin: 0px; display: inline-block;">
                         <input type="number" name="limitfreerelay" id="limitfreerelay" min="1" max="25" value=<?php echo $limitfreerelay ?> placeholder="15"/>
-					</div>
+					</div> -->
 					<br />
                     <!--<div class="ui-field-contain" style="width: 400px !important; display: inline-block"> -->
-                    <div class="ui-field-contain">
+                    <!-- <div class="ui-field-contain">
                             <label rel="tootip" title="slider help" for="slider-1" style="width: 140px !important; border-width: 0px; display: inline-block;"><strong>Input slider:</strong></label>
-                            <input type="range" name="slider-1" id="slider-1" value=<?php echo $slider_val ?> min="0" max="100" data-highlight = "true" style="border-width: 0px; display: inline-block;">
+                            <input type="range" name="slider-1" id="slider-1" value=<?php // echo $slider_val ?> min="0" max="100" data-highlight = "true" style="border-width: 0px; display: inline-block;">
+                    </div> -->
+                    <div class="ui-field-contain">
+                            <label rel="tootip" title=<?php echo $minrelaytxfee_tt_content; ?> for="minrelaytxfee_id" style="width: 200px !important; border-width: 0px; display: inline-block;"><strong>Min Relay Tx Fee:</strong></label><br />
+                            <input type="range" name="minrelaytxfee" id="minrelaytxfee_id" value=<?php echo $minrelaytxfee; ?> min=.00000100 max=.01 data-highlight = "true" style="border-width: 0px; display: inline-block;">
+                    </div>
+                    <div class="ui-field-contain">
+                            <label rel="tootip" title=<?php echo $maxuploadtarget_tt_content; ?> for="maxuploadtarget_id" style="width: 200px !important; border-width: 0px; display: inline-block;"><strong>Daily Upload Limit:</strong></label><br />
+                            <input type="range" name="maxuploadtarget" id="maxuploadtarget_id" value=<?php echo $maxuploadtarget; ?> min="144" max="10000" data-highlight = "true" style="border-width: 0px; display: inline-block;">
+                    </div>
+                    <div class="ui-field-contain">
+                            <label rel="tootip" title=<?php echo $maxmempool_tt_content; ?> for="maxmempool_id" style="width: 200px !important; border-width: 0px; display: inline-block;"><strong>Mempool Size Limit:</strong></label><br />
+                            <input type="range" name="maxmempool" id="maxmempool_id" value=<?php echo $maxmempool; ?> min="100" max="500" data-highlight = "true" style="border-width: 0px; display: inline-block;">
                     </div>
 					<br /><br />
 

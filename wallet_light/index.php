@@ -1,6 +1,7 @@
 <?php
 require_once('config.inc.php');
 require('php/phpbitadmin.class.php');
+include('php/tooltip_content.php');
 include('php/init_ui_vars.php'); 
 include('php/www_rd_bconf_request.php'); 
 // include "php/populate_bitnodes_reg.php";
@@ -87,6 +88,24 @@ CONTROLS Page
     <?php include "html/menu.html"; ?>
     <?php include "html/header.html"; ?>
     <?php include "html/dev_control_page.php"; ?>
+</div>
+
+<!-------------------------------------------------
+Help Page
+---------------------------------------------------->
+<div data-role="page" id="help" data-theme="a">
+    <?php include "html/menu.html"; ?>
+    <?php include "html/header.html"; ?>
+    <?php include "html/help_page.php"; ?>
+</div>
+
+<!-------------------------------------------------
+FAQ Page
+---------------------------------------------------->
+<div data-role="page" id="faq" data-theme="a">
+    <?php include "html/menu.html"; ?>
+    <?php include "html/header.html"; ?>
+    <?php include "html/faq_page.php"; ?>
 </div>
 
 <script>
