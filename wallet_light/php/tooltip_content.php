@@ -9,7 +9,7 @@
 $disablewallet_tooltip = "Disable Wallet Help";
 
 // Auto Updates
-$updateflag_tooltip = "Auto Updates Help";
+$autoupdate_tooltip = "Auto Updates Help";
 
 // Tor Enable
 $listenonion_tooltip = "Tor Help";
@@ -21,7 +21,7 @@ $onlynet_tooltip = "Tor Only Mode Help";
 $upnp_tooltip = "Universal Plug and Play Help";
 
 // Disable Blockchain Backups
-$backupflag_tooltip = "Disable Blockchain Backups Help";
+$disablebackups_tooltip = "Disable Blockchain Backups Help";
 
 // Min Relay Tx Fee
 $minrelaytxfee_tooltip = "Min Relay Tx Fee Help";
@@ -37,11 +37,11 @@ $maxmempool_tooltip = "Mempool Size Limit Help";
 // DO NOT WRITE BELOW THIS LINE.
 // ------------------------------------------------------------
 $disablewallet_tt_content ="'" . $disablewallet_tooltip . "'";
-$updateflag_tt_content ="'" . $updateflag_tooltip . "'";
+$autoupdate_tt_content ="'" . $autoupdate_tooltip . "'";
 $listenonion_tt_content ="'" . $listenonion_tooltip . "'";
 $onlynet_tt_content ="'" . $onlynet_tooltip . "'";
 $upnp_tt_content ="'" . $upnp_tooltip . "'";
-$backupflag_tt_content ="'" . $backupflag_tooltip . "'";
+$disablebackups_tt_content ="'" . $disablebackups_tooltip . "'";
 $minrelaytxfee_tt_content ="'" . $minrelaytxfee_tooltip . "'";
 $maxuploadtarget_tt_content ="'" . $maxuploadtarget_tooltip . "'";
 $maxmempool_tt_content ="'" . $maxmempool_tooltip . "'";

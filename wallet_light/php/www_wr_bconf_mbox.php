@@ -1,8 +1,8 @@
 <?php
 $HOME = "/home/linaro";
 
-$full_chkbox_array = ['disablewallet', 'updateflag', 'listenonion', 
-		              'onlynet', 'upnp', 'backupflag'];
+$full_chkbox_array = ['disablewallet', 'autoupdate', 'listenonion', 
+		              'onlynet', 'upnp', 'disablebackups'];
 
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 // EXTRACT VALUES FROM UI BCUPDATE FORM SUBMIT
@@ -67,11 +67,11 @@ $params_default = array(
 				'maxuploadtarget' => 100000,
 				'maxmempool' => 300,
                 'disablewallet' => 1,
-				'updateflag' => 1,
+				'autoupdate' => 1,
                 'listenonion' => 1,
 				'onlynet' => "onion",
 				'upnp' => 1,
-				'backupflag' => 0
+				'disablebackups' => 0
 				);
 
 // ----------------------------------------------------------
@@ -144,5 +144,5 @@ $fh = fopen ("/home/linaro/wr_bconf_flag", "w+");
 fclose ($fh);
 
 echo "Bitcoin configuration parameters have been updated.  Restarting bitcoind...Please wait 15 minutes to resume normal operation. ";
-shell_exec ('echo "1" > /home/linaro/restartflag'); // Comment this line out for testing purposes
+// shell_exec ('echo "1" > /home/linaro/restartflag'); // Comment this line out for testing purposes
 ?>

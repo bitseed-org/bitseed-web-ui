@@ -19,8 +19,8 @@
 					    <label rel="tootip" title=<?php echo $disablewallet_tt_content; ?> for="disableWallet_id">Disable Wallet</label>
 
 					    <!-- Auto Updates checkbox -->
-					    <input type="checkbox" name="bitcoin_conf_chkbox[]" id="updateflag_id" value="updateflag" <?php echo $updateflag_checked; ?>/>
-					    <label rel="tootip" title=<?php echo $updateflag_tt_content; ?> for="updateflag_id">Auto Update</label>
+					    <input type="checkbox" name="bitcoin_conf_chkbox[]" id="autoupdate_id" value="autoupdate" <?php echo $updateflag_checked; ?>/>
+					    <label rel="tootip" title=<?php echo $autoupdate_tt_content; ?> for="autoupdate_id">Auto Update</label>
 
 					    <!-- Tor On/Off checkbox -->
 					    <input type="checkbox" name="bitcoin_conf_chkbox[]" id="listenonion_id" value="listenonion" <?php echo $listenonion_checked; ?> />
@@ -35,8 +35,8 @@
 					    <label rel="tootip" title=<?php echo $upnp_tt_content; ?> for="upnp_id">UPnP Enabled</label>
 
 					    <!-- Disable Blockchain Backups checkbox -->
-					    <input type="checkbox" name="bitcoin_conf_chkbox[]" id="backupflag_id" value="backupflag" <?php echo $backupflag_checked; ?> />
-					    <label rel="tootip" title=<?php echo $backupflag_tt_content; ?> for="backupflag_id">Disable Blockchain Backups</label>
+					    <input type="checkbox" name="bitcoin_conf_chkbox[]" id="disablebackups_id" value="disablebackups" <?php echo $backupflag_checked; ?> />
+					    <label rel="tootip" title=<?php echo $disablebackups_tt_content; ?> for="disablebackups_id">Disable Blockchain Backups</label>
 
 				    </div>
 					<!-- <div class="ui-input-text" style="width: 160px !important; border-width: 0px; display: inline-block;">
