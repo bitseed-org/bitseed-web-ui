@@ -182,7 +182,14 @@ $(document).bind("pagecreate", function () {
                         <div class="ui-block-b"><span class="secondary_light"><?php print $serial; ?></span></div>
                    </div>
                 </div>
-
+                
+                <div class="div_WalletOverview">
+                   <div class="ui-grid-a">
+                        <div class="ui-block-a"><span class="primary">Device Version:</span></div>
+                        <div class="ui-block-b"><span class="secondary_light"><?php print $bitseedvers; ?></span></div>
+                   </div>
+                </div>
+                
         	<div class="div_WalletOverview">
                     <div class="ui-grid-a">
             <span class="primary">Donate Bitcoin:</span>
