@@ -1,20 +1,5 @@
 <?php
 
-   // Default slider values
-   // $max_peers = 125;
-   // $minrelaytxfee = .00001;
-   // $maxuploadtarget = 500;
-   // $maxmempool = 300;
-   // $limitfreerelay = 10;
-   // $slider_val = 35; 
-   // ------------------------------------------------------------------
-   // This function issues a load request for loading bitcoin.conf
-   // values. It will only issue a request if a rd_bconf_flag
-   // has a '0'.  This is to prevent a new load request from 
-   // initiating a new read operation when the previous operation
-   // is still incomplete.
-   // write a '1' to rd_bconf_flag to kick things off.
-   // ------------------------------------------------------------------
    $fh_flag = fopen ("/home/linaro/rd_bconf_flag", "r+") or die ("Unable to open /home/linaro/rd_bconf_flag");
    if ($fh_flag) {
        if (($line = fgets($fh_flag)) !== false) {
@@ -52,21 +37,6 @@
     $jsondata = file_get_contents('/home/linaro/rd_bconf_mbox');
     $array_from_json = json_decode($jsondata, true);
 
-    // ------------------------------------------------------------------
-    // Place the values from the array into the textboxes in the control page.
-    // ------------------------------------------------------------------
-
-	// Max Connections has been removed
-    // $max_peers_conf=$array_from_json['max_peers']; 
-	// if ($max_peers_conf) {
-    //    $max_peers = $max_peers_conf;
-	// }
-
-    // $max_peers_conf=$array_from_json['max_peers']; 
-	// if ($max_peers_conf) {
-    //     $max_peers = $max_peers_conf;
-	// }
-
 	// ----------------------------------------------------
 	// SLIDERS
 	// ----------------------------------------------------
@@ -84,23 +54,6 @@
 	if ($maxmempool_conf) {
         $maxmempool = $maxmempool_conf;
 	}
-	// ----------------------------------------------------
-
-    // limitfreerelay has been removed
-    // $limitfreerelay_conf=$array_from_json['limitfreerelay']; 
-	// if (($limitfreerelay_conf)) {
-    //     $limitfreerelay = $limitfreerelay_conf;
-	// }
-
-    // Populate slider value from value in bitcoin.conf.  If no value is 
-    // is set in bitcoin.conf, then populate with the default. 
-    // $slider_val_conf=$array_from_json['slider-1'];
-	// if (($slider_val_conf)) {
-    //     $slider_val = $slider_val_conf;
-	// }
-   
-   // Next, populate the checkboxes with the values from bitcoin.conf.
-
    
    // ----------------------------------------------------
    // Checkboxes
@@ -112,7 +65,7 @@
    }
 
    $updateflag_checked = "";
-   $updateflag_conf=$array_from_json['updateflag']; 
+   $updateflag_conf=$array_from_json['autoupdate']; 
    if ($updateflag_conf == 1) {
        $updateflag_checked = "checked";
    }
@@ -132,29 +85,10 @@
        $upnp_checked = "checked";
    }
    $backupflag_checked = "";
-   $backupflag_conf=$array_from_json['backupflag']; 
+   $backupflag_conf=$array_from_json['disablebackups']; 
    if ($backupflag_conf == 1) {
        $backupflag_checked = "checked";
    }
-   // ----------------------------------------------------
-   // $txindex_checked = "";
-   // $txindex_conf=$array_from_json['txindex']; 
-   // if ($txindex_conf == 1) {
-   //     $txindex_checked = "checked";
-   // }
-
-   // $konn_checked = "";
-   // $konn_conf=$array_from_json['konn']; 
-   // if ($konn_conf == 1) {
-   //     $konn_checked = "checked";
-   // }
-
-   // $konn_checked = "";
-   // $konn_conf=$array_from_json['konn']; 
-   // if ($konn_conf == 1) {
-   //     $konn_checked = "checked";
-   // }
-
    // Write a '0' to rd_bconf_flag
    rewind ($fh_flag);
    $line = 0;
