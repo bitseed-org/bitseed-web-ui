@@ -1,104 +1,135 @@
 #!/usr/bin/env python
-# ----------------------------------------------------------------------------
-#  File - lin_rd_bconf_mbox.py
+# --------------------------------------------------------------------
+#  File - lin_wr_bconf_mbox.py
 #
-#  Written by:  Konn Danley
-#  Date:        11/26/2015
-#  Purpose:     This script resides in /home/linaro.  It reads the following
-#               parameters from ./bitcoin/bitcoin.conf:
-#                   * Max Connections (default 125)
-#                   * Min Relay Tx Fee (default .00001000)
-#                   * Limit Free Relay
-#
-# -----------------------------------------------------------------------------
+#  Written by:    Konn Danley
+#  Date:          01/07/2016
+#  Purpose:       This script resides in /home/linaro and is used 
+#                 to transfer data from wr_bconf_mbox and merge these 
+#                 values into .bitcoin/bitcoin.conf
+# 
+# --------------------------------------------------------------------
 import os
 import subprocess
 import json
 import re
 
-def parse_conf():
+btc_params_list = ["minrelaytxfee", "maxuploadtarget", "maxmempool", 
+                   "disablewallet", "listenonion", "onlynet", "upnp"] 
 
-	# Bitcoin configuration defaults
-    btc_dict_val_defaults = { "minrelaytxfee" : .00001000, "maxuploadtarget" : 1000, "maxmempool" : 300,
-                         "disablewallet": 1, "listenonion" : 1, "onlynet" : 1, "upnp" : 1 }
+bts_params_list = ["autoupdate", "disablebackups"] 
 
-	# Bitseed configuration defaults
-    bts_dict_val_defaults = { "autoupdate" : 1, "disablebackups" : 0 }
+# The json file below has parameters from both bitcoin.conf and bitseed.conf
+json_data=open('wr_bconf_mbox')
+wr_mbox_dict_params = json.load(json_data)
+param_keys = wr_mbox_dict_params.keys()
 
-    # ---------------------------------------------------------------------
-    #  Read the required values out of .bitcoin/bitcoin.conf
-    # ---------------------------------------------------------------------
-    fh = open("./.bitcoin/bitcoin.conf", "r")
-    lines = fh.readlines()
-    fh.close()
-
-    # ---------------------------------------------------------------------
-    #  Read the required values out of .bitseed/bitseed.conf
-    # ---------------------------------------------------------------------
-    fh = open("./.bitseed/bitseed.conf", "r")
-    bts_extend_lines = fh.readlines()
-    fh.close()
-
-	# This contains the superset of both bitcoin.conf as well as bitseed.conf
-    lines.extend(bts_extend_lines)
-
-    # Remove comments
-    temp_lines = []
-    for line in lines:
-        line = line.partition('#')[0]
-        line = line.rstrip()
-        temp_lines.append(line)
+# Split wr_mbox_dict_params into btc_mbox_params and bts_mbox_params
+btc_mbox_params = {}
+bts_mbox_params = {}
+for mbox_key in wr_mbox_dict_params:
+    if mbox_key in btc_params_list:
+        btc_mbox_params[mbox_key] = wr_mbox_dict_params[mbox_key]	
+    if mbox_key in bts_params_list:
+        bts_mbox_params[mbox_key] = wr_mbox_dict_params[mbox_key]
 		
-    # Remove blank lines
-    keep_lines = []
-    for line in temp_lines:
-        if line.strip():
-            keep_lines.append(line)
-
-    # ------------------------------------------------------------------
-    # At this point, you have a list of key, value pairs through '='.
-    # Extract the parameters of interest and build a Python dictionary 
-	# which will be converted into a JSON
-    # object to pass back to php to set the variables which will be 
-	# used to populate the value fields of the input text boxes  
-    # ------------------------------------------------------------------
-    dict_params={}
-    params_list = ["minrelaytxfee", "maxuploadtarget", "maxmempool", 
-	               "disablewallet", "autoupdate", "listenonion", "onlynet", 
-                   "upnp", "disablebackups"] 
-
-    for line in keep_lines:
-        key, value = line.split("=")	    
-        if key in params_list: 
-            dict_params[key] = value
-
-    # ------------------------------------------------------------------
-    # If the parameters of interest hare not in the bitcoin.conf file,
-    # then write the default value corresponding to that parameter into
-	# rd_bconf_mbox. 	
-    # ------------------------------------------------------------------
-    # Make a list of the keys found in the .bitcoin/bitcoin.conf file.  
-    for param in params_list:
-        if param not in params_list:
-            dict_params[key] = btc_dict_val_defaults[param]
-		
-    json_params_object = json.dumps(dict_params)
-    return json_params_object
-
-# ----------------------------------------------------------------
-#  Write the json object to the read mailbox and then rewrite the 
-#  the value 2.  Cron will later detect this value run 
-#  www_rd_bconf_mbox.php
-# ----------------------------------------------------------------
-# Read mailbox
-json_params = parse_conf()
-fh = open("./rd_bconf_mbox", "w") 
-fh.write(json_params)
+# -----------------------------------------------------------------------
+# Processing for key/value pairs taken from bitcoin.conf and bitseed.conf
+fh = open(".bitcoin/bitcoin.conf", "r"); 
+btc_lines = fh.readlines() 
 fh.close()
 
-# rd_bconf_flag
-fh = open ("./rd_bconf_flag", "w")
-fh.write ("2")
+fh = open("./.bitseed/bitseed.conf", "r")
+bts_lines = fh.readlines()
 fh.close()
 
+# ----------------------------------------------------------
+# Create dictionaries from the bitcoin.conf and bitseed.conf
+# files.
+# ----------------------------------------------------------
+bitcoin_conf_dict = {}
+bitseed_conf_dict = {}
+for line in btc_lines:
 
+    # Skip blank lines
+    temp_line = line.strip()
+    if temp_line:
+
+		# Skip comments
+        if temp_line[0] == '#':
+            pass
+        else:
+            line_key, line_value = temp_line.split("=")
+            bitcoin_conf_dict[line_key] = line_value
+
+for line in bts_lines:
+
+    # Skip blank lines
+    temp_line = line.strip()
+    if temp_line:
+
+		# Skip comments
+        if temp_line[0] == '#':
+            pass
+        else:
+            line_key, line_value = temp_line.split("=")
+            bitseed_conf_dict[line_key] = line_value
+# ----------------------------------------------------------
+
+# ----------------------------------------------------------
+#  Merge values from UI into bitcoin.conf lines array
+# ----------------------------------------------------------
+for mbox_key in bitcoin_conf_dict:
+    if mbox_key in btc_params_list: 
+        for i in range(len(btc_lines)):
+            line = btc_lines[i]
+            if line.strip(): 
+                if line[0] == '#': 
+                    pass
+                else:
+                    line_key, line_value = line.split("=") 
+                    # replace value in bitcoin.conf
+                    if line_key == mbox_key:
+                        if line_key in btc_mbox_params:
+                            temp_str = mbox_key + "=" + str(btc_mbox_params[mbox_key]) + "\n"
+                            btc_lines[i] = temp_str 
+
+# ----------------------------------------------------------
+#  Merge values from UI into bitseed.conf lines array
+# ----------------------------------------------------------
+for mbox_key in bitseed_conf_dict:
+    if mbox_key in bts_params_list: 
+        for i in range(len(bts_lines)):
+            line = bts_lines[i]
+            if line.strip(): 
+                if line[0] == '#': 
+                    pass
+                else:
+                    line_key, line_value = line.split("=") 
+
+                    # replace value in bitcoin.conf
+                    if line_key == mbox_key:
+                        if line_key in bts_mbox_params:
+                            temp_str = mbox_key + "=" + str(bts_mbox_params[mbox_key]) + "\n"
+                            bts_lines[i] = temp_str 
+
+# Make a backup of the PREVIOUS bitcoin.conf file (bitcoin.conf.bak) 
+subprocess.call (["cp", "./.bitcoin/bitcoin.conf", 
+                  "./.bitcoin/bitcoin.conf.bak"]) 
+# Make a backup of the PREVIOUS bitseed.conf (bitseed.conf.bak) 
+subprocess.call (["cp", "./.bitseed/bitseed.conf", 
+                  "./.bitseed/bitseed.conf.bak"])
+
+# Write out the new bitcoin.conf file.
+fh = open("./.bitcoin/bitcoin.conf", "w"); 
+for i in range(len(btc_lines)):
+    fh.write(btc_lines[i])
+fh.write("\n")
+fh.close()
+
+# Write out the new bitseed.conf file.
+fh = open("./.bitseed/bitseed.conf", "w"); 
+for i in range(len(bts_lines)):
+    fh.write(bts_lines[i])
+fh.write("\n")
+fh.close()
