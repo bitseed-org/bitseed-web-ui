@@ -1,5 +1,7 @@
 <?php
 
+
+
    $fh_flag = fopen ("/home/linaro/rd_bconf_flag", "r+") or die ("Unable to open /home/linaro/rd_bconf_flag");
    if ($fh_flag) {
        if (($line = fgets($fh_flag)) !== false) {

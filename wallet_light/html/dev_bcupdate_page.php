@@ -1,3 +1,11 @@
+    <!-- Special note on Tor Enable and onlynet
+
+         3 modes:
+	             1.  Tor=1, onlynet is blank line - Default - no line.  Tor and ipv4
+			     2.  Tor Enable = 1 and onlynet=onion - Tor only
+			     3.  Tor Enable = 0 - No Tor
+    -->	 
+
 	<div data-role="content" class="content">
 
 	    <div style="margin-top:15px;margin-left:5px;">
