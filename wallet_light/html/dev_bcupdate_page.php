@@ -65,7 +65,7 @@
                         <label for="limitfreerelay"><h4>Limit Free Relay:</h4></label>
 					</div>
 					<div class="ui-input-text" style="width: 100px !important; border-width: 0px; margin: 0px; display: inline-block;">
-                        <input type="number" name="limitfreerelay" id="limitfreerelay" min="1" max="25" value=<?php echo $limitfreerelay ?> placeholder="15"/>
+                        <input type="number" name="limitfreerelay" id="limitfreerelay" min="1" max="25" value=<?php // echo $limitfreerelay ?> placeholder="15"/>
 					</div> -->
 					<br />
                     <!--<div class="ui-field-contain" style="width: 400px !important; display: inline-block"> -->
@@ -74,15 +74,15 @@
                             <input type="range" name="slider-1" id="slider-1" value=<?php // echo $slider_val ?> min="0" max="100" data-highlight = "true" style="border-width: 0px; display: inline-block;">
                     </div> -->
                     <div class="ui-field-contain">
-                            <label rel="tootip" title=<?php echo $minrelaytxfee_tt_content; ?> for="minrelaytxfee_id" style="width: 200px !important; border-width: 0px; display: inline-block;"><strong>Min Relay Tx Fee:</strong></label><br />
-                            <input type="range" name="minrelaytxfee" id="minrelaytxfee_id" value=<?php echo $minrelaytxfee; ?> min=.00000100 max=.01 data-highlight = "true" style="border-width: 0px; display: inline-block;">
+                            <label rel="tootip" title=<?php echo $minrelaytxfee_tt_content; ?> for="minrelaytxfee_id" style="width: 200px !important; border-width: 0px; display: inline-block;"><strong>Min Relay Tx Fee (.000001-.01):</strong></label><br />
+                            <input type="range" name="minrelaytxfee" id="minrelaytxfee_id" value=<?php echo $minrelaytxfee; ?> min=".00000100" max=".01" step=".000001" data-highlight = "true" style="border-width: 0px; display: inline-block;">
                     </div>
                     <div class="ui-field-contain">
-                            <label rel="tootip" title=<?php echo $maxuploadtarget_tt_content; ?> for="maxuploadtarget_id" style="width: 200px !important; border-width: 0px; display: inline-block;"><strong>Daily Upload Limit:</strong></label><br />
-                            <input type="range" name="maxuploadtarget" id="maxuploadtarget_id" value=<?php echo $maxuploadtarget; ?> min="144" max="10000" data-highlight = "true" style="border-width: 0px; display: inline-block;">
+                            <label rel="tootip" title=<?php echo $maxuploadtarget_tt_content; ?> for="maxuploadtarget_id" style="width: 200px !important; border-width: 0px; display: inline-block;"><strong>Daily Upload Limit (MB) (144-5000):</strong></label><br />
+                            <input type="range" name="maxuploadtarget" id="maxuploadtarget_id" value=<?php echo $maxuploadtarget; ?> min="144" max="5000" data-highlight = "true" style="border-width: 0px; display: inline-block;">
                     </div>
                     <div class="ui-field-contain">
-                            <label rel="tootip" title=<?php echo $maxmempool_tt_content; ?> for="maxmempool_id" style="width: 200px !important; border-width: 0px; display: inline-block;"><strong>Mempool Size Limit:</strong></label><br />
+                            <label rel="tootip" title=<?php echo $maxmempool_tt_content; ?> for="maxmempool_id" style="width: 200px !important; border-width: 0px; display: inline-block;"><strong>Mempool Size Limit (100-500):</strong></label><br />
                             <input type="range" name="maxmempool" id="maxmempool_id" value=<?php echo $maxmempool; ?> min="100" max="500" data-highlight = "true" style="border-width: 0px; display: inline-block;">
                     </div>
 					<br /><br />

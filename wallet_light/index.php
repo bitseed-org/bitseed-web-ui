@@ -19,7 +19,20 @@ include('php/www_rd_bconf_request.php');
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/jquery.mobile-1.4.5.min.js"></script>
 <script src="js/ui_functions.js"></script>
-
+<style>
+#minrelaytxfee_id .ui-rangeslider-sliders {
+    margin: 0.5em 100px !important;
+}
+#minrelaytxfee_id input.ui-input-text.ui-slider-input {
+    width: 170px !important;
+}
+input[type=number] {
+    width: 80px;
+}
+.ui-slider-track {
+    margin-left: 130px;
+}
+</style>
 <script type="text/javascript">
     $(document).bind("pagecreate", function () {
 					    $.mobile.ajaxEnabled = false;

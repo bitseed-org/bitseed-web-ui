@@ -1,5 +1,12 @@
 <?php
 
+//  Special note on Tor Enable and onlynet
+// 
+//          3 modes:
+// 	             1.  Tor=1, onlynet is blank line - Default - no line.  Tor and ipv4
+// 			     2.  Tor Enable = 1 and onlynet=onion - Tor only
+// 			     3.  Tor Enable = 0 - No Tor
+// 
 
 
    $fh_flag = fopen ("/home/linaro/rd_bconf_flag", "r+") or die ("Unable to open /home/linaro/rd_bconf_flag");
@@ -59,6 +66,7 @@
    
    // ----------------------------------------------------
    // Checkboxes
+   //  SPECIAL NOTE: 
    // ----------------------------------------------------
    $disablewallet_checked = "";
    $disablewallet_conf=$array_from_json['disablewallet']; 
@@ -79,7 +87,9 @@
    $onlynet_checked = "";
    $onlynet_conf=$array_from_json['onlynet']; 
    if ($onlynet_conf == 'onion') {
-       $onlynet_checked = "checked";
+       if ($listenonion_conf == 1) {
+           $onlynet_checked = "checked";
+       }
    }
    $upnp_checked = "";
    $upnp_conf=$array_from_json['upnp']; 

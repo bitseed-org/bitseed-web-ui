@@ -69,7 +69,7 @@ $params_default = array(
                 'disablewallet' => 1,
 				'autoupdate' => 1,
                 'listenonion' => 1,
-				'onlynet' => "onion",
+				// 'onlynet' => "onion",
 				'upnp' => 1,
 				'disablebackups' => 0
 				);
@@ -107,26 +107,39 @@ $params_new = array_merge($chkbox_values, $slider_array);
 //  account that the client may pass no value for any of
 //  of the passed-in parameters.  In this case, assign 
 //  them to default values.
+//
+//  This is code that is left over from when textboxes
+//  were used.  With sliders and checkboxes, there are
+//  no "" (empty) inputs - The else clause may be 
+//  taken out.
 // ------------------------------------------------------
-$valid_lines = array();
-foreach ($params_new as $key => $val) {
-    if ($params_new[$key] !== "") {
-        $valid_lines[$key] = $val;
-    } else {
-        $valid_lines[$key] = $params_default[$key];
-    }
-}
+//  params_new contains all of the values from the
+//  sliders and checkboxes.
+// ------------------------------------------------------
+// foreach ($params_new as $key => $val) {
+//    if ($params_new[$key] !== "") {
+//         $valid_lines[$key] = $val;
+//    } else {
+//         $valid_lines[$key] = $params_default[$key];
+//    }
+// }
 // echo var_dump($valid_lines);
 // Create a php array and then convert to a json object
 // before writing to the mailbox.  minrelaytxfee, which 
 // requires a floating point, 8 significant digit format,
 // needs to be handled special.
+$valid_lines = array();
 foreach ($params_new as $key => $val) {
+    $valid_lines[$key] = $val;
     if ($key == 'minrelaytxfee') {
         $valid_lines[$key] = number_format ($val, 8);
     }	
 	if ($key == 'onlynet') {
-        $valid_lines[$key] = 'onion';
+        if ($valid_lines[$key] == 1) {
+            $valid_lines[$key] = 'onion';
+	    } else {
+            $valid_lines[$key] = "";
+        }
 	}
 }
 $json_object = json_encode($valid_lines);
