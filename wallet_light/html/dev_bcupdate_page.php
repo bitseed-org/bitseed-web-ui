@@ -74,8 +74,9 @@
                             <input type="range" name="slider-1" id="slider-1" value=<?php // echo $slider_val ?> min="0" max="100" data-highlight = "true" style="border-width: 0px; display: inline-block;">
                     </div> -->
                     <div class="ui-field-contain">
-                            <label rel="tootip" title=<?php echo $minrelaytxfee_tt_content; ?> for="minrelaytxfee_id" style="width: 200px !important; border-width: 0px; display: inline-block;"><strong>Min Relay Tx Fee (.000001-.01):</strong></label><br />
-                            <input type="range" name="minrelaytxfee" id="minrelaytxfee_id" value=<?php echo $minrelaytxfee; ?> min=".00000100" max=".01" step=".000001" data-highlight = "true" style="border-width: 0px; display: inline-block;">
+<!--                            <label rel="tootip" title=<?php echo $minrelaytxfee_tt_content; ?> for="minrelaytxfee_id" style="width: 200px !important; border-width: 0px; display: inline-block;"><strong>Min Relay Tx Fee (.000001-.01):</strong></label><br /> -->
+                            <label rel="tootip" title=<?php echo $minrelaytxfee_tt_content; ?> for="minrelaytxfee_id" style="width: 200px !important; border-width: 0px; display: inline-block;"><strong>Min Relay Tx Fee (Satoshi) (1000 - 50000):</strong></label><br />
+                            <input type="range" name="minrelaytxfee" id="minrelaytxfee_id" value=<?php echo $minrelaytxfee; ?> min="1000" max="50000" step="1" data-highlight = "true" style="border-width: 0px; display: inline-block;">
                     </div>
                     <div class="ui-field-contain">
                             <label rel="tootip" title=<?php echo $maxuploadtarget_tt_content; ?> for="maxuploadtarget_id" style="width: 200px !important; border-width: 0px; display: inline-block;"><strong>Daily Upload Limit (MB) (144-5000):</strong></label><br />

@@ -132,7 +132,12 @@ $valid_lines = array();
 foreach ($params_new as $key => $val) {
     $valid_lines[$key] = $val;
     if ($key == 'minrelaytxfee') {
-        $valid_lines[$key] = number_format ($val, 8);
+        // $valid_lines[$key] = number_format ($val, 8);
+		// Convery from Satoshi to BTC 
+        // BTC = m * 1e-8; m = number of satoshis; format:float
+        $temp_val = floatval($val) * .00000001;
+        $valid_lines[$key] = number_format($temp_val, 8); 
+echo var_dump($valid_lines);
     }	
 	if ($key == 'onlynet') {
         if ($valid_lines[$key] == 1) {

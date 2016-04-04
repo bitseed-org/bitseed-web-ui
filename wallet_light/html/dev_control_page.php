@@ -6,29 +6,38 @@
 	    </div>
 	   
         <div class="ui-content">
-		 <span class="status_title">Status</span><br />
+		 <span class="status_title">Status</span><br / >
 		 <span class="status_text" id="device_status"></span>
             <hr class="hr_secondary_wallet">
+
+			<! -----------------------------------------------------------------------
+		       Remove update flag updateflag and all associated funtionality	
+			   ---------------------------------------------------------------------->
             <?php 
 			    // --------------------------------------------------------------------------------------
                 // Open Updateflag to see if there is a '1'.  If there is, then write a message to the
                 // user that new software is available.    
 			    // We should figure out a more graceful way of recoveriing from a failed open.
 			    // --------------------------------------------------------------------------------------
-                $fh=fopen("/home/linaro/updateflag", "r") or die ("Unable to open updateflag file");
-                $line = fgets($fh);
-                if (preg_match("/^1/", $line)) {
-                    print "<h3>Software updates are available</h3>";
-                }
-                fclose($fh);
+                // $fh=fopen("/home/linaro/updateflag", "r") or die ("Unable to open updateflag file");
+                // $line = fgets($fh);
+                // if (preg_match("/^1/", $line)) {
+                //     print "<h3>Software updates are available</h3>";
+                // }
+                // fclose($fh);
             ?>
          
 			<br />
-            <div data-role="controlgroup" data-type="horizontal" style="text-align: left;">
+			<! -----------------------------------------------------------------------
+		       Remove update flag updateflag and all associated funtionality	
+			   ---------------------------------------------------------------------->
+			<!-- Update Software iss going away.  Also, the logic above that checks if 
+		         the Update Software flag /home/linaro/updateflag -->	
+            <!-- <div data-role="controlgroup" data-type="horizontal" style="text-align: left;">
                 <input type="button" value="Update software" id="update-software" onClick="bitcoinControl(this);" />
-	        </div>
+	        </div> 
             <!-- <hr class="hr_secondary_wallet"> -->
-			<br />
+			<!-- <br /> -->
             <div data-role="controlgroup" data-type="horizontal" style="text-align: left;">
                 <input type="button" value=" Restart Bitcoin " id="bitcoin_restart" onClick="bitcoinControl(this);" />
 		    </div>
