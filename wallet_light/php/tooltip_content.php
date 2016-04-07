@@ -6,17 +6,17 @@
 $disablewallet_tooltip = "Bitseed is not indended for storage of bitcoins. If you decide to enable the wallet responsibe for making sure the wallet is properly backed-up and secure.";
 
 // Auto Updates
-$autoupdate_tooltip = "Auto Updates Help";
+$autoupdate_tooltip = "When enabled, software updates from Bitseed will be automatically installed";
 
 // Tor Enable
-$listenonion_tooltip = "Bitcoin will relay blocks and transactions over both the IPv4 clear net and the Tor network. Transactions are not relayed privately, but the node will act as a bridge for bitcoin.";
+$listenonion_tooltip = "Bitcoin will relay blocks and transactions over the Tor network in addition to the normal IPv4 network.";
 
 
 // Tor Only Mode
-$onlynet_tooltip = "When enabled, bitcoin core will operate exclusively on Tor network";
+$onlynet_tooltip = "When enabled, bitcoin core will operate exclusively on Tor network. This is the most private option";
 
 // Universal Plug and Play
-$upnp_tooltip = "Universal Plug and Play Help";
+$upnp_tooltip = Transactions with a fee below this amount will not be relayed by this node.;
 
 // Disable Blockchain Backups
 $disablebackups_tooltip = "Frees up disk space by disabling the blockchain backup.";
