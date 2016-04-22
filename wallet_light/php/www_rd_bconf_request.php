@@ -68,11 +68,11 @@
    // Checkboxes
    //  SPECIAL NOTE: 
    // ----------------------------------------------------
-   $disablewallet_checked = "";
-   $disablewallet_conf=$array_from_json['disablewallet']; 
-   if ($disablewallet_conf == 1) {
-       $disablewallet_checked = "checked";
-   }
+#   $disablewallet_checked = "";
+#   $disablewallet_conf=$array_from_json['disablewallet']; 
+#   if ($disablewallet_conf == 1) {
+#       $disablewallet_checked = "checked";
+#   }
 
    $updateflag_checked = "";
    $updateflag_conf=$array_from_json['autoupdate']; 
@@ -97,7 +97,7 @@
        $upnp_checked = "checked";
    }
    $backupflag_checked = "";
-   $backupflag_conf=$array_from_json['disablebackups']; 
+   $backupflag_conf=$array_from_json['enablebackups']; 
    if ($backupflag_conf == 1) {
        $backupflag_checked = "checked";
    }

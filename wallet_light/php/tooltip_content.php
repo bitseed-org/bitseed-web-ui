@@ -6,7 +6,7 @@
 // --------------------------------------------------------------------------
 
 // Disable Wallet
-$disablewallet_tooltip = "Disable Wallet Help";
+// $disablewallet_tooltip = "Disable Wallet Help";
 
 // Auto Updates
 $autoupdate_tooltip = "Auto Updates Help";
@@ -21,7 +21,7 @@ $onlynet_tooltip = "Tor Only Mode Help";
 $upnp_tooltip = "Universal Plug and Play Help";
 
 // Disable Blockchain Backups
-$disablebackups_tooltip = "Disable Blockchain Backups Help";
+$enablebackups_tooltip = "Enable Blockchain Backups Help";
 
 // Min Relay Tx Fee
 $minrelaytxfee_tooltip = "Min Relay Tx Fee Help";
@@ -36,7 +36,7 @@ $maxmempool_tooltip = "Mempool Size Limit Help";
 // Form finished content to place into tooltip.  
 // DO NOT WRITE BELOW THIS LINE.
 // ------------------------------------------------------------
-$disablewallet_tt_content ="'" . $disablewallet_tooltip . "'";
+// $disablewallet_tt_content ="'" . $disablewallet_tooltip . "'";
 $autoupdate_tt_content ="'" . $autoupdate_tooltip . "'";
 $listenonion_tt_content ="'" . $listenonion_tooltip . "'";
 $onlynet_tt_content ="'" . $onlynet_tooltip . "'";

@@ -21,10 +21,10 @@
              <form name="bitcoinconf_form" id="bitcoinconf_form" method="post">
 		        <fieldset class="ui-field-contain">
 					<div>
-                        <?php $disablewallet__tt_content = "A lengthier string"; ?>
+                        <?php // $disablewallet__tt_content = "A lengthier string"; ?>
 					    <!-- Disable Wallet checkbox -->
-					    <input type="checkbox" name="bitcoin_conf_chkbox[]" id="disableWallet_id" value="disablewallet" <?php echo $disablewallet_checked ?> />
-					    <label rel="tootip" title=<?php echo $disablewallet_tt_content; ?> for="disableWallet_id">Disable Wallet</label>
+					    <!-- <input type="checkbox" name="bitcoin_conf_chkbox[]" id="disableWallet_id" value="disablewallet" <?php // echo $disablewallet_checked ?> />
+					    <label rel="tootip" title=<?php // echo $disablewallet_tt_content; ?> for="disableWallet_id">Disable Wallet</label> -->
 
 					    <!-- Auto Updates checkbox -->
 					    <input type="checkbox" name="bitcoin_conf_chkbox[]" id="autoupdate_id" value="autoupdate" <?php echo $updateflag_checked; ?>/>
@@ -32,7 +32,7 @@
 
 					    <!-- Tor On/Off checkbox -->
 					    <input type="checkbox" name="bitcoin_conf_chkbox[]" id="listenonion_id" value="listenonion" <?php echo $listenonion_checked; ?> />
-					    <label rel="tootip" title=<?php echo $listenonion_tt_content; ?> for="listenonion_id">Tor Enabled</label>
+					    <label rel="tootip" title=<?php echo $listenonion_tt_content; ?> for="listenonion_id">Tor Enable</label>
 						
 					    <!-- Tor Only checkbox -->
 					    <input type="checkbox" name="bitcoin_conf_chkbox[]" id="onlynet_id" value="onlynet" <?php echo $onlynet_checked; ?> />
@@ -40,11 +40,11 @@
 						
 					    <!-- Universal Plug and Play checkbox -->
 					    <input type="checkbox" name="bitcoin_conf_chkbox[]" id="upnp_id" value="upnp" <?php echo $upnp_checked; ?> />
-					    <label rel="tootip" title=<?php echo $upnp_tt_content; ?> for="upnp_id">UPnP Enabled</label>
+					    <label rel="tootip" title=<?php echo $upnp_tt_content; ?> for="upnp_id">UPnP Enable</label>
 
 					    <!-- Disable Blockchain Backups checkbox -->
-					    <input type="checkbox" name="bitcoin_conf_chkbox[]" id="disablebackups_id" value="disablebackups" <?php echo $backupflag_checked; ?> />
-					    <label rel="tootip" title=<?php echo $disablebackups_tt_content; ?> for="disablebackups_id">Disable Blockchain Backups</label>
+					    <input type="checkbox" name="bitcoin_conf_chkbox[]" id="enablebackups_id" value="enablebackups" <?php echo $backupflag_checked; ?> />
+					    <label rel="tootip" title=<?php echo $disablebackups_tt_content; ?> for="enablebackups_id">Blockchain Backup Enable</label>
 
 				    </div>
 					<!-- <div class="ui-input-text" style="width: 160px !important; border-width: 0px; display: inline-block;">

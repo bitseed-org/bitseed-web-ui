@@ -106,10 +106,10 @@ CONTROLS Page
 <!-------------------------------------------------
 Help Page
 ---------------------------------------------------->
-<div data-role="page" id="help" data-theme="a">
+<div data-role="page" id="about" data-theme="a">
     <?php include "html/menu.html"; ?>
     <?php include "html/header.html"; ?>
-    <?php include "html/help_page.php"; ?>
+    <?php include "html/about_page.php"; ?>
 </div>
 
 <!-------------------------------------------------

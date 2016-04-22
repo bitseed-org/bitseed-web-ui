@@ -1,8 +1,8 @@
 <?php
 $HOME = "/home/linaro";
 
-$full_chkbox_array = ['disablewallet', 'autoupdate', 'listenonion', 
-		              'onlynet', 'upnp', 'disablebackups'];
+$full_chkbox_array = ['autoupdate', 'listenonion', 
+		              'onlynet', 'upnp', 'enablebackups'];
 
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 // EXTRACT VALUES FROM UI BCUPDATE FORM SUBMIT
@@ -66,12 +66,11 @@ $params_default = array(
                 'minrelaytxfee' => 0.00001000,
 				'maxuploadtarget' => 100000,
 				'maxmempool' => 300,
-                'disablewallet' => 1,
 				'autoupdate' => 1,
                 'listenonion' => 1,
 				// 'onlynet' => "onion",
 				'upnp' => 1,
-				'disablebackups' => 0
+				'enablebackups' => 0
 				);
 
 // ----------------------------------------------------------
