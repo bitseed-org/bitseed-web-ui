@@ -18,9 +18,14 @@ import re
 
 def parse_conf():
 
+# fh = open("./test", "w")
+#     fh.write("Made it\n") 
+#     fh.close()
 	# Bitcoin configuration defaults
+#    btc_dict_val_defaults = { "minrelaytxfee" : .00001000, "maxuploadtarget" : 1000, "maxmempool" : 300,
+#                         "disablewallet": 1, "listenonion" : 1, "onlynet" : "onion", "upnp" : 1 }
     btc_dict_val_defaults = { "minrelaytxfee" : .00001000, "maxuploadtarget" : 1000, "maxmempool" : 300,
-                         "disablewallet": 1, "listenonion" : 1, "onlynet" : 1, "upnp" : 1 }
+                         "disablewallet": 1, "listenonion" : 1,  "upnp" : 1 }
 
 	# Bitseed configuration defaults
     bts_dict_val_defaults = { "autoupdate" : 1, "disablebackups" : 0 }
@@ -64,24 +69,28 @@ def parse_conf():
     # ------------------------------------------------------------------
     dict_params={}
     params_list = ["minrelaytxfee", "maxuploadtarget", "maxmempool", 
-	               "disablewallet", "autoupdate", "listenonion", "onlynet", 
+	               "disablewallet", "autoupdate", "listenonion", 
                    "upnp", "disablebackups"] 
 
     for line in keep_lines:
         key, value = line.split("=")	    
         if key in params_list: 
             dict_params[key] = value
-
-    # ------------------------------------------------------------------
+        if key == "onlynet":
+            dict_params[key] = value
+        if key == "minrelaytxfee":
+            # Convert the bitcoin value to Satoshis. 
+            # Convert the result to an integer.
+            dict_params[key] = int(float(value) * 100000000.0)
+# print "dict_params['minrelaytxfee'] in satoshis is ", dict_params["minrelaytxfee"]
     # If the parameters of interest hare not in the bitcoin.conf file,
     # then write the default value corresponding to that parameter into
 	# rd_bconf_mbox. 	
     # ------------------------------------------------------------------
     # Make a list of the keys found in the .bitcoin/bitcoin.conf file.  
     for param in params_list:
-        if param not in params_list:
-            dict_params[key] = btc_dict_val_defaults[param]
-		
+        if param not in dict_params:
+            dict_params[param] = btc_dict_val_defaults[param]
     json_params_object = json.dumps(dict_params)
     return json_params_object
 

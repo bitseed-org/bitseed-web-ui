@@ -22,7 +22,7 @@ bts_params_list = ["autoupdate", "disablebackups"]
 # The json file below has parameters from both bitcoin.conf and bitseed.conf
 json_data=open('wr_bconf_mbox')
 wr_mbox_dict_params = json.load(json_data)
-param_keys = wr_mbox_dict_params.keys()
+# param_keys = wr_mbox_dict_params.keys()
 
 # Split wr_mbox_dict_params into btc_mbox_params and bts_mbox_params
 btc_mbox_params = {}
@@ -49,13 +49,30 @@ fh.close()
 # ----------------------------------------------------------
 bitcoin_conf_dict = {}
 bitseed_conf_dict = {}
+
+# --------------------------------------------------------
+# Replace the line that has 'onlynet' in it and overwrite 
+# that line with a commented or uncommented line, dictated
+# by the value passed in from the UI
+# --------------------------------------------------------
+print btc_mbox_params
+if (btc_mbox_params['onlynet'] == "") or (btc_mbox_params['listenonion'] == '0'):
+    temp_str = "#onlynet=onion\n"
+else:
+    temp_str = "onlynet=onion"
+
+for i in range(len(btc_lines)):
+    if 'onlynet=onion' in btc_lines[i]: 
+        btc_lines[i]=temp_str
+        break
+# --------------------------------------------------------
+
 for line in btc_lines:
 
     # Skip blank lines
     temp_line = line.strip()
     if temp_line:
 
-		# Skip comments
         if temp_line[0] == '#':
             pass
         else:

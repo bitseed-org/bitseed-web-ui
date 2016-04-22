@@ -7,30 +7,37 @@
 
 // Disable Wallet
 // $disablewallet_tooltip = "Disable Wallet Help";
+// $disablewallet_tooltip = "Bitseed is not intended for storage of bitcoins. If you decide to enable the wallet responsibe for making sure the wallet is properly backed-up and secure.";
 
 // Auto Updates
-$autoupdate_tooltip = "Auto Updates Help";
+$autoupdate_tooltip = "When enabled, software updates from Bitseed will be automatically installed";
 
 // Tor Enable
-$listenonion_tooltip = "Tor Help";
+$listenonion_tooltip = "Bitcoin will relay blocks and transactions over the Tor network in addition to the normal IPv4 network.";
+
 
 // Tor Only Mode
-$onlynet_tooltip = "Tor Only Mode Help";
+$onlynet_tooltip = "When enabled, bitcoin core will operate exclusively on Tor network. This is the most private option";
 
 // Universal Plug and Play
-$upnp_tooltip = "Universal Plug and Play Help";
+$upnp_tooltip = "UPnP lets bitcoin open port 8333 on your router to allow incoming connections from other nodes.  This is recomended and will enable more than 8 peer connections";
+
 
 // Disable Blockchain Backups
+<<<<<<< HEAD
 $enablebackups_tooltip = "Enable Blockchain Backups Help";
+=======
+$disablebackups_tooltip = "Frees up disk space by disabling the blockchain backup.";
+>>>>>>> 7e3d06999786165a56e965b9ab9a79f73474346c
 
 // Min Relay Tx Fee
-$minrelaytxfee_tooltip = "Min Relay Tx Fee Help";
+$minrelaytxfee_tooltip = "Transactions with a fee below this amount will not be relayed by this node.";
 
 // Daily Upload Limit
-$maxuploadtarget_tooltip = "Daily Upload Limit Help";
+$maxuploadtarget_tooltip = "Limits how much blockchain data this node will upload to other nodes each day";
 
 // Mempool Size Limit
-$maxmempool_tooltip = "Mempool Size Limit Help";
+$maxmempool_tooltip = "Sets the amount of RAM memory to be used for storing unconfirmed transations (the mempool)";
 
 // ------------------------------------------------------------
 // Form finished content to place into tooltip.  
