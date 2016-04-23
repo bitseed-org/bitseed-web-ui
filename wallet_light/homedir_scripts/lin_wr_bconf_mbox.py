@@ -19,6 +19,7 @@ import re
 btc_params_list = ["minrelaytxfee", "maxuploadtarget", "maxmempool", 
                    "listenonion", "onlynet", "upnp"] 
 
+# bts_params_list = ["autoupdate", "disablebackups"] 
 bts_params_list = ["autoupdate", "disablebackups"] 
 
 # The json file below has parameters from both bitcoin.conf and bitseed.conf
@@ -126,7 +127,7 @@ for mbox_key in bitseed_conf_dict:
                 else:
                     line_key, line_value = line.split("=") 
 
-                    # replace value in bitcoin.conf
+                    # replace value in bitseed.conf
                     if line_key == mbox_key:
                         if line_key in bts_mbox_params:
                             temp_str = mbox_key + "=" + str(bts_mbox_params[mbox_key]) + "\n"
@@ -143,12 +144,12 @@ subprocess.call (["cp", "./.bitseed/bitseed.conf",
 fh = open("./.bitcoin/bitcoin.conf", "w"); 
 for i in range(len(btc_lines)):
     fh.write(btc_lines[i])
-fh.write("\n")
+# fh.write("\n")
 fh.close()
 
 # Write out the new bitseed.conf file.
 fh = open("./.bitseed/bitseed.conf", "w"); 
 for i in range(len(bts_lines)):
     fh.write(bts_lines[i])
-fh.write("\n")
+# fh.write("\n")
 fh.close()
