@@ -24,11 +24,8 @@ $upnp_tooltip = "UPnP lets bitcoin open port 8333 on your router to allow incomi
 
 
 // Disable Blockchain Backups
-<<<<<<< HEAD
-$enablebackups_tooltip = "Enable Blockchain Backups Help";
-=======
+// $enablebackups_tooltip = "Enable Blockchain Backups Help";
 $disablebackups_tooltip = "Frees up disk space by disabling the blockchain backup.";
->>>>>>> 7e3d06999786165a56e965b9ab9a79f73474346c
 
 // Min Relay Tx Fee
 $minrelaytxfee_tooltip = "Transactions with a fee below this amount will not be relayed by this node.";
