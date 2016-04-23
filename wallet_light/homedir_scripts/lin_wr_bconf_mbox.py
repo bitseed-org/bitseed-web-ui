@@ -14,8 +14,10 @@ import subprocess
 import json
 import re
 
+# btc_params_list = ["minrelaytxfee", "maxuploadtarget", "maxmempool", 
+#                    "disablewallet", "listenonion", "onlynet", "upnp"] 
 btc_params_list = ["minrelaytxfee", "maxuploadtarget", "maxmempool", 
-                   "disablewallet", "listenonion", "onlynet", "upnp"] 
+                   "listenonion", "onlynet", "upnp"] 
 
 bts_params_list = ["autoupdate", "disablebackups"] 
 

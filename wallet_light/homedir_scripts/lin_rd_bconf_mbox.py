@@ -24,11 +24,13 @@ def parse_conf():
 	# Bitcoin configuration defaults
 #    btc_dict_val_defaults = { "minrelaytxfee" : .00001000, "maxuploadtarget" : 1000, "maxmempool" : 300,
 #                         "disablewallet": 1, "listenonion" : 1, "onlynet" : "onion", "upnp" : 1 }
+#     btc_dict_val_defaults = { "minrelaytxfee" : .00001000, "maxuploadtarget" : 1000, "maxmempool" : 300,
+#                         "disablewallet": 1, "listenonion" : 1,  "upnp" : 1 }
     btc_dict_val_defaults = { "minrelaytxfee" : .00001000, "maxuploadtarget" : 1000, "maxmempool" : 300,
-                         "disablewallet": 1, "listenonion" : 1,  "upnp" : 1 }
+                        "listenonion" : 1,  "upnp" : 1 }
 
 	# Bitseed configuration defaults
-    bts_dict_val_defaults = { "autoupdate" : 1, "disablebackups" : 0 }
+    bts_dict_val_defaults = { "autoupdate" : 1, "enablebackups" : 0 }
 
     # ---------------------------------------------------------------------
     #  Read the required values out of .bitcoin/bitcoin.conf
@@ -68,9 +70,12 @@ def parse_conf():
 	# used to populate the value fields of the input text boxes  
     # ------------------------------------------------------------------
     dict_params={}
+#    params_list = ["minrelaytxfee", "maxuploadtarget", "maxmempool", 
+#	               "disablewallet", "autoupdate", "listenonion", 
+#                   "upnp", "disablebackups"] 
     params_list = ["minrelaytxfee", "maxuploadtarget", "maxmempool", 
-	               "disablewallet", "autoupdate", "listenonion", 
-                   "upnp", "disablebackups"] 
+	               "autoupdate", "listenonion", 
+                   "upnp", "enablebackups"] 
 
     for line in keep_lines:
         key, value = line.split("=")	    
