@@ -97,8 +97,12 @@
        $upnp_checked = "checked";
    }
    $backupflag_checked = "";
-   $backupflag_conf=$array_from_json['enablebackups']; 
-   if ($backupflag_conf == 1) {
+#   $backupflag_conf=$array_from_json['enablebackups']; 
+   $backupflag_conf=$array_from_json['disablebackups']; 
+
+# Invert the polarity as the UI uses 'Enable' nomenclature
+# if ($backupflag_conf == 1) {
+    if ($backupflag_conf == 0) {
        $backupflag_checked = "checked";
    }
    // Write a '0' to rd_bconf_flag

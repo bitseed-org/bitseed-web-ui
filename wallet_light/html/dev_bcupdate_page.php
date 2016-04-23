@@ -43,8 +43,8 @@
 					    <label rel="tootip" title=<?php echo $upnp_tt_content; ?> for="upnp_id">UPnP Enable</label>
 
 					    <!-- Disable Blockchain Backups checkbox -->
-					    <input type="checkbox" name="bitcoin_conf_chkbox[]" id="enablebackups_id" value="enablebackups" <?php echo $backupflag_checked; ?> />
-					    <label rel="tootip" title=<?php echo $disablebackups_tt_content; ?> for="enablebackups_id">Blockchain Backup Enable</label>
+					    <input type="checkbox" name="bitcoin_conf_chkbox[]" id="disablebackups_id" value="disablebackups" <?php echo $backupflag_checked; ?> />
+					    <label rel="tootip" title=<?php echo $disablebackups_tt_content; ?> for="disablebackups_id">Blockchain Backup Enable</label>
 
 				    </div>
 					<!-- <div class="ui-input-text" style="width: 160px !important; border-width: 0px; display: inline-block;">

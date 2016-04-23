@@ -2,7 +2,7 @@
 $HOME = "/home/linaro";
 
 $full_chkbox_array = ['autoupdate', 'listenonion', 
-		              'onlynet', 'upnp', 'enablebackups'];
+		              'onlynet', 'upnp', 'disablebackups'];
 
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 // EXTRACT VALUES FROM UI BCUPDATE FORM SUBMIT
@@ -70,7 +70,7 @@ $params_default = array(
                 'listenonion' => 1,
 				// 'onlynet' => "onion",
 				'upnp' => 1,
-				'enablebackups' => 0
+				'disablebackups' => 0
 				);
 
 // ----------------------------------------------------------
@@ -145,6 +145,14 @@ foreach ($params_new as $key => $val) {
             $valid_lines[$key] = "";
         }
 	}
+	// Invert the value for disable backups
+	if ($key == 'disablebackups') {
+        if($valid_lines[$key] == 0) {  
+            $valid_lines[$key] = 1; 
+        } else {
+            $valid_lines[$key] = 0;
+        }
+    }
 }
 $json_object = json_encode($valid_lines);
 // echo var_dump($json_object);
