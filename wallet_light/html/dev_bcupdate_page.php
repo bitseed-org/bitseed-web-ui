@@ -86,13 +86,20 @@
                             <label rel="tootip" title=<?php echo $maxmempool_tt_content; ?> for="maxmempool_id" style="width: 200px !important; border-width: 0px; display: inline-block;"><strong>Mempool Size Limit (100-500):</strong></label><br />
                             <input type="range" name="maxmempool" id="maxmempool_id" value=<?php echo $maxmempool; ?> min="100" max="500" data-highlight = "true" style="border-width: 0px; display: inline-block;">
                     </div>
-					<br /><br />
+					<br />
+					Once bitcoin.conf is updated, a bitcoin restart must be initiated for these changes to take effect.  Wait 15 minutes after pressing "Restart Bitcoin" to resume normal operations.
+					<br />
+					<br />
 
                     <div data-role="controlgroup" data-type="horizontal" style="text-align: center;">
                         <input type="submit" name="submit" value="Update bitcoin.conf" id="update-bitcoin-config" />
 	                </div>	
 			   </fieldset>
 		    </form>
+           <div data-role="controlgroup" data-type="horizontal" style="text-align: center;">
+                <input type="button" value=" Restart Bitcoin " id="bitcoin_restart_conf" onClick="bitcoinControl(this);" />
+		    </div>
+
             <!--- <hr class="hr_secondary_wallet"> -->
             <?php 
                 // Open Updateflag to see if there is a '1'.  If there is, then write a message to the

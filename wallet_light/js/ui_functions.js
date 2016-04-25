@@ -11,6 +11,9 @@ function bitcoinControl(e) {
           case "device_shutdown":
               r = confirm("Are you sure you want to shutdown the device?"); 	
               break;
+          case "bitcoin_restart_conf":
+              r = confirm("Are you sure you want to restart bitcoin?");
+              break;
        }
        if (r == false) {
            return;
