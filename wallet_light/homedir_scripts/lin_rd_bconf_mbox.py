@@ -30,7 +30,7 @@ def parse_conf():
                         "listenonion" : 1,  "upnp" : 1 }
 
 	# Bitseed configuration defaults
-    bts_dict_val_defaults = { "autoupdate" : 1, "enablebackups" : 0 }
+    bts_dict_val_defaults = { "autoupdate" : 1, "disablebackups" : 0 }
 
     # ---------------------------------------------------------------------
     #  Read the required values out of .bitcoin/bitcoin.conf
@@ -75,7 +75,7 @@ def parse_conf():
 #                   "upnp", "disablebackups"] 
     params_list = ["minrelaytxfee", "maxuploadtarget", "maxmempool", 
 	               "autoupdate", "listenonion", 
-                   "upnp", "enablebackups"] 
+                   "upnp", "disablebackups"] 
 
     for line in keep_lines:
         key, value = line.split("=")	    
