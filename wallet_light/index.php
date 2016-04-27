@@ -104,7 +104,7 @@ CONTROLS Page
 </div>
 
 <!-------------------------------------------------
-Help Page
+About Page
 ---------------------------------------------------->
 <div data-role="page" id="about" data-theme="a">
     <?php include "html/menu.html"; ?>
@@ -115,11 +115,11 @@ Help Page
 <!-------------------------------------------------
 FAQ Page
 ---------------------------------------------------->
-<div data-role="page" id="faq" data-theme="a">
-    <?php include "html/menu.html"; ?>
-    <?php include "html/header.html"; ?>
-    <?php include "html/faq_page.php"; ?>
-</div>
+<!-- <div data-role="page" id="faq" data-theme="a"> -->
+    <?php // include "html/menu.html"; ?>
+    <?php // include "html/header.html"; ?>
+    <?php // include "html/faq_page.php"; ?>
+<!-- </div> -->
 
 <script>
 // -----------------------------------------------------------------
