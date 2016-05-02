@@ -1,14 +1,15 @@
 <div data-role="content" class="content">
 
 	    <div style="margin-top:15px;margin-left:5px;">
-		  <span id="span_WalletHeaderText">Bitcoin & Device Control</span>
+		  <span id="span_WalletHeaderText">Power</span>
 	   	  <hr class="hr_wallet">
 	    </div>
 	   
-        <div class="ui-content">
+<!--        <div class="ui-content">
 		 <span class="status_title">Status</span><br / >
 		 <span class="status_text" id="device_status"></span>
             <hr class="hr_secondary_wallet">
+        </div> -->
 
 			<! -----------------------------------------------------------------------
 		       Remove update flag updateflag and all associated funtionality	
@@ -38,12 +39,12 @@
 	        </div> 
             <!-- <hr class="hr_secondary_wallet"> -->
 			<!-- <br /> -->
-            <div data-role="controlgroup" data-type="horizontal" style="text-align: left;">
+            <!-- <div data-role="controlgroup" data-type="horizontal" style="text-align: left;">
                 <input type="button" value=" Restart Bitcoin " id="bitcoin_restart" onClick="bitcoinControl(this);" />
-		    </div>
-			<br />
+		    </div> -->
+			<!-- <br /> -->
             <div data-role="controlgroup" data-type="horizontal" style="text-align: left;">
-			    <input type="button" value="Shutdown Bitseed" id="device_shutdown" onClick="bitcoinControl(this);" />
+			    <input type="button" value="Powerdown Bitseed Device" id="device_shutdown" onClick="bitcoinControl(this);" />
 		    </div>
-	    </div>
+	    <!-- </div> -->
   </div> 

@@ -9,14 +9,14 @@
 	<div data-role="content" class="content">
 
 	    <div style="margin-top:15px;margin-left:5px;">
-		  <span id="span_WalletHeaderText">Bitcoin Configuration</span>
+		  <span id="span_WalletHeaderText">Settings</span>
 	   	  <hr class="hr_wallet">
 	    </div>
 	   
         <div class="ui-content">
-		 <span class="status_title">Status</span><br />
-		 <span class="status_text" id="bitcoin_status"></span>
-            <hr class="hr_secondary_wallet">
+		 <!-- <span class="status_title">Status</span><br /> -->
+		   <span class="status_text" id="bitcoin_status"></span> 
+            <!-- <hr class="hr_secondary_wallet"> -->
              <!-- <form name="bitcoinconf_form" id="bitcoinconf_form" action="php/www_wr_bconf_mbox.php" method="post"> -->
              <form name="bitcoinconf_form" id="bitcoinconf_form" method="post">
 		        <fieldset class="ui-field-contain">
@@ -75,7 +75,7 @@
                     </div> -->
                     <div class="ui-field-contain">
 <!--                            <label rel="tootip" title=<?php echo $minrelaytxfee_tt_content; ?> for="minrelaytxfee_id" style="width: 200px !important; border-width: 0px; display: inline-block;"><strong>Min Relay Tx Fee (.000001-.01):</strong></label><br /> -->
-                            <label rel="tootip" title=<?php echo $minrelaytxfee_tt_content; ?> for="minrelaytxfee_id" style="width: 200px !important; border-width: 0px; display: inline-block;"><strong>Min Relay Tx Fee (Satoshi) (1000 - 50000):</strong></label><br />
+                            <label rel="tootip" title=<?php echo $minrelaytxfee_tt_content; ?> for="minrelaytxfee_id" style="width: 200px !important; border-width: 0px; display: inline-block;"><strong>Min Relay Tx Fee (satoshis) (1000 - 50000):</strong></label><br />
                             <input type="range" name="minrelaytxfee" id="minrelaytxfee_id" value=<?php echo $minrelaytxfee; ?> min="1000" max="50000" step="1" data-highlight = "true" style="border-width: 0px; display: inline-block;">
                     </div>
                     <div class="ui-field-contain">
@@ -83,7 +83,7 @@
                             <input type="range" name="maxuploadtarget" id="maxuploadtarget_id" value=<?php echo $maxuploadtarget; ?> min="144" max="5000" data-highlight = "true" style="border-width: 0px; display: inline-block;">
                     </div>
                     <div class="ui-field-contain">
-                            <label rel="tootip" title=<?php echo $maxmempool_tt_content; ?> for="maxmempool_id" style="width: 200px !important; border-width: 0px; display: inline-block;"><strong>Mempool Size Limit (100-500):</strong></label><br />
+                            <label rel="tootip" title=<?php echo $maxmempool_tt_content; ?> for="maxmempool_id" style="width: 200px !important; border-width: 0px; display: inline-block;"><strong>Mempool Size Limit (MB) (100-500):</strong></label><br />
                             <input type="range" name="maxmempool" id="maxmempool_id" value=<?php echo $maxmempool; ?> min="100" max="500" data-highlight = "true" style="border-width: 0px; display: inline-block;">
                     </div>
 					<br />
