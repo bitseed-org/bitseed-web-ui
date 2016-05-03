@@ -89,12 +89,12 @@ fclose ($file_logger);
         </div>
     </div>
 
-    <div class="div_WalletOverview">
+<!--    <div class="div_WalletOverview">
         <div class="ui-grid-a">
             <span class="primary">Donate Bitcoin:</span>
             <span class="secondary_light_donate"><?php print $address; ?>&nbsp;</span>
         </div>
-    </div>
+    </div> -->
 
 </div><!-- content -->
 
