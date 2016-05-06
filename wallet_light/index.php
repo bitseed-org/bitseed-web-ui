@@ -4,7 +4,6 @@ require('php/phpbitadmin.class.php');
 include('php/tooltip_content.php');
 include('php/init_ui_vars.php'); 
 include('php/www_rd_bconf_request.php'); 
-// include "php/populate_bitnodes_reg.php";
 ?>
 
 <!DOCTYPE html>
@@ -13,12 +12,17 @@ include('php/www_rd_bconf_request.php');
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bitcoin Node</title>
-<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+
+<!-- jQuery CDNs --> 
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+<!-- UI Support files -->
 <link rel="stylesheet" href="css/m_phpbitadmin.css" />
 <link rel="stylesheet" href="css/tooltip.css" />
-<script src="js/jquery-1.11.1.min.js"></script>
-<script src="js/jquery.mobile-1.4.5.min.js"></script>
 <script src="js/ui_functions.js"></script>
+
 <style>
 #minrelaytxfee_id .ui-rangeslider-sliders {
     margin: 0.5em 100px !important;
@@ -66,24 +70,6 @@ DEVICE STATUS Page
    <?php include "html/dev_status_page.php"; ?>
 </div>
 
-<!-------------------------------------------------
-BITNODES Page
----------------------------------------------------->
-<!-- <div data-role="page" id="bitnodes" data-theme="a"> -->
-    <?php // include "html/menu.html"; ?>
-    <?php // include "html/header.html"; ?>
-    <?php // include "html/bitnodes_page.php"; ?>
-<!-- </div> -->
-
-
-<!-------------------------------------------------
-BITNODES Registration Page
----------------------------------------------------->
-<!-- <div data-role="page" id="bitnodesreg" data-theme="a"> -->
-    <?php // include "html/menu.html"; ?>
-    <?php // include "html/header.html"; ?>
-   <?php // include "html/bitnodes_reg_page.php"; ?>
-<!-- </div> --> 
 
 <!-------------------------------------------------
 Bitcoin Configuration Page
@@ -111,15 +97,6 @@ About Page
     <?php include "html/header.html"; ?>
     <?php include "html/about_page.php"; ?>
 </div>
-
-<!-------------------------------------------------
-FAQ Page
----------------------------------------------------->
-<!-- <div data-role="page" id="faq" data-theme="a"> -->
-    <?php // include "html/menu.html"; ?>
-    <?php // include "html/header.html"; ?>
-    <?php // include "html/faq_page.php"; ?>
-<!-- </div> -->
 
 <script>
 // -----------------------------------------------------------------

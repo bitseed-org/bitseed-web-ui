@@ -1,5 +1,3 @@
-
-
 <?php
 $file_logger = fopen ("address.log", "w");
 fwrite ($file_logger, "address=$address\n");
