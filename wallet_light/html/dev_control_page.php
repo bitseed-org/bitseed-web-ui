@@ -43,7 +43,7 @@
                 <input type="button" value=" Restart Bitcoin " id="bitcoin_restart" onClick="bitcoinControl(this);" />
 		    </div> -->
 			<!-- <br /> -->
-            <div data-role="controlgroup" data-type="horizontal" style="text-align: left;">
+            <div data-role="controlgroup" data-type="horizontal" style="text-align: center;">
 			    <input type="button" value="Powerdown Bitseed Device" id="device_shutdown" onClick="bitcoinControl(this);" />
 		    </div>
 	    <!-- </div> -->

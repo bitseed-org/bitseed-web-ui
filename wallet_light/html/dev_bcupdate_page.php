@@ -87,12 +87,12 @@
                             <input type="range" name="maxmempool" id="maxmempool_id" value=<?php echo $maxmempool; ?> min="100" max="500" data-highlight = "true" style="border-width: 0px; display: inline-block;">
                     </div>
 					<br />
-					Once bitcoin.conf is updated, a bitcoin restart must be initiated for these changes to take effect.  Wait 15 minutes after pressing "Restart Bitcoin" to resume normal operations.
+					Once the settings are updated, a bitcoin restart must be initiated for the changes will take effect.  Wait 15 minutes after pressing "Restart Bitcoin" to resume normal operations.
 					<br />
 					<br />
 
                     <div data-role="controlgroup" data-type="horizontal" style="text-align: center;">
-                        <input type="submit" name="submit" value="Update bitcoin.conf" id="update-bitcoin-config" />
+                        <input type="submit" name="submit" value="Update Settings" id="update-bitcoin-config" />
 	                </div>	
 			   </fieldset>
 		    </form>
