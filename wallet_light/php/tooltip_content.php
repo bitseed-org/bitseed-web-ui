@@ -1,13 +1,21 @@
+<!-----------------------------------------------------------------------------------
+Created: Konn Danley 
+Company: Bitseed
+File;    tooltip_content.php
+Date:    05/15/2016
+
+Purpose: This file was created to separate tooltip content and the html associated with
+         the settings page.  Content providers do not need to modify any of the html 
+		 file may simply enter the content here.
+		` 
+-------------------------------------------------------------------------------------->
+
 <?php
 
 // --------------------------------------------------------------------------
-//  TOOLTIP CONTENTi
+//  TOOLTIP CONTENT
 //  Replace text in quotes below for tooltip content.
 // --------------------------------------------------------------------------
-
-// Disable Wallet
-// $disablewallet_tooltip = "Disable Wallet Help";
-// $disablewallet_tooltip = "Bitseed is not intended for storage of bitcoins. If you decide to enable the wallet responsibe for making sure the wallet is properly backed-up and secure.";
 
 // Auto Updates
 $autoupdate_tooltip = "When enabled, software updates from Bitseed will be automatically installed";
@@ -24,7 +32,6 @@ $upnp_tooltip = "UPnP lets bitcoin open port 8333 on your router to allow incomi
 
 
 // Disable Blockchain Backups
-// $enablebackups_tooltip = "Enable Blockchain Backups Help";
 $disablebackups_tooltip = "Frees up disk space by disabling the blockchain backup.";
 
 // Min Relay Tx Fee
@@ -40,7 +47,6 @@ $maxmempool_tooltip = "Sets the amount of RAM memory to be used for storing unco
 // Form finished content to place into tooltip.  
 // DO NOT WRITE BELOW THIS LINE.
 // ------------------------------------------------------------
-// $disablewallet_tt_content ="'" . $disablewallet_tooltip . "'";
 $autoupdate_tt_content ="'" . $autoupdate_tooltip . "'";
 $listenonion_tt_content ="'" . $listenonion_tooltip . "'";
 $onlynet_tt_content ="'" . $onlynet_tooltip . "'";

@@ -1,13 +1,20 @@
+<!-----------------------------------------------------------------------------------
+Mods:    Konn Danley 
+Company: Bitseed
+Date:    05/15/2016
+
+Purpose: This filee calculates values for the Bitcoin Node Status and device status 
+         pages.  It is run on any page load.
+
+Originally forked from https://gitub.com mpatterson99/phpBitAdmin-Bitcoin-HTML5-Wallet 
+-------------------------------------------------------------------------------------->
+
 <?php
-// -------------------------------------------------------------------------
-// Bitnodes registration requires a web page with the registered 
-// bitcoin address on it. The defaualt port is 80 if the user does not
-// specify one.
-// -------------------------------------------------------------------------
+
+// public IP
 $extwebport_default=80; 
 
 // Internal IP, MAC address
-// $inet_mac_values = shell_exec('/home/linaro/internal-ip-mac.py 2>&1');
 $inet_mac_values = shell_exec('python/internal-ip-mac.py 2>&1');
 $inet_mac_addr = json_decode($inet_mac_values, TRUE);
 
@@ -18,18 +25,6 @@ $extip = file_get_contents('http://ipecho.net/plain');
 $extipport = $extip . "-8333";
 $concensusblock = file_get_contents('https://blockchain.info/q/getblockcount');
 $address = trim(file_get_contents('/home/linaro/reward-addr'));
-//$address = file_get_contents('/home/linaro/reward-addr');
-
-$jsnaddr = "https://getaddr.bitnodes.io/api/v1/nodes/{$extip}-8333";
-$bitnodejson = file_get_contents($jsnaddr);
-$bitnode = json_decode($bitnodejson, TRUE);
-
-// ------------------ DEBUGGING -------------------
-$file_logger = fopen ("bitnodes_verified.log", "w");
-$a = $bitnode['verified'];
-fwrite ($file_logger, "bitnode_verified= $a");
-fclose ($file_logger);
-// ------------------ DEBUGGING -------------------
 
 $serial = file_get_contents('/var/www/html/serial');
 $bitseedvers = file_get_contents('/home/linaro/version');

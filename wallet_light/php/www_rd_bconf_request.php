@@ -1,14 +1,34 @@
+<!-----------------------------------------------------------------------------------
+Created: Konn Danley 
+Company: Bitseed
+File;    www_rd_bconf_request.php
+Date:    05/15/2016
+
+Purpose: This file (user www-data) is used ot facilitate reads from the bitcoiin 
+         and bitseeed configuration files.  It does this by working with Python 
+		 scripts located in /home/linaro (user/linaro) through mailboxes (user linaro).  
+		 It was implemented this way due to the fact that the bitcoin and bitseed
+		 configurations are located in hidden directories underneath /home/linaro 
+   
+		 For more details, refer to the Bitseed server UI documentation under: 
+
+		 "Bitcoin and Bitseed Configuration Files - UI Access"
+
+Special note on Tor Enable and onlynet
+ 
+         3 modes:
+             1.  Tor=1, onlynet is blank line - Default - no line.  Tor and ipv4
+		     2.  Tor Enable = 1 and onlynet=onion - Tor only
+		     3.  Tor Enable = 0 - No Tor
+
+-------------------------------------------------------------------------------------->
+
 <?php
 
-//  Special note on Tor Enable and onlynet
-// 
-//          3 modes:
-// 	             1.  Tor=1, onlynet is blank line - Default - no line.  Tor and ipv4
-// 			     2.  Tor Enable = 1 and onlynet=onion - Tor only
-// 			     3.  Tor Enable = 0 - No Tor
-// 
-
-
+// ------------------------------------------------------------------------------------
+// On a page load (any page load), this file checks rd_bconf_flag.  If it is a '0',
+// it will write a '1' to rd_bconf_flag, signalling a read request to user linaro.
+// ------------------------------------------------------------------------------------
    $fh_flag = fopen ("/home/linaro/rd_bconf_flag", "r+") or die ("Unable to open /home/linaro/rd_bconf_flag");
    if ($fh_flag) {
        if (($line = fgets($fh_flag)) !== false) {
@@ -21,15 +41,15 @@
     }
 
     // ------------------------------------------------------------------
-    // Now wait for the linaro side to fill the read mailbox and write a '2' to rd_bconf_flag
-    // Once that occurs, you can unload the read mailbox, fill the text boxes 
-    // in the control page, then write a '0' to rd_bconf_flag
+    // Now wait for the linaro side to fill the read mailbox and write a '2' 
+    // to to rd_bconf_flag to indicate receipt and that there is a UI load
+    // of the configuration data.
+    // Once  complete, this file will write a '0' to rd_bconf_flag to 
+    // indicate to user linaro that the operation is complete.  
     // ------------------------------------------------------------------
     while (1) {
         sleep(1);
 
-        // Open file for read and writing - To detect 2 for your own action
-        // and the ability to write '0' when your opertion is complete.
 	    rewind($fh_flag);
         $line = fgets($fh_flag);
 		$line = trim($line);
@@ -66,14 +86,7 @@
    
    // ----------------------------------------------------
    // Checkboxes
-   //  SPECIAL NOTE: 
    // ----------------------------------------------------
-#   $disablewallet_checked = "";
-#   $disablewallet_conf=$array_from_json['disablewallet']; 
-#   if ($disablewallet_conf == 1) {
-#       $disablewallet_checked = "checked";
-#   }
-
    $updateflag_checked = "";
    $updateflag_conf=$array_from_json['autoupdate']; 
    if ($updateflag_conf == 1) {
@@ -97,14 +110,14 @@
        $upnp_checked = "checked";
    }
    $backupflag_checked = "";
-#   $backupflag_conf=$array_from_json['enablebackups']; 
    $backupflag_conf=$array_from_json['disablebackups']; 
 
-# Invert the polarity as the UI uses 'Enable' nomenclature
-# if ($backupflag_conf == 1) {
+    // Invert the polarity as the UI uses 'Enable' nomenclature
+    // and the backend uses 'disable' nomoenclature.
     if ($backupflag_conf == 0) {
        $backupflag_checked = "checked";
    }
+
    // Write a '0' to rd_bconf_flag
    rewind ($fh_flag);
    $line = 0;
