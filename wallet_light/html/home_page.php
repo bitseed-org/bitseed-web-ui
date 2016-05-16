@@ -1,3 +1,26 @@
+<!-----------------------------------------------------------------------------------
+Mods:    Konn Danley 
+Company: Bitseed
+File;    home_page.php
+Date:    05/15/2016
+
+Purpose: The home_page.php file calculates and displays biycoin node status.  The following 
+         The following parameters are reported:
+
+		  - Bitcoin core versiom
+		  - Node type (partial or full)
+	      - Device at block
+		  - Current bitcoin network block
+		  - Peer connections
+		  - Number of current tranactions in mempool
+		  - Minimum relay fee
+		  - Public IP address of device
+		  - Internal network IP of device
+		  - Device S/N 
+		  - Device Version 
+
+Originally forked from https://gitub.com mpatterson99/phpBitAdmin-Bitcoin-HTML5-Wallet 
+-------------------------------------------------------------------------------------->
 <?php
 $file_logger = fopen ("address.log", "w");
 fwrite ($file_logger, "address=$address\n");
@@ -81,7 +104,7 @@ fclose ($file_logger);
     </div>
 
 	<?php 
-        // Convert the bitseedervs from xxx format to x.x.x format
+        // Convert the bitseedervs from xxx format to x.x.x format per Jay's request
 	    $bitseedvers_ui = substr($bitseedvers, 0, 1).'.'.substr($bitseedvers, 1, 2);
 	    $bitseedvers_ui = substr($bitseedvers_ui, 0, 3).'.'.substr($bitseedvers, 2, 3);
 	?>

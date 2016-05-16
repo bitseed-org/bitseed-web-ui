@@ -1,4 +1,40 @@
-    <!-- Special note on Tor Enable and onlynet
+<!-----------------------------------------------------------------------------------
+Mods:    Konn Danley 
+Company: Bitseed
+File;    dev_bcupdate_page.php
+Date:    05/15/2016
+
+Purpose: The Bitcoin Configuration page allows the user to read and write values from/to 
+         the bitcoin and bitseed configuration files,  /home/linaro/.bitcoin/bitcoin.conf and 
+		 /home/linaro/.bitseed/bitseed.conf files.  
+
+		 The values are modified by means of checkboxes and sliders. Bitcoin needs to restart 
+		 anytime the configuration values change for the new values to take effect.  
+		 Two buttons are provided on this page: “Update Settings” and “Restart Bitcoin”.
+
+         The following parameters in the bitcoin.conf file can be modified:
+
+		 - Tor Enable
+             * Bitcoin will relay block and transactions over the Tor network in addition 
+			   to the IPv4 network
+         - Tor Only
+             * When enabled, bitcoin core will operate exclusively on the Tor network. 
+			   This is the most private option.
+         - UPnP Enable
+		     * UPnP lets Bitcoin open port 8333 on your router to allow incoming 
+               connections from other nodes.
+         - Min Relay Tx Fee
+             * Transactions with a fee below this amount will not be relayed by this node.
+         - Daily Upload Limit
+             * Limits how much blockchain data this node will upload t other nodes each day.
+         - Mempool Size Limit
+             * Sets the amount of RAM memory to be used for storing unconfirmed 
+               transactions (the mempool)
+
+Originally forked from https://gitub.com mpatterson99/phpBitAdmin-Bitcoin-HTML5-Wallet 
+-------------------------------------------------------------------------------------->
+
+    <!-- Special note on Tor Enable and onlynet in the bitcoin configuration files
 
          3 modes:
 	             1.  Tor=1, onlynet is blank line - Default - no line.  Tor and ipv4

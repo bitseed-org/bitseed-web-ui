@@ -1,3 +1,10 @@
+<!-----------------------------------------------------------------------------------
+Mods:    Konn Danley 
+Company: Bitseed
+File;    about_page.php
+Date:    05/15/2016
+-------------------------------------------------------------------------------------->
+
 <div data-role="content" class="content">
 
 	    <div style="margin-top:15px;margin-left:5px;">

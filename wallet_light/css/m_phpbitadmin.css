@@ -1,3 +1,14 @@
+/* ------------------------------------------------------------------------------------
+Mods:    Konn Danley 
+Company: Bitseed
+File:    m_phpbitadmin.css
+Date:    05/15/2016
+
+Purpose: This is the main css file. 
+
+Originally forked from https://gitub.com mpatterson99/phpBitAdmin-Bitcoin-HTML5-Wallet 
+-------------------------------------------------------------------------------------- */
+
 html,body {height:100%;}
 
 /* Turn off spinners on input number boxes for webkit and moz desktop browsers */
@@ -24,7 +35,6 @@ input[type=number] {
     height: 100%;
 }
 
-
 #image_WalletImage {
 		vertical-align:middle;
 		margin-top:5px;
@@ -32,19 +42,6 @@ input[type=number] {
         width:50px;
         margin-left:3px;
 }
-/* #span_WalletHeaderText {
-       font-family:arial;
-       color:#0FD249;
-	   font-size:26px;
-	   font-weight:bold;
-	   text-shadow: 1px 1px 1px #333;
-} */
-/* #span_WalletHeaderText {
-       font-family:arial;
-       color:#000000;
-	   font-size:22px;
-	   font-weight:bold;
-} */
 #span_WalletHeaderText {
 	   font-family:arial;
        color:#237;
@@ -59,13 +56,6 @@ input[type=number] {
        font-weight:bold; 
 	   text-align: right;
 }
-/* .hr_wallet {
-       width:96%;
-       border:0;
-       height:0;
-	   border-top:1px solid rgba(0,0,0,0.1);
-	   border-bottom:1px solid rgba(255,255,255,0.3);
-   } */
 .hr_wallet {
        width:96%;
        border:0;
@@ -132,16 +122,6 @@ input[type=number] {
 
 
 .secondary_light_donate {color:#000;font-weight:bold; font-size: 12px;}
-
-.bitnodes_label { 
-    width: 200px !important;  
-    border-width: 0px !important;
-    display: inline-block; }
-
-.bitnodes_textbox { 
-    width: 100px !important;  
-    border-width: 0px;
-    display: inline-block; }
 
 .center-items {
     text-align: center;

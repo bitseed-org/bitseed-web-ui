@@ -1,3 +1,17 @@
+<!-----------------------------------------------------------------------------------
+Mods:    Konn Danley 
+Company: Bitseed
+File;    index.php
+Date:    05/15/2016
+
+Purpose: This is the main virtual page responsible for loading all other virtual pages
+         as well as all css, js, and php files needed for any page load.  Every page
+		 load loads all virtual pages at once (it's all one page).
+		 There are currently some page load performance issues that are serious enough 
+		 that they should be fixed at least in the next update.
+
+Originally forked from https://gitub.com mpatterson99/phpBitAdmin-Bitcoin-HTML5-Wallet 
+-------------------------------------------------------------------------------------->
 <?php
 require_once('config.inc.php');
 require('php/phpbitadmin.class.php');
@@ -129,31 +143,6 @@ $("#bitcoinconf_form").submit(function( e ) {
 // -----------------------------------------------------------------
 </script>
 
-<script>
-// -----------------------------------------------------------------
-//  This is the Ajax call for the actual Bitnodes registration
-// -----------------------------------------------------------------
-$("#bitnodes_reg_form").submit(function( e ) {
-     e.preventDefault();
-     var postData = $("#bitnodes_reg_form").serialize();
-     var formURL = $(this).attr("action");
-     var request = $.ajax({
-         url: formURL,
-         type: 'POST',
-         dataType: "html",
-         data: postData 
-     });
-     request.done(function(msg) {
-       $("#bitcoin_status").html(msg);
-    });
-     request.fail(function(jqXHR, textStatus) {
-         alert( "Request failed: " + textStatus );
-    });
-});
-// -----------------------------------------------------------------
-</script>
-
 </body>
 </html>
-<?php // ob_flush(); ?>
 
