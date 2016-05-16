@@ -1,4 +1,27 @@
 #!/usr/bin/env python
+# -----------------------------------------------------------------------------------
+# Created: Konn Danley 
+# Company: Bitseed
+# File;    disk-info.py
+# Date:    05/15/2016
+#
+# Purpose: This file extracts the following information from the system 
+#
+#          - Disk Size (GB)
+#          - Disk Space Used (GB)
+#          - Disk Space Available (GB)
+#          - RAM Used (MB)
+#          - RAM Free (MB)
+#          - CPU Load (1, 5 and 15 minute averages)
+#          - Uptime 
+#
+# After it has gathered this data it packs it into a json object that it returns
+# to the server software.
+#
+# Note:  This information is only available on the internal network. 
+# Note:  The Mac Address and the Last Blockchain Backup are also listed on this page,
+#        but are calulated by internal-ip-mac.py
+# -------------------------------------------------------------------------------------
 import os
 import subprocess
 import json

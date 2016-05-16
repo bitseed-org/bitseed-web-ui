@@ -1,3 +1,20 @@
+//-----------------------------------------------------------------------------------
+// Mods:    Konn Danley 
+// Company: Bitseed
+// File;    index.php
+// Date:    05/15/2016
+// 
+// Purpose: This is where the javascript cusomot functionss are located.  This file 
+//          currently contains two functions:
+//
+//          1. A callback function thatfor restarting bitcoin, and shutting down the 
+//             device. The call function performs AJAX calls to  jquery-ajax.php where 
+//             the system  actions are taken. 
+//          2. An anonymous function that provides the javascript responsible for
+//             keeping the tooltip text within the disply.
+//
+-------------------------------------------------------------------------------------->
+
 function bitcoinControl(e) {
     var domvalue = $(e).attr('id');
     var r=false;

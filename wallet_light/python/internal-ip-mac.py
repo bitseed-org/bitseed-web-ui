@@ -1,9 +1,18 @@
 #!/usr/bin/env python
-# -------------------------------------------------------------
-#  ifconfig provides info for eth0, which is the only ethernet there
-#  will be.  HWaddr is on the first line and inet addr is on the 
-#  second line.
-# -------------------------------------------------------------
+# -----------------------------------------------------------------------------------
+# Created: Konn Danley 
+# Company: Bitseed
+# File;    internal-ip-mac.py 
+# Date:    05/15/2016
+#
+# Purpose: The purpose of this file is to extract information from the system 
+#          regarding the Mac Address and the last Blockchain backup that will be 
+#          listed on the Device Status Page.
+#
+#          After it has gathered this information, it packs it into a json object 
+#          and returns it to the server.
+# --------------------------------------------------------------------------------------
+
 import os
 import subprocess
 import json
