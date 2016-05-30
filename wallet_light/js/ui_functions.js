@@ -13,7 +13,6 @@
 //          2. An anonymous function that provides the javascript responsible for
 //             keeping the tooltip text within the disply.
 //
--------------------------------------------------------------------------------------->
 
 function bitcoinControl(e) {
     var domvalue = $(e).attr('id');
