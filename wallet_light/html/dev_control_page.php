@@ -5,12 +5,9 @@ File;    dev_control_page.php
 Date:    05/15/2016
 
 Purpose: This is the Power page that allows the user to restart the Bitseed Device
-         from the web application.  Thi feature is only available on the internal 
+         from the web application.  This feature is only available on the internal 
 		 network
-
-Originally forked from https://gitub.com mpatterson99/phpBitAdmin-Bitcoin-HTML5-Wallet 
 -------------------------------------------------------------------------------------->
-
 <div data-role="content" class="content">
 
 	    <div style="margin-top:15px;margin-left:5px;">
