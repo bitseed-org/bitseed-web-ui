@@ -4,7 +4,7 @@ Company: Bitseed
 File;    index.php
 Date:    05/15/2016
 
-Purpose: This is the main virtual page responsible for loading all other virtual pages
+Purpose: This is the main page responsible for loading all other virtual pages
          as well as all css, js, and php files needed for any page load.  Every page
 		 load loads all virtual pages at once (it's all one page).
 		 There are currently some page load performance issues that are serious enough 
@@ -51,11 +51,11 @@ input[type=number] {
     margin-left: 130px;
 }
 </style>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     $(document).bind("pagecreate", function () {
 					    $.mobile.ajaxEnabled = false;
 						});
-</script>
+</script> -->
 
 <style>
 input.normal {
@@ -119,7 +119,7 @@ About Page
 // -----------------------------------------------------------------
 $("#bitcoinconf_form").submit(function( e ) {
       var r;
-      r = confirm("Are you sure that you want to update these parameters in bitcoin.conf and restart bitcoind?");
+      r = confirm("Are you sure that you want to update the settings parameters?");
 	  if (r == false) {
 	      return;
       }
@@ -145,4 +145,3 @@ $("#bitcoinconf_form").submit(function( e ) {
 
 </body>
 </html>
-
