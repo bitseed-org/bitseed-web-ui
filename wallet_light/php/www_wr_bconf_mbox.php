@@ -19,6 +19,9 @@ Originally forked from https://gitub.com mpatterson99/phpBitAdmin-Bitcoin-HTML5-
 -------------------------------------------------------------------------------------->
 
 <?php
+$fh_log = fopen ("/home/linaro/test_log", "w+");
+fwrite ($fh_log, "hello");
+fclose ($fh_log);
 $HOME = "/home/linaro";
 
 $full_chkbox_array = ['autoupdate', 'listenonion', 
@@ -34,6 +37,7 @@ $bitcoin_conf_chkbox = count($_POST['bitcoin_conf_chkbox']) ? $_POST['bitcoin_co
 $minrelaytxfee=$_POST['minrelaytxfee'];
 $maxuploadtarget=$_POST['maxuploadtarget'];
 $maxmempool=$_POST['maxmempool'];
+
 
 // ----------------------------------------------------------
 // The checkbox arrays come in the form of indexed arrays.
