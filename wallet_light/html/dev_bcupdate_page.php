@@ -100,16 +100,15 @@ Originally forked from https://gitub.com mpatterson99/phpBitAdmin-Bitcoin-HTML5-
 							      data-highlight = "true" style="border-width: 0px; display: inline-block;">
                     </div>
 					<br />
-					Once the settings are updated, a bitcoin restart must be initiated for the changes will take effect.  
-					Wait 15 minutes after pressing "Restart Bitcoin" to resume normal operations.
+					After you have finished adjusting the settings, click the "Update" button below then click "Restart." Then wait approximately 15 minutes before using the Bitcoin node or updating your settings again. You will experience errors if you try to use the Bitcoin node or update the settings before Bitcoin has finished restarting.
 					<br />
 					<br />
 
-			   </fieldset>
-		    </form>
                     <div data-role="controlgroup" data-type="horizontal" style="text-align: center;">
                         <input type="submit" name="submit" value="Update Settings" id="update-bitcoin-config" />
 	                </div>	
+			   </fieldset>
+		    </form>
 			<br />         
            <div data-role="controlgroup" data-type="horizontal" style="text-align: center;">
                 <input type="button" value=" Restart Bitcoin " id="bitcoin_restart_conf" onClick="bitcoinControl(this);" />
@@ -117,4 +116,5 @@ Originally forked from https://gitub.com mpatterson99/phpBitAdmin-Bitcoin-HTML5-
 
 	</div>
 </div> 
+
 
