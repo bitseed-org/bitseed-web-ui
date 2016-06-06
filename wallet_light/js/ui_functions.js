@@ -1,7 +1,7 @@
 //-----------------------------------------------------------------------------------
 // Mods:    Konn Danley 
 // Company: Bitseed
-// File;    index.php
+// File;    ui_functions.js 
 // Date:    05/15/2016
 // 
 // Purpose: This is where the javascript cusomot functionss are located.  This file 
@@ -130,4 +130,5 @@ $( function()
         tooltip.bind( 'click', remove_tooltip );
     });
 });
+
 
