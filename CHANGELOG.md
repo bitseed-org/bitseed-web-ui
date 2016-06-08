@@ -1,7 +1,7 @@
-# Change Log
+# Change Log up to 2.1.0
 All notable changes to this project will be documented in this file.   
 
-## [x.x.x] - 2016-05-21
+## 2016-05-21
 - Made UI_konn the master branch in this repo
 
 ## [x.x.x] - 2016-05-18
