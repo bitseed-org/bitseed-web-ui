@@ -12,13 +12,13 @@ include('php/init_ui_vars.php');
 <title>Bitcoin Node</title>
 <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
 <link rel="stylesheet" href="css/m_phpbitadmin.css" />
-<script src="js/jquery-1.11.1.min.js"></script>
-<script src="js/jquery.mobile-1.4.5.min.js"></script>
-<script type="text/javascript">
+<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<!-- <script type="text/javascript">
     $(document).bind("pagecreate", function () {
 					    $.mobile.ajaxEnabled = false;
 						});
-</script>
+</script> -->
 
 <style>
 input.normal {
@@ -33,8 +33,8 @@ input.normal {
 HOME Page
 ---------------------------------------------------->
 <div data-role="page" id="home" data-theme="a">
-    <?php include "html/menu.html"; ?>
-    <?php include "html/header.html"; ?>
+    <?php include "html/menu_home.html"; ?>
+    <?php include "html/header_home.html"; ?>
     <?php include "html/home_page.php"; ?>
 </div>
 
@@ -42,8 +42,8 @@ HOME Page
 About Page
 ---------------------------------------------------->
 <div data-role="page" id="about" data-theme="a">
-    <?php include "html/menu.html"; ?>
-    <?php include "html/header.html"; ?>
+    <?php include "html/menu_about.html"; ?>
+    <?php include "html/header_about.html"; ?>
     <?php include "html/about_page.php"; ?>
 </div> 
 

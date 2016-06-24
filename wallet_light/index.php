@@ -70,8 +70,8 @@ input.normal {
 HOME Page
 ---------------------------------------------------->
 <div data-role="page" id="home" data-theme="a">
-    <?php include "html/menu.html"; ?>
-    <?php include "html/header.html"; ?>
+    <?php include "html/menu_home.html"; ?>
+    <?php include "html/header_home.html"; ?>
     <?php include "html/home_page.php"; ?>
 </div>
 
@@ -79,8 +79,8 @@ HOME Page
 DEVICE STATUS Page
 ---------------------------------------------------->
 <div data-role="page" id="device-status" data-theme="a">
-    <?php include "html/menu.html"; ?>
-    <?php include "html/header.html"; ?>
+    <?php include "html/menu_dev_status.html"; ?>
+    <?php include "html/header_dev_status.html"; ?>
    <?php include "html/dev_status_page.php"; ?>
 </div>
 
@@ -89,8 +89,8 @@ DEVICE STATUS Page
 Bitcoin Configuration Page
 ---------------------------------------------------->
 <div data-role="page" id="bitcoin_conf" data-theme="a">
-    <?php include "html/menu.html"; ?>
-    <?php include "html/header.html"; ?>
+    <?php include "html/menu_dev_bcupdate.html"; ?>
+    <?php include "html/header_dev_bcupdate.html"; ?>
     <?php include "html/dev_bcupdate_page.php"; ?>
 </div>
 
@@ -98,8 +98,8 @@ Bitcoin Configuration Page
 CONTROLS Page
 ---------------------------------------------------->
 <div data-role="page" id="controls" data-theme="a">
-    <?php include "html/menu.html"; ?>
-    <?php include "html/header.html"; ?>
+    <?php include "html/menu_dev_control.html"; ?>
+    <?php include "html/header_dev_control.html"; ?>
     <?php include "html/dev_control_page.php"; ?>
 </div>
 
@@ -107,8 +107,8 @@ CONTROLS Page
 About Page
 ---------------------------------------------------->
 <div data-role="page" id="about" data-theme="a">
-    <?php include "html/menu.html"; ?>
-    <?php include "html/header.html"; ?>
+    <?php include "html/menu_about.html"; ?>
+    <?php include "html/header_about.html"; ?>
     <?php include "html/about_page.php"; ?>
 </div>
 

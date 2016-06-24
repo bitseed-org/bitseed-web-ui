@@ -71,7 +71,7 @@ fclose ($file_logger);
 <!--     <div class="div_WalletOverview">
         <div class="ui-grid-a">
             <div class="ui-block-a"><span class="primary">Internal IP Address:</span></div>
-            <div class="ui-block-b"><span class="secondary_light"><?php print $inet_mac_addr['inet_address']; ?>&nbsp;</span></div>
+            <div class="ui-block-b"><span class="secondary_light"><?php // print $inet_mac_addr['inet_address']; ?>&nbsp;</span></div>
         </div>
     </div> -->
 
@@ -92,7 +92,7 @@ fclose ($file_logger);
 <!--    <div class="div_WalletOverview">
         <div class="ui-grid-a">
             <span class="primary">Donate Bitcoin:</span>
-            <span class="secondary_light_donate"><?php print $address; ?>&nbsp;</span>
+            <span class="secondary_light_donate"><?php // print $address; ?>&nbsp;</span>
         </div>
     </div> -->
 
